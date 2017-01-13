@@ -2,8 +2,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chayen.cookingsupporter.CreateAccount.RegisterSuccess">
+    tools:context="com.example.chayen.cookingsupporter.CreateAccount.RegisterSuccess"
+    android:background="#fff">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:layout_gravity="center_horizontal">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="100dp"
+            android:id="@+id/icon_regissuccess"
+            android:src="@drawable/cooking_supporter_logo"
+            android:layout_centerHorizontal="true"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/icon_regissuccess"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Congratulations ! \n Your account was created."
+            android:textSize="16dp"
+            android:padding="10dp"
+            android:id="@+id/text_regissuccess"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/let_start_button"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/text_regissuccess"
+            android:text="LET'S START"
+            android:background="#fb4f9f"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
 </FrameLayout>
