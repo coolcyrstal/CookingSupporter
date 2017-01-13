@@ -39,7 +39,7 @@
                 android:layout_width="150dp"
                 android:layout_height="30dp"
                 android:id="@+id/textUserId"
-                android:hint="Mobile No."
+                android:hint="User_ID"
                 android:focusable="true"
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
@@ -84,7 +84,7 @@
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"
-                android:hint="PIN"
+                android:hint="Password"
                 android:background="@android:color/transparent"/>
             <ImageView
                 android:layout_width="wrap_content"
