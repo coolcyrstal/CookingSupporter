@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_login"
-    tools:context="com.example.chayen.cookingsupporter.MainActivity">
+    tools:context="com.example.chayen.cookingsupporter.LoginRegister">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -127,9 +127,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Forgot PIN code"
+        android:text="Forgot password"
         android:textSize="20dp"
-        android:id="@+id/forgot_pin_code"
+        android:id="@+id/forgot_password"
         android:textStyle="bold"
         android:textColor="#777"
         android:layout_gravity="center_horizontal|bottom"
