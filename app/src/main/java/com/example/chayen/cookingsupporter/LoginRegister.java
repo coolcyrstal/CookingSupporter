@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.CreateAccount.RegisterPage;
+import com.example.chayen.cookingsupporter.MainPage.HomePage;
 
 public class LoginRegister extends AppCompatActivity {
 
@@ -40,7 +41,8 @@ public class LoginRegister extends AppCompatActivity {
                 if(text_user_id.getText().toString().equals("") || text_password.getText().toString().equals("")){
                     checkLoginInfo(LoginRegister.this, "User_Id or Password incorrect", "Please type again.", "OK");
                 } else{
-
+                    Intent intent = new Intent(LoginRegister.this, HomePage.class);
+                    startActivity(intent);
                 }
             }
         });
