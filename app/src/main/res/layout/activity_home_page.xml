@@ -45,42 +45,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_vertical"
-                    android:text="Pornprapa"
+                    android:text="Chayen"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
-                <LinearLayout
-                    android:layout_below="@+id/username"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal"
-                    android:padding="8dp">
-                    <android.support.v7.widget.AppCompatTextView
-                        android:paddingRight="8dp"
-                        android:layout_gravity="top"
-                        android:gravity="top"
-                        android:layout_below="@+id/username"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="THB"
-                        android:textColor="@android:color/black"/>
-                    <android.support.v7.widget.AppCompatTextView
-
-                        android:layout_below="@+id/username"
-                        android:id="@+id/user_money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-                        android:text="0.00"
-                        android:textColor="@android:color/black"/>
-
-                </LinearLayout>
 
             </RelativeLayout>
 
