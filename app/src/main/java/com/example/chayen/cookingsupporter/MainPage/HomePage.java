@@ -143,7 +143,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         if (id == R.id.profile) {
 
             // Handle the camera action
-        }else if (id == R.id.setting) {
+        }else if (id == R.id.category) {
 
         }else if (id == R.id.logout) {
             logout();
