@@ -26,7 +26,7 @@ public class LoginRegister extends AppCompatActivity {
 
     EditText text_email, text_password;
 
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
@@ -93,7 +93,7 @@ public class LoginRegister extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+        //mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override

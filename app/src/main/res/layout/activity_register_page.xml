@@ -45,20 +45,6 @@
                 android:textColor="#777"
                 android:hint="Lastname"
                 android:layout_below="@+id/textFirstname"/>
-
-            <EditText
-                android:maxLength="13"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/textEmailAddress"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:textColorHighlight="#777"
-                android:textColorHint="#777"
-                android:textColor="#777"
-                android:hint="Email"
-                android:layout_below="@+id/textLastname"
-                android:layout_marginBottom="10dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -69,17 +55,32 @@
             android:id="@+id/user_mobileinfo"
             android:background="#FFF"
             android:layout_below="@+id/userinfo">
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:id="@+id/text_createMobileNum"
+                android:id="@+id/textEmailAddress"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textColorHighlight="#777"
+                android:textColorHint="#777"
+                android:textColor="#777"
+                android:hint="Email"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/text_createPassword"
+                android:layout_below="@+id/textEmailAddress"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"
-                android:hint="Mobile No." />
+                android:hint="Password" />
         </RelativeLayout>
     </RelativeLayout>
 
