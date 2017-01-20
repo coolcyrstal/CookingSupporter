@@ -1,6 +1,7 @@
 package com.example.chayen.cookingsupporter.MainPage;
 
 import android.content.Intent;
+import android.graphics.drawable.Icon;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,9 +14,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,7 +40,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     NavigationView navigationView;
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    View view, search_icon;
+    View view;
     RelativeLayout mViewInformation;
     AppCompatTextView mTextViewName, mTextViewMoney, mTitle;
 
@@ -49,9 +52,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
 
         initialize();
-        //setToolbar();
+        setToolbar();
         setDrawer();
-        //setSearch();
     }
 
     private void setViewPager() {
@@ -97,23 +99,12 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mTitle = (AppCompatTextView) findViewById(R.id.title);
         view = navigationView.getHeaderView(0);
-        search_icon = findViewById(R.id.menu_search);
     }
 
     private void setToolbar() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("");
         mToolbar.setTitle("");
-    }
-
-    private void setSearch(){
-        search_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomePage.this, Search.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void setDrawer() {
@@ -141,6 +132,15 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem search_icon = menu.findItem(R.id.menu_search_icon);
+        search_icon.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(HomePage.this, Search.class);
+                startActivity(intent);
+                return false;
+            }
+        });
         return true;
     }
 
