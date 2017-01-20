@@ -39,6 +39,7 @@ public class RegisterPage extends AppCompatActivity {
         textPassword = (EditText)findViewById(R.id.text_createPassword);
         nextbutton = (Button)findViewById(R.id.nextbutton);
 
+
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -19,6 +19,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.R;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
+import static com.example.chayen.cookingsupporter.LoginRegister.mGoogleApiClient;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -116,10 +121,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     }
 
-    private void logout(){
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_drawer, menu);
@@ -151,5 +152,21 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    private void logout(){
+
+    }
+
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        // [START_EXCLUDE]
+
+                        // [END_EXCLUDE]
+                    }
+                });
     }
 }
