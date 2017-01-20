@@ -24,7 +24,9 @@
         <activity android:name=".CreateAccount.RegisterPage" />
         <activity
             android:name=".MainPage.HomePage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".NavigationAndSearch.Search" />
+        <activity android:name=".NavigationAndSearch.Category"></activity>
     </application>
 
 </manifest>

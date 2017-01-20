@@ -1,5 +1,6 @@
 package com.example.chayen.cookingsupporter.MainPage;
 
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.chayen.cookingsupporter.CreateAccount.RegisterPage;
+import com.example.chayen.cookingsupporter.LoginRegister;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
 import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.ResultCallback;
@@ -32,7 +37,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     NavigationView navigationView;
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    View view;
+    View view, search_icon;
     RelativeLayout mViewInformation;
     AppCompatTextView mTextViewName, mTextViewMoney, mTitle;
 
@@ -46,6 +51,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         initialize();
         //setToolbar();
         setDrawer();
+        //setSearch();
     }
 
     private void setViewPager() {
@@ -91,12 +97,23 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mTitle = (AppCompatTextView) findViewById(R.id.title);
         view = navigationView.getHeaderView(0);
+        search_icon = findViewById(R.id.menu_search);
     }
 
     private void setToolbar() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("");
         mToolbar.setTitle("");
+    }
+
+    private void setSearch(){
+        search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomePage.this, Search.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setDrawer() {
@@ -123,7 +140,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_drawer, menu);
+        getMenuInflater().inflate(R.menu.menu_search, menu);
         return true;
     }
 
@@ -145,7 +162,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
             // Handle the camera action
         }else if (id == R.id.category) {
-
+            Intent intent = new Intent(HomePage.this, Category.class);
+            startActivity(intent);
         }else if (id == R.id.logout) {
             logout();
         }
@@ -155,7 +173,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     private void logout(){
-
+        //signOut();
     }
 
     private void signOut() {
@@ -164,7 +182,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     @Override
                     public void onResult(Status status) {
                         // [START_EXCLUDE]
-
+                        HomePage.this.finish();
                         // [END_EXCLUDE]
                     }
                 });
