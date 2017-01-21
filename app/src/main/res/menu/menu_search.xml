@@ -9,7 +9,7 @@
         app:showAsAction="always" />
 
     <item
-        android:title="@string/search"
+        android:title="@string/addFood"
         android:icon="@drawable/icon_add_food"
         android:id="@+id/icon_add_food"
         app:showAsAction="always" />

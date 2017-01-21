@@ -57,6 +57,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         initialize();
         setToolbar();
         setDrawer();
+        setViewPager();
     }
 
     private void setViewPager() {
