@@ -26,7 +26,8 @@
             android:name=".MainPage.HomePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".NavigationAndSearch.Search" />
-        <activity android:name=".NavigationAndSearch.Category"></activity>
+        <activity android:name=".NavigationAndSearch.Category" />
+        <activity android:name=".NavigationAndSearch.AddFoodMenu"></activity>
     </application>
 
 </manifest>

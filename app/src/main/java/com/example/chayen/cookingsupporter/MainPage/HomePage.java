@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.CreateAccount.RegisterPage;
 import com.example.chayen.cookingsupporter.LoginRegister;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
 import com.example.chayen.cookingsupporter.R;
@@ -45,6 +46,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     AppCompatTextView mTextViewName, mTextViewMoney, mTitle;
 
     TabLayout tabLayout;
+
+    MenuItem search_icon, add_food_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +135,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search, menu);
-        MenuItem search_icon = menu.findItem(R.id.menu_search_icon);
+        search_icon = menu.findItem(R.id.menu_search_icon);
+        add_food_icon = menu.findItem(R.id.icon_add_food);
+        menuItemOnClick();
+        return true;
+    }
+
+    private void menuItemOnClick(){
         search_icon.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -141,7 +150,15 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 return false;
             }
         });
-        return true;
+
+        add_food_icon.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(HomePage.this, AddFoodMenu.class);
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
     @Override
