@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/CustomListItemImage"
+        android:id="@+id/food_list_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginLeft="20dp"
@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/CustomListSaveName"
+            android:id="@+id/food_list_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/CustomListText"
+                android:id="@+id/food_list_text_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -41,7 +41,7 @@
                 android:textColor="#888"/>
 
             <TextView
-                android:id="@+id/CustomListTextDeviceName"
+                android:id="@+id/food_list_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
