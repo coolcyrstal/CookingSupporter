@@ -22,7 +22,7 @@ import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText textFirstName, textLastName, textEmailAddress, textPassword;
+    EditText textFirstName, textLastName, textEmailAddress, textPassword, textRePassword;
     Button nextbutton;
 
     @Override
@@ -37,6 +37,7 @@ public class RegisterPage extends AppCompatActivity {
         textLastName = (EditText)findViewById(R.id.textLastname);
         textEmailAddress = (EditText)findViewById(R.id.textEmailAddress);
         textPassword = (EditText)findViewById(R.id.text_createPassword);
+        textRePassword = (EditText)findViewById(R.id.text_createPassword_confirm);
         nextbutton = (Button)findViewById(R.id.nextbutton);
 
 
@@ -45,7 +46,9 @@ public class RegisterPage extends AppCompatActivity {
             public void onClick(View v) {
                 if(textFirstName.getText().toString().equals("") || textLastName.getText().toString().equals("")){
                     checkAccountInfo(RegisterPage.this, "Your information not complete", "Please input all field.", "OK");
-                } else{
+                } else if(textRePassword.getText().toString() != textPassword.getText().toString()){
+                    checkAccountInfo(RegisterPage.this, "Your password not correct", "Please check your password matched.", "OK");
+                }else{
                     goCreateAccount();
                 }
             }
