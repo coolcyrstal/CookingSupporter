@@ -1,7 +1,10 @@
 package com.example.chayen.cookingsupporter.MainPage;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Icon;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -31,7 +34,11 @@ import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
+import static com.example.chayen.cookingsupporter.LoginRegister.mAuthListener;
 import static com.example.chayen.cookingsupporter.LoginRegister.mGoogleApiClient;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -191,18 +198,12 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     private void logout(){
-        //signOut();
+        signOut();
+        Log.d("Check Logout", "test");
     }
 
     private void signOut() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
-                        // [START_EXCLUDE]
-                        HomePage.this.finish();
-                        // [END_EXCLUDE]
-                    }
-                });
+        mAuth.signOut();
+        HomePage.this.finish();
     }
 }

@@ -41,7 +41,7 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
     public static GoogleApiClient mGoogleApiClient;
 
     public static FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    public static FirebaseAuth.AuthStateListener mAuthListener;
     private static final int RC_SIGN_IN = 9001;
 
     @Override
