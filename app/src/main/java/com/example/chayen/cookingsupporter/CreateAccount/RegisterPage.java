@@ -2,6 +2,7 @@ package com.example.chayen.cookingsupporter.CreateAccount;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -17,6 +18,9 @@ import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
 
@@ -71,10 +75,28 @@ public class RegisterPage extends AppCompatActivity {
                                         .addToBackStack(null)
                                         .commit();
                             }else Toast.makeText(RegisterPage.this, "Error", Toast.LENGTH_SHORT).show();
+                            updateUserDetail();
                             Toast.makeText(RegisterPage.this, "Create Account Success", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+    }
+
+    private void updateUserDetail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(textFirstName.getText().toString())
+                .build();
+
+        user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Log.d("update profile", "success");
+                }
+            }
+        });
     }
 
     private AlertDialog checkAccountInfo(final AppCompatActivity act, CharSequence title,
