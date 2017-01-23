@@ -29,6 +29,7 @@ import com.example.chayen.cookingsupporter.CreateAccount.RegisterPage;
 import com.example.chayen.cookingsupporter.LoginRegister;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
 import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.auth.api.Auth;
@@ -184,8 +185,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 //        Toast.makeText(HomePage.this, "" + id + " " + R.id.source_of_fund, Toast.LENGTH_SHORT).show();
 
         if (id == R.id.profile) {
-
-            // Handle the camera action
+            Intent intent = new Intent(HomePage.this, Profile.class);
+            startActivity(intent);
         }else if (id == R.id.category) {
             Intent intent = new Intent(HomePage.this, Category.class);
             startActivity(intent);

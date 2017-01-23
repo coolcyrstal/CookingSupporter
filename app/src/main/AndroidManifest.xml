@@ -27,7 +27,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".NavigationAndSearch.Search" />
         <activity android:name=".NavigationAndSearch.Category" />
-        <activity android:name=".NavigationAndSearch.AddFoodMenu"></activity>
+        <activity android:name=".NavigationAndSearch.AddFoodMenu" />
+        <activity android:name=".NavigationAndSearch.Profile"></activity>
     </application>
 
 </manifest>

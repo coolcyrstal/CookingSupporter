@@ -5,4 +5,8 @@
     <color name="colorGrey">#DDD</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black_overlay">#66000000</color>
+
+    <color name="buttoncolor_pink">#fb4f9f</color>
+    <color name="colorBrightRed">#FF2200</color>
+    <color name="buttoncolor_yellow">#fff700</color>
 </resources>

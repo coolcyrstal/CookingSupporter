@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.chayen.cookingsupporter.CreateAccount.RegisterPage"
-    android:background="#DDD">
+    android:background="@color/colorGrey">
 
     <RelativeLayout
         android:layout_width="match_parent"
