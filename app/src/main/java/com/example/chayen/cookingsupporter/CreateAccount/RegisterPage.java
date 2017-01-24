@@ -26,7 +26,7 @@ import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText textFirstName, textLastName, textEmailAddress, textPassword, textRePassword;
+    EditText textRegisDisplayName, textEmailAddress, textPassword, textRePassword;
     Button nextbutton;
 
     @Override
@@ -37,8 +37,7 @@ public class RegisterPage extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.register_actionbar);
 
-        textFirstName = (EditText)findViewById(R.id.textFirstname);
-        textLastName = (EditText)findViewById(R.id.textLastname);
+        textRegisDisplayName = (EditText)findViewById(R.id.text_register_displayname);
         textEmailAddress = (EditText)findViewById(R.id.textEmailAddress);
         textPassword = (EditText)findViewById(R.id.text_createPassword);
         textRePassword = (EditText)findViewById(R.id.text_createPassword_confirm);
@@ -48,11 +47,14 @@ public class RegisterPage extends AppCompatActivity {
         nextbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(textFirstName.getText().toString().equals("") || textLastName.getText().toString().equals("")){
-                    checkAccountInfo(RegisterPage.this, "Your information not complete", "Please input all field.", "OK");
+                if(textRegisDisplayName.getText().toString().equals("") || textEmailAddress.getText().toString().equals("")
+                        || textPassword.getText().toString().equals("") || textRePassword.getText().toString().equals("")){
+                    checkAccountInfo(RegisterPage.this, "Your information not complete", "Please fill all information.", "OK");
+                } else if(textPassword.getText().toString().length() < 6 || textPassword.getText().toString().length() > 12){
+                    checkAccountInfo(RegisterPage.this, "Your password not correct", "Your password length should be 6-12 character.", "OK");
                 } else if(textRePassword.getText().toString() != textPassword.getText().toString()){
                     checkAccountInfo(RegisterPage.this, "Your password not correct", "Please check your password matched.", "OK");
-                }else{
+                } else{
                     goCreateAccount();
                 }
             }
@@ -86,7 +88,7 @@ public class RegisterPage extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(textFirstName.getText().toString())
+                .setDisplayName(textRegisDisplayName.getText().toString())
                 .build();
 
         user.updateProfile(profileUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {

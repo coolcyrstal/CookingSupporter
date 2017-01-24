@@ -30,7 +30,7 @@ public class Profile extends AppCompatActivity {
     private void initialize(){
         upload_image = (Button)findViewById(R.id.user_profile_update_button);
         update_user_profile = (Button)findViewById(R.id.user_profile_update_button);
-        text_display_name = (EditText)findViewById(R.id.textDisplayName);
+        text_display_name = (EditText)findViewById(R.id.text_updateDisplatName);
 
         update_user_profile.setOnClickListener(new View.OnClickListener() {
             @Override

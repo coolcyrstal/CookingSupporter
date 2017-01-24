@@ -39,7 +39,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:id="@+id/textDisplayName"
+                android:id="@+id/text_updateDisplatName"
                 android:singleLine="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
