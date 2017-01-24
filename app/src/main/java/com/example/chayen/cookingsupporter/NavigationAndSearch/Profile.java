@@ -1,5 +1,7 @@
 package com.example.chayen.cookingsupporter.NavigationAndSearch;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +37,11 @@ public class Profile extends AppCompatActivity {
         update_user_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateUserDetail();
+                if(text_display_name.getText().toString().equals("")){
+                    checkUpdateInfo(Profile.this, "Your information not complete", "Please fill information.", "OK");
+                } else{
+                    updateUserDetail();
+                }
             }
         });
 
@@ -62,5 +68,16 @@ public class Profile extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private AlertDialog checkUpdateInfo(final AppCompatActivity act, CharSequence title,
+                                         CharSequence message, CharSequence buttonYes){
+        AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
+        downloadDialog.setTitle(title).setMessage(message).setPositiveButton(buttonYes, new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        return downloadDialog.show();
     }
 }
