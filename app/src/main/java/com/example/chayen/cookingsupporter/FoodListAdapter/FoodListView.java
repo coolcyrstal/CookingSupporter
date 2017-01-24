@@ -1,8 +1,10 @@
 package com.example.chayen.cookingsupporter.FoodListAdapter;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.R;
@@ -19,6 +21,25 @@ public class FoodListView extends BaseCustomViewGroup {
 
     public FoodListView(Context context) {
         super(context);
+        initInflate();
+        initInstances();
+    }
+
+    public FoodListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initInflate();
+        initInstances();
+    }
+
+    public FoodListView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initInflate();
+        initInstances();
+    }
+
+    @TargetApi(21)
+    public FoodListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
         initInflate();
         initInstances();
     }
