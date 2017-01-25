@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 
 public class FoodListAdapter extends BaseAdapter{
 
-    String[] food_name, star_value;
+    String[] food_name, food_type;
 
     public int getCount() {
         if (food_name == null)
@@ -30,7 +30,7 @@ public class FoodListAdapter extends BaseAdapter{
     public View getView(int position, View view, ViewGroup parent) {
         FoodListView foodListView = new FoodListView(parent.getContext());
         foodListView.setFood_name(food_name[position]);
-        foodListView.setStar_value(star_value[position]);
+        foodListView.setStar_value(food_type[position]);
         return foodListView;
     }
 
@@ -38,7 +38,7 @@ public class FoodListAdapter extends BaseAdapter{
         this.food_name = food_name;
     }
 
-    public void setStar_value(String[] star_value){
-        this.star_value = star_value;
+    public void setStar_value(String[] food_type){
+        this.food_type = food_type;
     }
 }

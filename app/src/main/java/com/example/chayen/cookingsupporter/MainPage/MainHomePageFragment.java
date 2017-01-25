@@ -3,6 +3,7 @@ package com.example.chayen.cookingsupporter.MainPage;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,8 +40,9 @@ public class MainHomePageFragment extends Fragment {
 
     ListView listView;
     FoodListAdapter foodlist_adapter;
-    String[] food_name, food_star;
-    List<FoodDatabaseClass> foodlist;
+    String[] food_name, food_type;
+    ArrayList<FoodDatabaseClass> foodlist;
+    FoodDatabaseClass food;
 
     public MainHomePageFragment() {
         // Required empty public constructor
@@ -72,10 +75,8 @@ public class MainHomePageFragment extends Fragment {
         String[] testfoodlist = new String[]{"1","2","3"};
         listView = (ListView)rootview.findViewById(R.id.foodList);
         setFireBaseDatabase();
-        foodlist_adapter = new FoodListAdapter();
-        foodlist_adapter.setFood_name(food_name);
-        foodlist_adapter.setStar_value(testfoodlist);
-        listView.setAdapter(foodlist_adapter);
+
+
     }
 
     private void setFireBaseDatabase(){
@@ -84,13 +85,64 @@ public class MainHomePageFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Map<String, FoodDatabaseClass> td = (HashMap<String,FoodDatabaseClass>) dataSnapshot.getValue();
-                foodlist = new ArrayList<>(td.values());
+//                Map<String, FoodDatabaseClass> td = (HashMap<String,FoodDatabaseClass>) dataSnapshot.getValue();
+//                foodlist = new ArrayList<>(td.values());
 
-                for(int i = 0; i < foodlist.size(); i++){
-//                    food_name[i] = foodlist.get(i).food_name;
-                    Log.d("foodlist", "" + foodlist.get(0));
+//                Map<String, FoodDatabaseClass> td = (HashMap<String,FoodDatabaseClass>) dataSnapshot.getValue();
+//                for (DataSnapshot jobSnapshot: dataSnapshot.getChildren()) {
+//                    FoodDatabaseClass job = jobSnapshot.getValue(FoodDatabaseClass.class);
+//                    td.put(jobSnapshot.getKey(), job);
+//                }
+//                foodlist = new ArrayList<>(td.values());
+//                List<String> keys = new ArrayList<String>(td.keySet());
+//
+//                for (FoodDatabaseClass job: foodlist) {
+//                    Log.d("firebase", job.getFood_name());
+//                }
+
+                foodlist = new ArrayList<>();
+                for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
+                    String food_image = (String) messageSnapshot.child("food_image").getValue();
+                    String food_name = (String) messageSnapshot.child("food_name").getValue();
+                    String food_type = (String) messageSnapshot.child("food_type").getValue();
+                    ArrayList<String> cooking_method = (ArrayList<String>) messageSnapshot.child("cooking_method").getValue();
+                    ArrayList<String> ingredient = (ArrayList<String>) messageSnapshot.child("ingredient").getValue();
+                    food = new FoodDatabaseClass();
+                    food.setCooking_method(cooking_method);
+                    food.setFood_image(food_image);
+                    food.setFood_name(food_name);
+                    food.setFood_type(food_type);
+                    food.setIngredient(ingredient);
+                    Log.d("foodlist", "" + food.getFood_name());
+//                    Log.d("foodlist", "" + foodlist.get(0).getFood_name());
+                    foodlist.add(food);
                 }
+//                Log.d("foodlist", "" + foodlist.get(0).getFood_type());
+
+                food_name = new String[foodlist.size()];
+                food_type = new String[foodlist.size()];
+                for(int i = 0; i < foodlist.size(); i++){
+                    food_name[i] = foodlist.get(i).getFood_name();
+                    food_type[i] = foodlist.get(i).getFood_type();
+                    Log.d("foodlist", "" + food_name[i]);
+                }
+                foodlist_adapter = new FoodListAdapter();
+                foodlist_adapter.setFood_name(food_name);
+                foodlist_adapter.setStar_value(food_type);
+                listView.setAdapter(foodlist_adapter);
+
+//                for (Object obj : td.values()) {
+//                    if (obj instanceof Map) {
+//                        Map<String, Object> mapObj = (Map<String, Object>) obj;
+//                        FoodDatabaseClass match = new FoodDatabaseClass();
+//                        match.setCooking_method(mapObj.get());
+//                        match.getFood_type();
+//                        match.getCooking_method();
+//                        match.getFood_image();
+//                        match.getIngredient();
+//                        foodlist.add(match);
+//                    }
+//                }
             }
 
             @Override

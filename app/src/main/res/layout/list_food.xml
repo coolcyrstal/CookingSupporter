@@ -31,22 +31,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/food_list_text_star"
+                android:id="@+id/food_list_text_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
-                android:text="Food Star: "
+                android:text="Food type: "
                 android:layout_marginBottom="5dp"
                 android:textColor="#888"/>
 
             <TextView
-                android:id="@+id/food_list_star"
+                android:id="@+id/food_list_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="0dp"
-                android:text="3.5/5"
+                android:text=""
                 android:layout_marginBottom="5dp"
                 android:textColor="#888"/>
 

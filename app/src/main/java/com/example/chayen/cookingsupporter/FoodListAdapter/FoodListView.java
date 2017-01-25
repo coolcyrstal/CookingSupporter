@@ -17,7 +17,7 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 
 public class FoodListView extends BaseCustomViewGroup {
 
-    TextView food_name, star_value;
+    TextView food_name, food_type;
 
     public FoodListView(Context context) {
         super(context);
@@ -51,7 +51,7 @@ public class FoodListView extends BaseCustomViewGroup {
     private void initInstances() {
         // findViewById here
         food_name = (TextView) findViewById(R.id.food_list_name);
-        star_value = (TextView) findViewById(R.id.food_list_star);
+        food_type = (TextView) findViewById(R.id.food_list_type);
     }
 
     @Override
@@ -80,6 +80,6 @@ public class FoodListView extends BaseCustomViewGroup {
     }
 
     public void setStar_value(String text){
-        star_value.setText(text);
+        food_type.setText(text);
     }
 }
