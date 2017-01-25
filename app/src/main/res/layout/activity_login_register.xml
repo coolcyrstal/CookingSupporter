@@ -62,7 +62,7 @@
                 android:id="@+id/imageView"
                 android:layout_marginBottom="0dp"
                 android:layout_gravity="center"
-                android:src="@drawable/icon_mobileno" />
+                android:src="@drawable/icon_email" />
         </RelativeLayout>
 
         <RelativeLayout
