@@ -2,14 +2,23 @@ package com.example.chayen.cookingsupporter.FoodListAdapter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by chayen on 23-Jan-17.
@@ -18,6 +27,7 @@ import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
 public class FoodListView extends BaseCustomViewGroup {
 
     TextView food_name, food_type;
+    ImageView food_image;
 
     public FoodListView(Context context) {
         super(context);
@@ -52,6 +62,7 @@ public class FoodListView extends BaseCustomViewGroup {
         // findViewById here
         food_name = (TextView) findViewById(R.id.food_list_name);
         food_type = (TextView) findViewById(R.id.food_list_type);
+        food_image = (ImageView) findViewById(R.id.food_list_image);
     }
 
     @Override
@@ -79,7 +90,20 @@ public class FoodListView extends BaseCustomViewGroup {
         food_name.setText(text);
     }
 
-    public void setStar_value(String text){
+    public void setFood_type(String text){
         food_type.setText(text);
+    }
+
+    public void setFood_image(String text){
+        try {
+            URL url = new URL(text);
+            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            food_image.setImageBitmap(bmp);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        food_image.setImageURI(Uri.parse(text));
     }
 }

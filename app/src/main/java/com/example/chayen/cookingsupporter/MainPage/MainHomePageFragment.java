@@ -40,7 +40,7 @@ public class MainHomePageFragment extends Fragment {
 
     ListView listView;
     FoodListAdapter foodlist_adapter;
-    String[] food_name, food_type;
+    String[] food_name, food_type, food_image;
     ArrayList<FoodDatabaseClass> foodlist;
     FoodDatabaseClass food;
 
@@ -121,14 +121,17 @@ public class MainHomePageFragment extends Fragment {
 
                 food_name = new String[foodlist.size()];
                 food_type = new String[foodlist.size()];
+                food_image = new String[foodlist.size()];
                 for(int i = 0; i < foodlist.size(); i++){
                     food_name[i] = foodlist.get(i).getFood_name();
                     food_type[i] = foodlist.get(i).getFood_type();
+                    food_image[i] = foodlist.get(i).getFood_image();
                     Log.d("foodlist", "" + food_name[i]);
                 }
                 foodlist_adapter = new FoodListAdapter();
                 foodlist_adapter.setFood_name(food_name);
-                foodlist_adapter.setStar_value(food_type);
+                foodlist_adapter.setFood_type(food_type);
+                foodlist_adapter.setFood_image(food_image);
                 listView.setAdapter(foodlist_adapter);
 
 //                for (Object obj : td.values()) {
