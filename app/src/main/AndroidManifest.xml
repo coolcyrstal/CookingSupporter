@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateAccount.RegisterPage" />
+        <activity android:name=".CreateAccount.RegisterPage"
+            android:theme="@style/RegisterTheme"/>
         <activity
             android:name=".MainPage.HomePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
