@@ -1,6 +1,7 @@
 package com.example.chayen.cookingsupporter.MainPage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.SyncStateContract;
@@ -10,11 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.chayen.cookingsupporter.FoodListAdapter.CookingRecipe;
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodListAdapter;
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodListView;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
 import com.example.chayen.cookingsupporter.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +45,7 @@ public class MainHomePageFragment extends Fragment {
     ListView listView;
     FoodListAdapter foodlist_adapter;
     String[] food_name, food_type, food_image;
-    ArrayList<FoodDatabaseClass> foodlist;
+    public static ArrayList<FoodDatabaseClass> foodlist;
     FoodDatabaseClass food;
 
     public MainHomePageFragment() {
@@ -74,6 +78,7 @@ public class MainHomePageFragment extends Fragment {
     private void initInstance(View rootview){
         String[] testfoodlist = new String[]{"1","2","3"};
         listView = (ListView)rootview.findViewById(R.id.foodList);
+        foodlist_adapter = new FoodListAdapter();
         setFireBaseDatabase();
 
 
@@ -128,11 +133,9 @@ public class MainHomePageFragment extends Fragment {
                     food_image[i] = foodlist.get(i).getFood_image();
                     Log.d("foodlist", "" + food_name[i]);
                 }
-                foodlist_adapter = new FoodListAdapter();
-                foodlist_adapter.setFood_name(food_name);
-                foodlist_adapter.setFood_type(food_type);
-                foodlist_adapter.setFood_image(food_image);
-                listView.setAdapter(foodlist_adapter);
+
+                setFoodlist_adapterer();
+
 
 //                for (Object obj : td.values()) {
 //                    if (obj instanceof Map) {
@@ -180,6 +183,20 @@ public class MainHomePageFragment extends Fragment {
 //
 //            }
 //        });
+    }
+
+    private void setFoodlist_adapterer(){
+        foodlist_adapter.setFood_name(food_name);
+        foodlist_adapter.setFood_type(food_type);
+        foodlist_adapter.setFood_image(food_image);
+        listView.setAdapter(foodlist_adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), CookingRecipe.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public interface OnFragmentInteractionListener {

@@ -21,15 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateAccount.RegisterPage"
-            android:theme="@style/RegisterTheme"/>
+        <activity
+            android:name=".CreateAccount.RegisterPage"
+            android:theme="@style/RegisterTheme" />
         <activity
             android:name=".MainPage.HomePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".NavigationAndSearch.Search" />
         <activity android:name=".NavigationAndSearch.Category" />
         <activity android:name=".NavigationAndSearch.AddFoodMenu" />
-        <activity android:name=".NavigationAndSearch.Profile"></activity>
+        <activity android:name=".NavigationAndSearch.Profile" />
+        <activity android:name=".FoodListAdapter.CookingRecipe"></activity>
     </application>
 
 </manifest>
