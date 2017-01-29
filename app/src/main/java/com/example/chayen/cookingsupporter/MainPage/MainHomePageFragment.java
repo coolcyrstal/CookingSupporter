@@ -118,7 +118,7 @@ public class MainHomePageFragment extends Fragment {
                     food.setFood_name(food_name);
                     food.setFood_type(food_type);
                     food.setIngredient(ingredient);
-                    Log.d("foodlist", "" + food.getFood_name());
+//                    Log.d("foodlist", "" + food.getFood_name());
 //                    Log.d("foodlist", "" + foodlist.get(0).getFood_name());
                     foodlist.add(food);
                 }
@@ -131,7 +131,7 @@ public class MainHomePageFragment extends Fragment {
                     food_name[i] = foodlist.get(i).getFood_name();
                     food_type[i] = foodlist.get(i).getFood_type();
                     food_image[i] = foodlist.get(i).getFood_image();
-                    Log.d("foodlist", "" + food_name[i]);
+//                    Log.d("foodlist", "" + food_name[i]);
                 }
 
                 setFoodlist_adapterer();
@@ -193,6 +193,7 @@ public class MainHomePageFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CookingRecipe.getFoodRecipePosition(position);
                 Intent intent = new Intent(getActivity(), CookingRecipe.class);
                 startActivity(intent);
             }

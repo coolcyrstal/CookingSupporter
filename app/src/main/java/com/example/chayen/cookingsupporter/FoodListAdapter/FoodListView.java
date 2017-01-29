@@ -98,7 +98,7 @@ public class FoodListView extends BaseCustomViewGroup {
 
     public void setFood_image(String text){
         Picasso.with(getContext()).load(text).into(food_image);
-        Log.d("testfood_image", text);
+//        Log.d("testfood_image", text);
 //        try {
 //            URL url = new URL(text);
 //            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
