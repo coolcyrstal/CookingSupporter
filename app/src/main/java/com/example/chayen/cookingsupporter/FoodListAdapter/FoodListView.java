@@ -8,12 +8,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.R;
 import com.inthecheesefactory.thecheeselibrary.view.BaseCustomViewGroup;
 import com.inthecheesefactory.thecheeselibrary.view.state.BundleSavedState;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -95,15 +97,17 @@ public class FoodListView extends BaseCustomViewGroup {
     }
 
     public void setFood_image(String text){
-        try {
-            URL url = new URL(text);
-            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            food_image.setImageBitmap(bmp);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Picasso.with(getContext()).load(text).into(food_image);
+        Log.d("testfood_image", text);
+//        try {
+//            URL url = new URL(text);
+//            Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+//            food_image.setImageBitmap(bmp);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 //        food_image.setImageURI(Uri.parse(text));
     }
 }

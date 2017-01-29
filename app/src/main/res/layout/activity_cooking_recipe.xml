@@ -10,4 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.chayen.cookingsupporter.FoodListAdapter.CookingRecipe">
 
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none" >
+    </ScrollView>
 </RelativeLayout>
