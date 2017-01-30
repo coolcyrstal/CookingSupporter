@@ -2,11 +2,16 @@
 <resources>
     <color name="colorPrimary">#DDD</color>
     <color name="colorPrimaryDark">#DDD</color>
-    <color name="colorGrey">#DDD</color>
+    <color name="colorGrey">#555</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black_overlay">#66000000</color>
 
     <color name="buttoncolor_pink">#fb4f9f</color>
     <color name="colorBrightRed">#FF2200</color>
     <color name="buttoncolor_yellow">#fff700</color>
+
+    <color name="themecolorhunt_1">#2E94B9</color>
+    <color name="themecolorhunt_2">#FFFDC1</color>
+    <color name="themecolorhunt_3">#F0B775</color>
+    <color name="themecolorhunt_4">#FD5959</color>
 </resources>

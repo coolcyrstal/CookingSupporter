@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment"
-    android:background="#555">
+    android:background="@color/themecolorhunt_3">
 
 
     <ListView

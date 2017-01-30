@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.chayen.cookingsupporter.CreateAccount.RegisterSuccess"
-    android:background="#fff">
+    android:background="@color/themecolorhunt_2">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF"
+        android:background="@color/themecolorhunt_2"
         android:layout_gravity="center_horizontal">
 
         <ImageView
@@ -41,7 +41,7 @@
             android:layout_height="40dp"
             android:layout_below="@+id/text_regissuccess"
             android:text="LET'S START"
-            android:background="#fb4f9f"
+            android:background="@color/themecolorhunt_4"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff" />
     </RelativeLayout>
