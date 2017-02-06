@@ -13,7 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/register_info">
 
         <TextView
@@ -52,7 +52,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_info"
+        android:layout_marginTop="30dp"
+        android:id="@+id/button_upload_profile_image_layout">
 
         <Button
             android:id="@+id/upload_image_button"
@@ -61,8 +64,21 @@
             android:text="Upload Image"
             android:textSize="20dp"
             android:background="@color/buttoncolor_yellow"
-            android:textColor="@color/colorBrightRed"
-            android:layout_gravity="center"/>
+            android:textColor="@color/colorBrightRed" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/button_upload_profile_image_layout"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitStart"
+            android:id="@+id/profile_image"/>
     </LinearLayout>
 
     <LinearLayout
