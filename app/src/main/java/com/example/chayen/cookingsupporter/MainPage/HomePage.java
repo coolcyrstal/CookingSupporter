@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Icon;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -22,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,6 +39,8 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.squareup.picasso.Picasso;
 
 import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
 import static com.example.chayen.cookingsupporter.LoginRegister.mAuthListener;
@@ -57,12 +61,16 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     MenuItem search_icon, add_food_icon;
 
+    TextView user_profile_name, user_profile_email;
+    ImageView user_profile_image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
         initialize();
+        setFirebaseUserProfile();
         setToolbar();
         setDrawer();
         setViewPager();
@@ -101,6 +109,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 }
             }
         });
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void initialize() {
@@ -111,6 +120,29 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         mTitle = (AppCompatTextView) findViewById(R.id.title);
         view = navigationView.getHeaderView(0);
+
+        user_profile_name = (TextView)findViewById(R.id.user_profile_displayname);
+        user_profile_email = (TextView)findViewById(R.id.user_profile_email);
+        user_profile_image = (ImageView)findViewById(R.id.user_profile_image);
+//        user_profile_name.setText("chayen");
+    }
+
+    private void setFirebaseUserProfile(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String name = "", email = "";
+            Uri photoUrl = null;
+            for (UserInfo profile : user.getProviderData()) {
+                // Id of the provider (ex: google.com)
+                name = profile.getDisplayName();
+                email = profile.getEmail();
+                photoUrl = profile.getPhotoUrl();
+                Log.d("user_profile", ""+ name + "\n" + email + "\n" + photoUrl);
+            }
+//            user_profile_name.setText(name);
+//            user_profile_email.setText(email);
+//            Picasso.with(getApplicationContext()).load(photoUrl).into(user_profile_image);
+        }
     }
 
     private void setToolbar() {
