@@ -1,5 +1,6 @@
 package com.example.chayen.cookingsupporter;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -204,6 +205,17 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
 //        if (mAuthListener != null) {
 //            mAuth.removeAuthStateListener(mAuthListener);
 //        }
+//        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+//            mGoogleApiClient.stopAutoManage(this);
+//            mGoogleApiClient.disconnect();
+//        }
+//    }
+
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        mGoogleApiClient.stopAutoManage(this);
+//        mGoogleApiClient.disconnect();
 //    }
 
     private AlertDialog checkLoginInfo(final AppCompatActivity act, CharSequence title,

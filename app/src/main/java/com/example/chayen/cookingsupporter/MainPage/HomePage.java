@@ -121,27 +121,23 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         mTitle = (AppCompatTextView) findViewById(R.id.title);
         view = navigationView.getHeaderView(0);
 
-        user_profile_name = (TextView)findViewById(R.id.user_profile_displayname);
-        user_profile_email = (TextView)findViewById(R.id.user_profile_email);
-        user_profile_image = (ImageView)findViewById(R.id.user_profile_image);
-//        user_profile_name.setText("chayen");
+        user_profile_name = (TextView)view.findViewById(R.id.user_profile_displayname);
+        user_profile_email = (TextView)view.findViewById(R.id.user_profile_email);
+        user_profile_image = (ImageView)view.findViewById(R.id.user_profile_image);
     }
 
     private void setFirebaseUserProfile(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            String name = "", email = "";
-            Uri photoUrl = null;
-            for (UserInfo profile : user.getProviderData()) {
-                // Id of the provider (ex: google.com)
-                name = profile.getDisplayName();
-                email = profile.getEmail();
-                photoUrl = profile.getPhotoUrl();
-                Log.d("user_profile", ""+ name + "\n" + email + "\n" + photoUrl);
-            }
-//            user_profile_name.setText(name);
-//            user_profile_email.setText(email);
-//            Picasso.with(getApplicationContext()).load(photoUrl).into(user_profile_image);
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl= user.getPhotoUrl();
+
+            Log.d("user_profile", ""+ name + "\n" + email + "\n" + photoUrl);
+
+            user_profile_name.setText(name);
+            user_profile_email.setText(email);
+            Picasso.with(getApplicationContext()).load(photoUrl).into(user_profile_image);
         }
     }
 

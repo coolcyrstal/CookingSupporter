@@ -100,6 +100,7 @@ public class Profile extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
             Picasso.with(getApplicationContext()).load(selectedImage).into(profile_image);
+            Log.d("selected image", "" + selectedImage);
         }
     }
 
