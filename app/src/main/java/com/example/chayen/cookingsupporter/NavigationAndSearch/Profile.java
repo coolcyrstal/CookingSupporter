@@ -116,6 +116,7 @@ public class Profile extends AppCompatActivity {
             public void onComplete(Task<Void> task) {
                 if (task.isSuccessful()) {
                     Log.d("update profile", "success");
+                    finish();
                 }
             }
         });
