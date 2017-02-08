@@ -49,7 +49,7 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
     public static FirebaseAuth mAuth;
     public static FirebaseAuth.AuthStateListener mAuthListener;
     AuthCredential credential;
-    private static final int RC_SIGN_IN = 9001;
+    private static final int RC_SIGN_IN = 1;
     private static String googleClientID = "681253333339-8rvlgar1lb7qniodbgvbcd0a5vunok2a.apps.googleusercontent.com";
 
     @Override
@@ -69,6 +69,19 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
         text_password = (EditText)findViewById(R.id.userPassword);
 
         mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Log.d("signed in", "onAuthStateChanged:signed_in:" + user.getUid());
+                }
+                else{
+                    Log.d("signed out", "onAuthStateChanged:signed_out");
+                }
+            }
+        };
 
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,19 +111,6 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
     }
 
     protected void loginWithEmailPass(){
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user != null){
-                    Log.d("signed in", "onAuthStateChanged:signed_in:" + user.getUid());
-                }
-                else{
-                    Log.d("signed out", "onAuthStateChanged:signed_out");
-                }
-            }
-        };
-
         mAuth.signInWithEmailAndPassword(text_email.getText().toString(), text_password.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -127,12 +127,18 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
 
     protected void loginWithGooglePlus(){
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(googleClientID)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        Toast.makeText(LoginRegister.this, "Connection failed",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
@@ -153,6 +159,8 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
+            Toast.makeText(LoginRegister.this, "result:" + result.isSuccess() + result.getSignInAccount(),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -193,11 +201,11 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
         hideProgressDialog();
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        mAuth.addAuthStateListener(mAuthListener);
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 //
 //    @Override
 //    public void onStop() {

@@ -233,6 +233,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
     private void signOut() {
         mAuth.signOut();
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+        Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                    }
+                });
         HomePage.this.finish();
     }
 }
