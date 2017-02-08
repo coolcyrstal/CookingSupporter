@@ -103,25 +103,34 @@
                 android:textStyle="bold"
                 android:textColor="@color/themecolorhunt_1" />
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/layout_addedittext_ingredient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/layout3"
-                android:background="@drawable/button_money_border">
+                android:orientation="vertical" >
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:id="@+id/text_addfood_ingredient"
                     android:maxLines="1"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center_vertical"
                     android:textColorHighlight="@color/themecolorhunt_4"
                     android:textColorHint="@color/themecolorhunt_4"
                     android:textColor="@color/themecolorhunt_4"
-                    android:hint="ชื่ออาหาร..." />
-            </RelativeLayout>
+                    android:background="@drawable/button_money_border"
+                    android:hint="หมู 300 กรัม" />
+            </LinearLayout>
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ingredient_plus_edittext_button"
+                android:src="@drawable/plus_button_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -134,25 +143,33 @@
                 android:textStyle="bold"
                 android:textColor="@color/themecolorhunt_1" />
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/layout_addedittext_cookingmethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:id="@+id/layout4"
-                android:background="@drawable/button_money_border">
+                android:orientation="vertical" >
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:id="@+id/text_addfood_cookingmethod"
                     android:maxLines="1"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center_vertical"
+                    android:background="@drawable/button_money_border"
                     android:textColorHighlight="@color/themecolorhunt_4"
                     android:textColorHint="@color/themecolorhunt_4"
                     android:textColor="@color/themecolorhunt_4"
-                    android:hint="ชื่ออาหาร..." />
-            </RelativeLayout>
+                    android:hint="ขั้นตอนการทำ..." />
+            </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                android:id="@+id/cookingmethod_plus_edittext_button"
+                android:src="@drawable/plus_button_blue" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
