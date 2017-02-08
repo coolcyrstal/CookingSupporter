@@ -34,15 +34,14 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:id="@+id/userinfo"
-            android:background="#FFF">
+            android:background="@drawable/button_money_border">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/text_updateDisplatName"
-                android:singleLine="true"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:layout_gravity="center_vertical"
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"

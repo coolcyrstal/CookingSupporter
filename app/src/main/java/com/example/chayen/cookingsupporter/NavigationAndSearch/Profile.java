@@ -71,7 +71,6 @@ public class Profile extends AppCompatActivity {
                     checkUpdateInfo(Profile.this, "Your information not complete", "Please fill information.", "OK");
                 } else{
                     uploadImageToFirebaseStorage();
-                    updateUserDetail();
                 }
             }
         });
@@ -117,7 +116,6 @@ public class Profile extends AppCompatActivity {
         Uri file = Uri.fromFile(new File(getRealPathFromURI(getApplicationContext(), selectedImage)));
 
         StorageReference storageRef = mStorageRef.child("user_profile/" + file.getLastPathSegment());
-        Log.d("path image", "" + file);
         UploadTask mUploadTask = storageRef.putFile(file);
 
         mUploadTask.addOnFailureListener(new OnFailureListener() {
@@ -129,6 +127,8 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 userphotoURL_firebase = taskSnapshot.getDownloadUrl();
+                Log.d("path image", "" + userphotoURL_firebase);
+                updateUserDetail();
             }
         });
     }
