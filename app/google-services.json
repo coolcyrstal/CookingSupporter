@@ -29,8 +29,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681253333339-8rvlgar1lb7qniodbgvbcd0a5vunok2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
@@ -45,14 +50,6 @@
         }
       },
       "oauth_client": [
-        {
-          "client_id": "681253333339-k73m7v4nriloopa1ivlrcdfef7iif8i4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.chayen.cookingsupporter",
-            "certificate_hash": "62D1CAC82FE07DE4859FD7001D1F896FEDCAB3A7"
-          }
-        },
         {
           "client_id": "681253333339-8rvlgar1lb7qniodbgvbcd0a5vunok2a.apps.googleusercontent.com",
           "client_type": 3
