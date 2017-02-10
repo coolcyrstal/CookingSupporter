@@ -15,4 +15,15 @@
     <string name="mainFragment">Food List</string>
     <string name="loading">Loading</string>
 
+    <string-array name="foodType">
+        <item>นึ่ง / Steaming</item>
+        <item>ปิ้ง / Grilling</item>
+        <item>ย่าง / Roasting</item>
+        <item>ต้ม / Boiling</item>
+        <item>ตุ๋น / Stewing</item>
+        <item>ผัด / Frying</item>
+        <item>ทอด / Deep-Frying</item>
+        <item>อื่นๆ / Other</item>
+    </string-array>
+
 </resources>

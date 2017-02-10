@@ -93,11 +93,12 @@ public class Profile extends AppCompatActivity {
 //        startActivityForResult(intent_gallery, select_image);
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == select_image && resultCode == RESULT_OK){
             selectedImage = data.getData();
             Picasso.with(getApplicationContext()).load(selectedImage).into(profile_image);
-            Log.d("selected image", "" + selectedImage);
+//            Log.d("selected image", "" + selectedImage);
         }
     }
 
@@ -127,7 +128,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 userphotoURL_firebase = taskSnapshot.getDownloadUrl();
-                Log.d("path image", "" + userphotoURL_firebase);
+//                Log.d("path image", "" + userphotoURL_firebase);
                 updateUserDetail();
             }
         });
@@ -198,7 +199,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onComplete(Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Log.d("update profile", "success");
+//                    Log.d("update profile", "success");
                     finish();
                 }
             }

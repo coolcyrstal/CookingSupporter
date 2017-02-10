@@ -17,12 +17,15 @@ import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 
+import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +35,7 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class AddFoodMenu extends AppCompatActivity {
 
@@ -40,6 +44,11 @@ public class AddFoodMenu extends AppCompatActivity {
     FloatingActionButton addingredient, addcookingmethod;
     Button upload_foodrecipe_image_button, add_foodrecipe_button;
     ImageView foodrecipe_image;
+    Spinner text_addfood_type;
+
+    ArrayList<String> ingredient_newrecipe, cookingmethod_newrecipe;
+    FoodDatabaseClass food_newrecipe;
+    String[] foodtype_list;
 
     int select_image = 1;
     Uri selectedImage, food_photoURL_firebase;
@@ -61,6 +70,7 @@ public class AddFoodMenu extends AppCompatActivity {
         upload_foodrecipe_image_button = (Button)findViewById(R.id.upload_foodrecipe_image_button);
         add_foodrecipe_button = (Button) findViewById(R.id.add_foodrecipe_button);
         foodrecipe_image = (ImageView)findViewById(R.id.foodrecipe_image);
+        text_addfood_type = (Spinner)findViewById(R.id.text_addfood_type);
 
         addingredient = (FloatingActionButton)findViewById(R.id.ingredient_plus_edittext_button);
         addcookingmethod = (FloatingActionButton) findViewById(R.id.cookingmethod_plus_edittext_button);
@@ -82,7 +92,7 @@ public class AddFoodMenu extends AppCompatActivity {
         upload_foodrecipe_image_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                loadImageFromGallery();
             }
         });
 
@@ -94,6 +104,11 @@ public class AddFoodMenu extends AppCompatActivity {
         });
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        foodtype_list = getResources().getStringArray(R.array.foodType);
+        ArrayAdapter<String> adapterFoodType = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, foodtype_list);
+        text_addfood_type.setAdapter(adapterFoodType);
     }
 
     private void createEditText(LinearLayout layout, String text){
@@ -111,11 +126,12 @@ public class AddFoodMenu extends AppCompatActivity {
 //        startActivityForResult(intent_gallery, select_image);
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == select_image && resultCode == RESULT_OK){
             selectedImage = data.getData();
             Picasso.with(getApplicationContext()).load(selectedImage).into(foodrecipe_image);
-            Log.d("selected image", "" + selectedImage);
+//            Log.d("selected image_addfood", "" + selectedImage);
         }
     }
 
