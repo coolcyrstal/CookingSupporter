@@ -26,4 +26,14 @@
         <item>อื่นๆ / Other</item>
     </string-array>
 
+    <string-array name="foodType_Firebase">
+        <item>Steaming</item>
+        <item>Grilling</item>
+        <item>Roasting</item>
+        <item>Boiling</item>
+        <item>Stewing</item>
+        <item>Frying</item>
+        <item>Deep-Frying</item>
+        <item>Other</item>
+    </string-array>
 </resources>

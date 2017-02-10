@@ -17,6 +17,7 @@ import android.text.InputType;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,7 @@ public class AddFoodMenu extends AppCompatActivity {
     ArrayList<String> ingredient_newrecipe, cookingmethod_newrecipe;
     FoodDatabaseClass food_newrecipe;
     String[] foodtype_list;
+    String[] foodtype_list_upFirebase = getResources().getStringArray(R.array.foodType_Firebase);
 
     int select_image = 1;
     Uri selectedImage, food_photoURL_firebase;
@@ -109,6 +111,18 @@ public class AddFoodMenu extends AppCompatActivity {
         ArrayAdapter<String> adapterFoodType = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, foodtype_list);
         text_addfood_type.setAdapter(adapterFoodType);
+
+        text_addfood_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                food_newrecipe.setFood_type(foodtype_list_upFirebase[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                food_newrecipe.setFood_type(foodtype_list_upFirebase[0]);
+            }
+        });
     }
 
     private void createEditText(LinearLayout layout, String text){
