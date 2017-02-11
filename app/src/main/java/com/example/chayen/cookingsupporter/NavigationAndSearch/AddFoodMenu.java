@@ -1,7 +1,9 @@
 package com.example.chayen.cookingsupporter.NavigationAndSearch;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -30,6 +32,8 @@ import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,20 +45,27 @@ import java.util.ArrayList;
 public class AddFoodMenu extends AppCompatActivity {
 
     LinearLayout ingredient_layout, cookingmethod_layout;
-    EditText ingredient_edittext, cookingmethod_edittext;
+    EditText ingredient_edittext, cookingmethod_edittext, foodname_edittext;
     FloatingActionButton addingredient, addcookingmethod;
     Button upload_foodrecipe_image_button, add_foodrecipe_button;
     ImageView foodrecipe_image;
     Spinner text_addfood_type;
 
-    ArrayList<String> ingredient_newrecipe, cookingmethod_newrecipe;
+    ArrayList<String> ingredient_newrecipe = new ArrayList<>(),
+            cookingmethod_newrecipe = new ArrayList<>();
     FoodDatabaseClass food_newrecipe;
     String[] foodtype_list;
-    String[] foodtype_list_upFirebase = getResources().getStringArray(R.array.foodType_Firebase);
+    String[] foodtype_list_upFirebase;
+    int ingredient_id = 0, cookingmethod_id = 0;
+    ArrayList<EditText> ingredient_newrecipe_edittext = new ArrayList<>(),
+            cookingmethod_newrecipe_edittext = new ArrayList<>();
 
     int select_image = 1;
     Uri selectedImage, food_photoURL_firebase;
     private StorageReference mStorageRef;
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +80,8 @@ public class AddFoodMenu extends AppCompatActivity {
         cookingmethod_layout = (LinearLayout) findViewById(R.id.layout_addedittext_cookingmethod);
         ingredient_edittext = (EditText)findViewById(R.id.text_addfood_ingredient);
         cookingmethod_edittext = (EditText)findViewById(R.id.text_addfood_cookingmethod);
+        foodname_edittext = (EditText)findViewById(R.id.text_addfood_name);
+
         upload_foodrecipe_image_button = (Button)findViewById(R.id.upload_foodrecipe_image_button);
         add_foodrecipe_button = (Button) findViewById(R.id.add_foodrecipe_button);
         foodrecipe_image = (ImageView)findViewById(R.id.foodrecipe_image);
@@ -80,14 +93,38 @@ public class AddFoodMenu extends AppCompatActivity {
         addingredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEditText(ingredient_layout, "ส่วนผสม");
+                if(ingredient_edittext.getText().toString().equals("")){
+                    checkUpdateInfo(AddFoodMenu.this, "Your information not complete", "Please fill information before add.", "OK");
+                } else{
+                    if(ingredient_id == 0){
+                        createEditText(ingredient_layout, "ส่วนผสม", ingredient_id, "ingredient");
+                    } else if(ingredient_id > 0 &&
+                            !ingredient_newrecipe_edittext.get(ingredient_id-1).getText().toString().equals("")){
+                        createEditText(ingredient_layout, "ส่วนผสม", ingredient_id, "ingredient");
+                    } else{
+                        checkUpdateInfo(AddFoodMenu.this, "Your information not complete", "Please fill information before add.", "OK");
+                    }
+                }
             }
         });
 
         addcookingmethod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createEditText(cookingmethod_layout, "ขั้นตอนการทำ");
+                if(cookingmethod_edittext.getText().toString().equals("")){
+                    checkUpdateInfo(AddFoodMenu.this, "Your information not complete", "Please fill information before add.", "OK");
+                } else{
+                    if(cookingmethod_id == 0){
+                        createEditText(cookingmethod_layout, "ขั้นตอนการทำ", cookingmethod_id, "cookingmethod");
+                    } else if(cookingmethod_id > 0 &&
+                            !cookingmethod_newrecipe_edittext.get(cookingmethod_id-1).getText().toString().equals("")){
+                        createEditText(cookingmethod_layout, "ขั้นตอนการทำ", cookingmethod_id, "cookingmethod");
+                    }
+                    else{
+                        checkUpdateInfo(AddFoodMenu.this, "Your information not complete", "Please fill information before add.", "OK");
+                    }
+                }
+
             }
         });
 
@@ -101,13 +138,16 @@ public class AddFoodMenu extends AppCompatActivity {
         add_foodrecipe_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                uploadImageToFirebaseStorage();
             }
         });
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        database = FirebaseDatabase.getInstance();
+        food_newrecipe = new FoodDatabaseClass();
 
         foodtype_list = getResources().getStringArray(R.array.foodType);
+        foodtype_list_upFirebase = getResources().getStringArray(R.array.foodType_Firebase);
         ArrayAdapter<String> adapterFoodType = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, foodtype_list);
         text_addfood_type.setAdapter(adapterFoodType);
@@ -125,11 +165,18 @@ public class AddFoodMenu extends AppCompatActivity {
         });
     }
 
-    private void createEditText(LinearLayout layout, String text){
+    private void createEditText(LinearLayout layout, String text, int id, String tag){
         EditText editTextOne = new EditText(this);
         editTextOne.setHint(text);
         editTextOne.setHintTextColor(Color.CYAN);
         layout.addView(editTextOne);
+        if(tag == "ingredient"){
+            ingredient_newrecipe_edittext.add(editTextOne);
+            ingredient_id += 1;
+        }else{
+            cookingmethod_newrecipe_edittext.add(editTextOne);
+            cookingmethod_id += 1;
+        }
     }
 
     private void loadImageFromGallery(){
@@ -152,7 +199,7 @@ public class AddFoodMenu extends AppCompatActivity {
     private void uploadImageToFirebaseStorage(){
         Uri file = Uri.fromFile(new File(getRealPathFromURI(getApplicationContext(), selectedImage)));
 
-        StorageReference storageRef = mStorageRef.child("user_profile/" + file.getLastPathSegment());
+        StorageReference storageRef = mStorageRef.child(food_newrecipe.getFood_type() + "/" + file.getLastPathSegment());
         UploadTask mUploadTask = storageRef.putFile(file);
 
         mUploadTask.addOnFailureListener(new OnFailureListener() {
@@ -165,6 +212,7 @@ public class AddFoodMenu extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 food_photoURL_firebase = taskSnapshot.getDownloadUrl();
                 Log.d("path image", "" + food_photoURL_firebase);
+                uploadDataToFirebase();
             }
         });
     }
@@ -192,5 +240,45 @@ public class AddFoodMenu extends AppCompatActivity {
         }
         cursor.close();
         return filePath;
+    }
+
+    private void uploadDataToFirebase(){
+        myRef = database.getReference().child("food");
+
+        food_newrecipe.setFood_name(foodname_edittext.getText().toString());
+        setIngredientEdittext(ingredient_id);
+        setCookingMethodEdittext(cookingmethod_id);
+        food_newrecipe.setIngredient(ingredient_newrecipe);
+        food_newrecipe.setCooking_method(cookingmethod_newrecipe);
+        food_newrecipe.setFood_image(food_photoURL_firebase.toString());
+
+        myRef.push().setValue(food_newrecipe);
+
+        finish();
+    }
+
+    private void setIngredientEdittext(int id){
+        ingredient_newrecipe.add(ingredient_edittext.getText().toString());
+        for(int i = 0; i < id; i++){
+            ingredient_newrecipe.add(ingredient_newrecipe_edittext.get(i).getText().toString());
+        }
+    }
+
+    private void setCookingMethodEdittext(int id){
+        cookingmethod_newrecipe.add(cookingmethod_edittext.getText().toString());
+        for(int i = 0; i < id; i++){
+            cookingmethod_newrecipe.add(cookingmethod_newrecipe_edittext.get(i).getText().toString());
+        }
+    }
+
+    private AlertDialog checkUpdateInfo(final AppCompatActivity act, CharSequence title,
+                                        CharSequence message, CharSequence buttonYes){
+        AlertDialog.Builder downloadDialog = new AlertDialog.Builder(act);
+        downloadDialog.setTitle(title).setMessage(message).setPositiveButton(buttonYes, new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        return downloadDialog.show();
     }
 }

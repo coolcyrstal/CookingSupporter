@@ -32,8 +32,8 @@
         <item>Roasting</item>
         <item>Boiling</item>
         <item>Stewing</item>
-        <item>Frying</item>
-        <item>Deep-Frying</item>
+        <item>Frying_food</item>
+        <item>Deep_Frying_food</item>
         <item>Other</item>
     </string-array>
 </resources>
