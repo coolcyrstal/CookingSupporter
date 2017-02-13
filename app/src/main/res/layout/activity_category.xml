@@ -37,15 +37,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView"
+                        android:id="@+id/steaming_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview"
-                        android:layout_below="@+id/imageView"
+                        android:layout_below="@+id/steaming_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -68,15 +67,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/grilling_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview2"
-                        android:layout_below="@+id/imageView2"
+                        android:layout_below="@+id/grilling_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -99,15 +97,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView3"
+                        android:id="@+id/roasting_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview3"
-                        android:layout_below="@+id/imageView3"
+                        android:layout_below="@+id/roasting_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -130,15 +127,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/boiling_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview4"
-                        android:layout_below="@+id/imageView4"
+                        android:layout_below="@+id/boiling_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -161,15 +157,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView5"
+                        android:id="@+id/stewing_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop"/>
 
                     <TextView
                         android:id="@+id/textview5"
-                        android:layout_below="@+id/imageView5"
+                        android:layout_below="@+id/stewing_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -192,15 +187,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView6"
+                        android:id="@+id/frying_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview6"
-                        android:layout_below="@+id/imageView6"
+                        android:layout_below="@+id/frying_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -223,15 +217,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/deep_frying_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview7"
-                        android:layout_below="@+id/imageView7"
+                        android:layout_below="@+id/deep_frying_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
@@ -254,15 +247,14 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/other_image"
                         android:layout_width="match_parent"
                         android:layout_height="210dp"
-                        android:adjustViewBounds="true"
                         android:scaleType="centerCrop" />
 
                     <TextView
                         android:id="@+id/textview8"
-                        android:layout_below="@+id/imageView8"
+                        android:layout_below="@+id/other_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
