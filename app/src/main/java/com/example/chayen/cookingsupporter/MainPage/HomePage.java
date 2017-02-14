@@ -1,9 +1,6 @@
 package com.example.chayen.cookingsupporter.MainPage;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -22,15 +19,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.chayen.cookingsupporter.CreateAccount.RegisterPage;
-import com.example.chayen.cookingsupporter.LoginRegister;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
-import com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Category.Category;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
 import com.example.chayen.cookingsupporter.R;
@@ -39,11 +33,9 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.squareup.picasso.Picasso;
 
 import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
-import static com.example.chayen.cookingsupporter.LoginRegister.mAuthListener;
 import static com.example.chayen.cookingsupporter.LoginRegister.mGoogleApiClient;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

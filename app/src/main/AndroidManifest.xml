@@ -29,11 +29,11 @@
             android:name=".MainPage.HomePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".NavigationAndSearch.Search" />
-        <activity android:name=".NavigationAndSearch.Category" />
+        <activity android:name=".NavigationAndSearch.Category.Category" />
         <activity android:name=".NavigationAndSearch.AddFoodMenu" />
         <activity android:name=".NavigationAndSearch.Profile" />
         <activity android:name=".FoodListAdapter.CookingRecipe" />
-        <activity android:name=".NavigationAndSearch.CategoryPage"></activity>
+        <activity android:name=".NavigationAndSearch.Category.CategoryPage"></activity>
     </application>
 
 </manifest>

@@ -1,18 +1,12 @@
-package com.example.chayen.cookingsupporter.NavigationAndSearch;
+package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 
 import android.content.Intent;
-import android.media.Image;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.chayen.cookingsupporter.CreateAccount.RegisterPage;
-import com.example.chayen.cookingsupporter.CreateAccount.RegisterSuccess;
-import com.example.chayen.cookingsupporter.MainPage.HomePage;
 import com.example.chayen.cookingsupporter.R;
 import com.squareup.picasso.Picasso;
 

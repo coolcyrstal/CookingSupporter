@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Category"
+    tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Category.Category"
     android:background="@color/themecolorhunt_2">
 
     <ScrollView

@@ -1,4 +1,4 @@
-package com.example.chayen.cookingsupporter.NavigationAndSearch;
+package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
