@@ -14,14 +14,14 @@ public class Category extends AppCompatActivity {
             Stewing, Frying_food, Deep_Frying_food, Other;
 
     int[] category_image_array = {
-            R.drawable.steaming_category,
+            R.drawable.rsz_steaming_category,
             R.drawable.grilling_category,
-            R.drawable.roasting_category,
+            R.drawable.rsz_roasting_category,
             R.drawable.boiling_category,
             R.drawable.stewing_category,
             R.drawable.frying_category,
             R.drawable.deep_frying_category,
-            R.drawable.other_category
+            R.drawable.rsz_other_category
     };
 
     ImageView[] category_imageview;
