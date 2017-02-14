@@ -70,7 +70,7 @@ public class RegisterPage extends AppCompatActivity {
                             checkAccountInfo(RegisterPage.this, "Please check your filled", "Email or password not correct.", "OK");
                         }
                         else{
-                            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.register_info);
+                            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.create_new_account_register_info);
                             if (fragment instanceof RegisterSuccess == false) {
                                 getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.register_info, RegisterSuccess.newInstance(), "Register Success")
