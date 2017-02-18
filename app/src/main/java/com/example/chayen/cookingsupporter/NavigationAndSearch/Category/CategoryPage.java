@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import static com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment.foodlist;
 
@@ -18,6 +20,7 @@ public class CategoryPage extends AppCompatActivity {
     private CategoryAdapter myAdapter;
     private RecyclerView recyclerView;
     private ArrayList<FoodDatabaseClass> category_foodlist = new ArrayList<>();
+    public static String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +36,20 @@ public class CategoryPage extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
 
-        getData();
+        getData(category);
         myAdapter = new CategoryAdapter(category_foodlist);
         recyclerView.setAdapter(myAdapter);
     }
 
-    private void getData(){
-        category_foodlist = foodlist;
+    private void getData(String category){
+        for(int i = 0; i < foodlist.size(); i++){
+//            Log.d("category filter", "" + foodlist.get(i).getFood_type() + "\n" + category);
+            if(foodlist.get(i).getFood_type().equals(category)){
+                category_foodlist.add(foodlist.get(i));
+//                Log.d("category filter", "" + category_foodlist.get(0).getFood_type());
+            }
+        }
+//        category_foodlist = foodlist;
 //        Log.d("inheritfood test", ""+ category_foodlist.get(0).getFood_name());
     }
 

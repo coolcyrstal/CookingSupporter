@@ -85,62 +85,63 @@ public class Category extends AppCompatActivity {
         steaming_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Steaming");
             }
         });
 
         grilling_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Grilling");
             }
         });
 
         roasting_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Roasting");
             }
         });
 
         boiling_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Boiling");
             }
         });
 
         stewing_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Stewing");
             }
         });
 
         frying_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Frying");
             }
         });
 
         deep_frying_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Deep Frying");
             }
         });
 
         other_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intentToEachCategoryPage();
+                intentToEachCategoryPage("Other");
             }
         });
     }
 
-    private void intentToEachCategoryPage(){
+    private void intentToEachCategoryPage(String category){
         Intent intent = new Intent(Category.this, CategoryPage.class);
         startActivity(intent);
+        CategoryPage.category = category;
     }
 }
