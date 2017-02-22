@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import static com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment.foodlist;
+import static com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.category_food;
 
 public class CategoryPage extends AppCompatActivity {
 
@@ -62,6 +63,7 @@ public class CategoryPage extends AppCompatActivity {
             public void onItemClick(int position, View v) {
                 Intent intent = new Intent(CategoryPage.this, CategoryFoodPage.class);
                 startActivity(intent);
+                category_food = category_foodlist.get(position);
             }
         });
     }
