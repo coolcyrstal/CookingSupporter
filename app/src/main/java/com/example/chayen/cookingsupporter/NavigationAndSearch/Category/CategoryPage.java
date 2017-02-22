@@ -1,5 +1,6 @@
 package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,7 +60,8 @@ public class CategoryPage extends AppCompatActivity {
         ((CategoryAdapter) myAdapter).setOnItemClickListener(new CategoryAdapter.MyClickListener() {
             @Override
             public void onItemClick(int position, View v) {
-
+                Intent intent = new Intent(CategoryPage.this, CategoryFoodPage.class);
+                startActivity(intent);
             }
         });
     }

@@ -33,7 +33,8 @@
         <activity android:name=".NavigationAndSearch.AddFoodMenu" />
         <activity android:name=".NavigationAndSearch.Profile" />
         <activity android:name=".FoodListAdapter.CookingRecipe" />
-        <activity android:name=".NavigationAndSearch.Category.CategoryPage"></activity>
+        <activity android:name=".NavigationAndSearch.Category.CategoryPage" />
+        <activity android:name=".NavigationAndSearch.Category.CategoryFoodPage"></activity>
     </application>
 
 </manifest>
