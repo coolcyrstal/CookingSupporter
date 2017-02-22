@@ -30,18 +30,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_category_food, parent, false);
         ViewHolder dataObjHolder = new ViewHolder(view);
         context = parent.getContext();
+//        Log.d("inheritfood testadapter", ""+ mDataset.get(0).getFood_name());
         return dataObjHolder;
     }
 
     @Override
     public void onBindViewHolder(CategoryAdapter.ViewHolder holder, int position) {
         holder.category_foodname.setText(mDataset.get(position).getFood_name());
-        Log.d("inheritfood testadapter", ""+ mDataset.get(0).getFood_name());
+//        Log.d("inheritfood testadapter", ""+ mDataset.get(0).getFood_name());
         Picasso.with(context).load(mDataset.get(position).getFood_image()).into(holder.category_foodimage);
     }
 
     @Override
     public int getItemCount() {
+//        Log.d("inheritfood test", ""+ mDataset.size());
         return mDataset.size();
     }
 

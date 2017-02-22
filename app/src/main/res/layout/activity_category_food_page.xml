@@ -81,7 +81,7 @@
                     android:textColor="#000000"
                     android:textSize="20dp" />
 
-                <ListView
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/category_cooking_recipe_ingredient_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -102,7 +102,7 @@
                     android:textColor="#000000"
                     android:textSize="20dp" />
 
-                <ListView
+                <android.support.v7.widget.RecyclerView
                     android:id="@+id/category_cooking_recipe_method_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
