@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.chayen.cookingsupporter.MainPage.History.HistoryListFragment;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Category.Category;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;

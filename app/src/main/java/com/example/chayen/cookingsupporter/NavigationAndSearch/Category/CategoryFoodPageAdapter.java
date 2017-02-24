@@ -27,19 +27,19 @@ public class CategoryFoodPageAdapter extends RecyclerView.Adapter<CategoryFoodPa
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cooking_recipe_adapter, parent, false);
         CategoryViewHolder dataObjHolder = new CategoryViewHolder(view);
         context = parent.getContext();
-        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.size());
+//        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.size());
         return dataObjHolder;
     }
 
     @Override
     public void onBindViewHolder(CategoryFoodPageAdapter.CategoryViewHolder holder, int position) {
         holder.category_foodpage_recycler.setText(category_foodpage_textlist.get(position));
-        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.get(position));
+//        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.get(position));
     }
 
     @Override
     public int getItemCount(){
-        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.size());
+//        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.size());
         return category_foodpage_textlist.size();
     }
 

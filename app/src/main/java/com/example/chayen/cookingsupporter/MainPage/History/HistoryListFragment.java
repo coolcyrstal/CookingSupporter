@@ -1,6 +1,5 @@
-package com.example.chayen.cookingsupporter.MainPage;
+package com.example.chayen.cookingsupporter.MainPage.History;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
