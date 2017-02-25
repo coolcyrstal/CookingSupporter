@@ -18,18 +18,21 @@ public class FoodDatabaseClass implements Serializable{
     public String food_name;
     public String food_type;
     public ArrayList<String> ingredient;
+    public int star_count;
 
     public FoodDatabaseClass(){
 
     }
 
-    public FoodDatabaseClass(String author, ArrayList<String> cooking_method, String food_image, String food_name, String food_type, ArrayList<String> ingredient){
+    public FoodDatabaseClass(String author, ArrayList<String> cooking_method, String food_image,
+                             String food_name, String food_type, ArrayList<String> ingredient, int star_count){
         this.author = author;
         this.cooking_method = cooking_method;
         this.food_image = food_image;
         this.food_name = food_name;
         this.food_type = food_type;
         this.ingredient = ingredient;
+        this.star_count = star_count;
     }
 
     public String getAuthor(){
@@ -78,6 +81,14 @@ public class FoodDatabaseClass implements Serializable{
 
     public void setIngredient(ArrayList<String> ingredient){
         this.ingredient = ingredient;
+    }
+
+    public int getStar_count(){
+        return star_count;
+    }
+
+    public void setStar_count(int star_count){
+        this.star_count = star_count;
     }
 
 //    @Exclude
