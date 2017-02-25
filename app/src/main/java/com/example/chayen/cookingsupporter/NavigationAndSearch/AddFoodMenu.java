@@ -32,6 +32,8 @@ import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -245,6 +247,10 @@ public class AddFoodMenu extends AppCompatActivity {
     private void uploadDataToFirebase(){
         myRef = database.getReference().child("food");
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            food_newrecipe.setAuthor(user.getUid());
+        }
         food_newrecipe.setFood_name(foodname_edittext.getText().toString());
         setIngredientEdittext(ingredient_id);
         setCookingMethodEdittext(cookingmethod_id);

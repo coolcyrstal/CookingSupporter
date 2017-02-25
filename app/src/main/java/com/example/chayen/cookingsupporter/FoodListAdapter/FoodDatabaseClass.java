@@ -12,6 +12,7 @@ import java.util.Map;
  */
 
 public class FoodDatabaseClass implements Serializable{
+    public String author;
     public ArrayList<String> cooking_method;
     public String food_image;
     public String food_name;
@@ -22,12 +23,21 @@ public class FoodDatabaseClass implements Serializable{
 
     }
 
-    public FoodDatabaseClass(ArrayList<String> cooking_method, String food_image, String food_name, String food_type, ArrayList<String> ingredient){
+    public FoodDatabaseClass(String author, ArrayList<String> cooking_method, String food_image, String food_name, String food_type, ArrayList<String> ingredient){
+        this.author = author;
         this.cooking_method = cooking_method;
         this.food_image = food_image;
         this.food_name = food_name;
         this.food_type = food_type;
         this.ingredient = ingredient;
+    }
+
+    public String getAuthor(){
+        return author;
+    }
+
+    public void setAuthor(String author){
+        this.author = author;
     }
 
     public String getFood_image(){

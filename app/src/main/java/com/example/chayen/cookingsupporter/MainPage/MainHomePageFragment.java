@@ -110,9 +110,11 @@ public class MainHomePageFragment extends Fragment {
                     String food_image = (String) messageSnapshot.child("food_image").getValue();
                     String food_name = (String) messageSnapshot.child("food_name").getValue();
                     String food_type = (String) messageSnapshot.child("food_type").getValue();
+                    String author = (String) messageSnapshot.child("author").getValue();
                     ArrayList<String> cooking_method = (ArrayList<String>) messageSnapshot.child("cooking_method").getValue();
                     ArrayList<String> ingredient = (ArrayList<String>) messageSnapshot.child("ingredient").getValue();
                     food = new FoodDatabaseClass();
+                    food.setAuthor(author);
                     food.setCooking_method(cooking_method);
                     food.setFood_image(food_image);
                     food.setFood_name(food_name);
