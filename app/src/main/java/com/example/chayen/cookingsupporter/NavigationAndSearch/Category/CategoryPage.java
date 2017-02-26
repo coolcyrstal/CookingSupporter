@@ -51,45 +51,45 @@ public class CategoryPage extends AppCompatActivity {
     }
 
     private void getData(String category){
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        final DatabaseReference myRef = database.getReference().child("food");
-//        Query queryCategory = myRef.equalTo(category, "food_type");
-//        queryCategory.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for(DataSnapshot messageSnapshot: dataSnapshot.getChildren()){
-//                    String food_image = (String) messageSnapshot.child("food_image").getValue();
-//                    String food_name = (String) messageSnapshot.child("food_name").getValue();
-//                    String food_type = (String) messageSnapshot.child("food_type").getValue();
-//                    String author = (String) messageSnapshot.child("author").getValue();
-//                    ArrayList<String> cooking_method = (ArrayList<String>) messageSnapshot.child("cooking_method").getValue();
-//                    ArrayList<String> ingredient = (ArrayList<String>) messageSnapshot.child("ingredient").getValue();
-//                    Long star_count = (Long) messageSnapshot.child("star_count").getValue();
-//                    food = new FoodDatabaseClass();
-//                    food.setAuthor(author);
-//                    food.setCooking_method(cooking_method);
-//                    food.setFood_image(food_image);
-//                    food.setFood_name(food_name);
-//                    food.setFood_type(food_type);
-//                    food.setIngredient(ingredient);
-//                    food.setStar_count(star_count);
-//                    category_foodlist.add(food);
-//                    Log.d("categoryfoodlist", "" + food.getFood_name());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-        for(int i = 0; i < foodlist.size(); i++){
-//            Log.d("category filter", "" + foodlist.get(i).getFood_type() + "\n" + category);
-            if(foodlist.get(i).getFood_type().equals(category)){
-                category_foodlist.add(foodlist.get(i));
-//                Log.d("category filter", "" + category_foodlist.get(0).getFood_type());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference().child("food");
+        Query queryCategory = myRef.orderByChild("food_type").equalTo(category);
+        queryCategory.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot messageSnapshot: dataSnapshot.getChildren()){
+                    String food_image = (String) messageSnapshot.child("food_image").getValue();
+                    String food_name = (String) messageSnapshot.child("food_name").getValue();
+                    String food_type = (String) messageSnapshot.child("food_type").getValue();
+                    String author = (String) messageSnapshot.child("author").getValue();
+                    ArrayList<String> cooking_method = (ArrayList<String>) messageSnapshot.child("cooking_method").getValue();
+                    ArrayList<String> ingredient = (ArrayList<String>) messageSnapshot.child("ingredient").getValue();
+                    Long star_count = (Long) messageSnapshot.child("star_count").getValue();
+                    food = new FoodDatabaseClass();
+                    food.setAuthor(author);
+                    food.setCooking_method(cooking_method);
+                    food.setFood_image(food_image);
+                    food.setFood_name(food_name);
+                    food.setFood_type(food_type);
+                    food.setIngredient(ingredient);
+                    food.setStar_count(star_count);
+                    category_foodlist.add(food);
+                    Log.d("categoryfoodlist", "" + food.getFood_name());
+                }
             }
-        }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+//        for(int i = 0; i < foodlist.size(); i++){
+////            Log.d("category filter", "" + foodlist.get(i).getFood_type() + "\n" + category);
+//            if(foodlist.get(i).getFood_type().equals(category)){
+//                category_foodlist.add(foodlist.get(i));
+////                Log.d("category filter", "" + category_foodlist.get(0).getFood_type());
+//            }
+//        }
 //        category_foodlist = foodlist;
 //        Log.d("inheritfood test", ""+ category_foodlist.get(0).getFood_name());
     }

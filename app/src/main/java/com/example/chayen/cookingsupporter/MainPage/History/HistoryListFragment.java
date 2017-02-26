@@ -75,7 +75,7 @@ public class HistoryListFragment extends Fragment {
     private void setHistoryFood(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference().child("food");
-        Query queryHistory = myRef.equalTo(checkUser, "author");
+        Query queryHistory = myRef.orderByChild("author").equalTo(checkUser);
         queryHistory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
