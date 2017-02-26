@@ -213,7 +213,12 @@ public class AddFoodMenu extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 food_photoURL_firebase = taskSnapshot.getDownloadUrl();
-                Log.d("path image", "" + food_photoURL_firebase);
+//                Log.d("path image", "" + food_photoURL_firebase);
+                if(food_newrecipe.getFood_type().equals("Frying_food")){
+                    food_newrecipe.setFood_type("Frying");
+                }else if(food_newrecipe.getFood_type().equals("Deep_Frying_food")){
+                    food_newrecipe.setFood_type("Deep Frying");
+                }
                 uploadDataToFirebase();
             }
         });
@@ -257,7 +262,7 @@ public class AddFoodMenu extends AppCompatActivity {
         food_newrecipe.setIngredient(ingredient_newrecipe);
         food_newrecipe.setCooking_method(cookingmethod_newrecipe);
         food_newrecipe.setFood_image(food_photoURL_firebase.toString());
-
+        food_newrecipe.setStar_count(Long.valueOf(0));
         myRef.push().setValue(food_newrecipe);
 
         finish();

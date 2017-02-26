@@ -2,6 +2,7 @@ package com.example.chayen.cookingsupporter.MainPage.History;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,14 +34,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     }
 
     @Override
-    public void onBindViewHolder(HistoryViewHolder holder, int position) {
+    public void onBindViewHolder(HistoryAdapter.HistoryViewHolder holder, int position) {
         holder.history_foodname.setText(history_foodlist.get(position).getFood_name());
+        Log.d("testhistory", history_foodlist.get(position).getFood_name() + history_foodlist.size());
         holder.history_foodtype.setText(history_foodlist.get(position).getFood_type());
         Picasso.with(context).load(history_foodlist.get(position).getFood_image()).into(holder.history_foodimage);
     }
 
     @Override
     public int getItemCount() {
+        Log.d("testhistory", "" + history_foodlist.size());
         return history_foodlist.size();
     }
 

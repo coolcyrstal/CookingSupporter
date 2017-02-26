@@ -3,7 +3,9 @@ package com.example.chayen.cookingsupporter.MainPage.History;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,10 +29,10 @@ import static com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment.
 public class HistoryListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    RecyclerView history_recyclerview;
-    ArrayList<FoodDatabaseClass> history_foodlist;
+    private RecyclerView history_recyclerview;
+    private ArrayList<FoodDatabaseClass> history_foodlist = new ArrayList<>();
     String checkUser;
-    HistoryAdapter historyAdapter;
+    private HistoryAdapter historyAdapter;
     FoodDatabaseClass food;
 
     public HistoryListFragment() {
@@ -62,11 +64,12 @@ public class HistoryListFragment extends Fragment {
 
     private void initialize(View rootview){
         history_recyclerview = (RecyclerView)rootview.findViewById(R.id.historyList);
+        history_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        history_recyclerview.setHasFixedSize(true);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             checkUser = user.getUid();
         }
-        history_foodlist = new ArrayList<>();
         setHistoryFood();
         historyAdapter = new HistoryAdapter(history_foodlist);
         history_recyclerview.setAdapter(historyAdapter);
@@ -76,6 +79,7 @@ public class HistoryListFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference().child("food");
         Query queryHistory = myRef.orderByChild("author").equalTo(checkUser);
+//        Log.d("testhistory", "" + checkUser);
         queryHistory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -96,11 +100,25 @@ public class HistoryListFragment extends Fragment {
                     food.setIngredient(ingredient);
                     food.setStar_count(star_count);
                     history_foodlist.add(food);
+//                    Log.d("testfoodhistory", "" + food_name + food_type);
                 }
+
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((HistoryAdapter) historyAdapter).setOnItemClickListener(new HistoryAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
 
             }
         });

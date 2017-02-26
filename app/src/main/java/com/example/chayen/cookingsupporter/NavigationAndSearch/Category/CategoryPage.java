@@ -74,7 +74,7 @@ public class CategoryPage extends AppCompatActivity {
                     food.setIngredient(ingredient);
                     food.setStar_count(star_count);
                     category_foodlist.add(food);
-                    Log.d("categoryfoodlist", "" + food.getFood_name());
+//                    Log.d("categoryfoodlist", "" + food.getFood_name());
                 }
             }
 
