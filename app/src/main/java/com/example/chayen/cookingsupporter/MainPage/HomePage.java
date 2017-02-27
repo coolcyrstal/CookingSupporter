@@ -126,7 +126,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             String email = user.getEmail();
             Uri photoUrl= user.getPhotoUrl();
 
-            Log.d("user_profile", ""+ name + "\n" + email + "\n" + photoUrl);
+//            Log.d("user_profile", ""+ name + "\n" + email + "\n" + photoUrl);
 
             user_profile_name.setText(name);
             user_profile_email.setText(email);

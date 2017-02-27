@@ -30,7 +30,7 @@ public class HistoryListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView history_recyclerview;
-    private ArrayList<FoodDatabaseClass> history_foodlist = new ArrayList<>();
+    public static ArrayList<FoodDatabaseClass> history_foodlist = new ArrayList<>();
     String checkUser;
     private HistoryAdapter historyAdapter;
     FoodDatabaseClass food;
@@ -64,15 +64,14 @@ public class HistoryListFragment extends Fragment {
 
     private void initialize(View rootview){
         history_recyclerview = (RecyclerView)rootview.findViewById(R.id.historyList);
-        history_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        history_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         history_recyclerview.setHasFixedSize(true);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             checkUser = user.getUid();
         }
         setHistoryFood();
-        historyAdapter = new HistoryAdapter(history_foodlist);
-        history_recyclerview.setAdapter(historyAdapter);
+
     }
 
     private void setHistoryFood(){
@@ -111,6 +110,9 @@ public class HistoryListFragment extends Fragment {
 
             }
         });
+        historyAdapter = new HistoryAdapter(history_foodlist);
+        historyAdapter.notifyDataSetChanged();
+        history_recyclerview.setAdapter(historyAdapter);
     }
 
     @Override
