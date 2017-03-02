@@ -40,6 +40,7 @@ public class CategoryFoodPageCookingMethod extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_category_food_page_cooking_method, container, false);
+        initialize(rootview);
         return rootview;
     }
 
@@ -55,13 +56,13 @@ public class CategoryFoodPageCookingMethod extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        ((CategoryFoodPageAdapter) categoryFoodPageAdapter_cookingmethod).setOnItemClickListener(new CategoryFoodPageAdapter.MyClickListener() {
-//            @Override
-//            public void onItemClick(int position, View v) {
-//            }
-//        });
-//    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((CategoryFoodPageAdapter) categoryFoodPageAdapter_cookingmethod).setOnItemClickListener(new CategoryFoodPageAdapter.MyClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+            }
+        });
+    }
 }

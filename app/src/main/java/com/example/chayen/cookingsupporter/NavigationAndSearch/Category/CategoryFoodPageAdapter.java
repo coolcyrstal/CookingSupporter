@@ -2,7 +2,6 @@ package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +32,7 @@ public class CategoryFoodPageAdapter extends RecyclerView.Adapter<CategoryFoodPa
 
     @Override
     public void onBindViewHolder(CategoryFoodPageAdapter.CategoryViewHolder holder, int position) {
-        holder.category_foodpage_recycler.setText(category_foodpage_textlist.get(position));
+        holder.category_foodpage_recycler.setText(String.valueOf(position+1) + ". " + category_foodpage_textlist.get(position));
 //        Log.d("inheritfood testadapter", ""+ category_foodpage_textlist.get(position));
     }
 
