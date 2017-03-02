@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +21,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import static com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment.foodlist;
 
 
 public class HistoryListFragment extends Fragment {
@@ -64,7 +61,7 @@ public class HistoryListFragment extends Fragment {
 
     private void initialize(View rootview){
         history_recyclerview = (RecyclerView)rootview.findViewById(R.id.historyList);
-        history_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        history_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         history_recyclerview.setHasFixedSize(true);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -111,7 +108,7 @@ public class HistoryListFragment extends Fragment {
             }
         });
         historyAdapter = new HistoryAdapter(history_foodlist);
-        historyAdapter.notifyDataSetChanged();
+//        historyAdapter.notifyDataSetChanged();
         history_recyclerview.setAdapter(historyAdapter);
     }
 

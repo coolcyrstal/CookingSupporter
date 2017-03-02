@@ -1,12 +1,11 @@
 package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,8 +17,9 @@ public class CategoryFoodPage extends AppCompatActivity {
 
     ImageView category_foodpage_image;
     TextView category_foodpage_name, category_foodpage_type;
-    RecyclerView category_foodpage_ingredient, category_foodpage_cookingmethod;
-    CategoryFoodPageAdapter categoryFoodPageAdapter_ingredient, categoryFoodPageAdapter_cookingmethod;
+
+    ViewPager viewPager;
+    TabLayout tabLayout;
 
     public static FoodDatabaseClass category_food;
 
@@ -29,40 +29,53 @@ public class CategoryFoodPage extends AppCompatActivity {
         setContentView(R.layout.activity_category_food_page);
 
         initialize();
+        setViewPager();
     }
 
     private void initialize(){
         category_foodpage_image = (ImageView)findViewById(R.id.category_cooking_recipe_foodimage);
         category_foodpage_name = (TextView)findViewById(R.id.category_cooking_recipe_foodname);
         category_foodpage_type = (TextView)findViewById(R.id.category_cooking_recipe_foodtype);
-        category_foodpage_ingredient = (RecyclerView)findViewById(R.id.category_cooking_recipe_ingredient_list);
-        category_foodpage_cookingmethod = (RecyclerView)findViewById(R.id.category_cooking_recipe_method_list);
+        viewPager = (ViewPager) findViewById(R.id.viewPager_category_foodpage);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout_category_foodpage);
 
         Picasso.with(getApplicationContext()).load(category_food.getFood_image()).into(category_foodpage_image);
         category_foodpage_name.setText(category_food.getFood_name());
         category_foodpage_type.setText(category_food.getFood_type());
-
-        categoryFoodPageAdapter_ingredient = new CategoryFoodPageAdapter(category_food.getIngredient());
-        category_foodpage_ingredient.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        category_foodpage_ingredient.setAdapter(categoryFoodPageAdapter_ingredient);
-//        Log.d("inheritfood test", ""+ category_food.getIngredient());
-        categoryFoodPageAdapter_cookingmethod = new CategoryFoodPageAdapter(category_food.getCooking_method());
-        category_foodpage_cookingmethod.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        category_foodpage_cookingmethod.setAdapter(categoryFoodPageAdapter_cookingmethod);
     }
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        ((CategoryFoodPageAdapter) categoryFoodPageAdapter_ingredient).setOnItemClickListener(new CategoryFoodPageAdapter.MyClickListener() {
+    private void setViewPager() {
+        viewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
-            public void onItemClick(int position, View v) {
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return CategoryFoodPageIngredient.newInstance();
+                    case 1:
+                        return CategoryFoodPageCookingMethod.newInstance();
+                    default:
+                        return null;
+                }
+
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "Ingredient";
+                    case 1:
+                        return "Cooking Method";
+                    default:
+                        return "";
+                }
             }
         });
-        ((CategoryFoodPageAdapter) categoryFoodPageAdapter_cookingmethod).setOnItemClickListener(new CategoryFoodPageAdapter.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-            }
-        });
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
