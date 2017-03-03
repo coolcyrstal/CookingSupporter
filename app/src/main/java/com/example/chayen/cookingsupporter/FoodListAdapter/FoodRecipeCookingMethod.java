@@ -48,7 +48,7 @@ public class FoodRecipeCookingMethod extends Fragment {
     private void initialize(View rootview){
         foodpage_cookingmethod = (RecyclerView)rootview.findViewById(R.id.cooking_recipe_method_list);
 
-        foodRecipeAdapter_cookingmethod = new FoodRecipeAdapter(main_foodrecipe.getIngredient());
+        foodRecipeAdapter_cookingmethod = new FoodRecipeAdapter(main_foodrecipe.getCooking_method());
         foodpage_cookingmethod.setLayoutManager(new LinearLayoutManager(getContext()));
         foodpage_cookingmethod.setAdapter(foodRecipeAdapter_cookingmethod);
     }
