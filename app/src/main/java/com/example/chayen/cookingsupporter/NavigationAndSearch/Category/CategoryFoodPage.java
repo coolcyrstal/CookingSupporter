@@ -18,8 +18,8 @@ public class CategoryFoodPage extends AppCompatActivity {
     ImageView category_foodpage_image;
     TextView category_foodpage_name, category_foodpage_type;
 
-    ViewPager viewPager;
-    TabLayout tabLayout;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
 
     public static FoodDatabaseClass category_food;
 
