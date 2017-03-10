@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
@@ -18,9 +17,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
-import static com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment.foodlist;
 import static com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.category_food;
 
 public class CategoryPage extends AppCompatActivity {
@@ -74,7 +71,7 @@ public class CategoryPage extends AppCompatActivity {
                     food.setIngredient(ingredient);
                     food.setStar_count(star_count);
                     category_foodlist.add(food);
-//                    Log.d("categoryfoodlist", "" + food.getFood_name());
+//                    Log.d("testcategoryfoodlist", "" + food.getFood_name());
                 }
             }
 

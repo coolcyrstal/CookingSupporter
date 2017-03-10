@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,8 @@ public class HistoryListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView history_recyclerview;
-    public static ArrayList<FoodDatabaseClass> history_foodlist = new ArrayList<>();
-    String checkUser;
+    private ArrayList<FoodDatabaseClass> history_foodlist = new ArrayList<>();
+    private String checkUser;
     private HistoryAdapter historyAdapter;
     FoodDatabaseClass food;
 
@@ -61,20 +62,28 @@ public class HistoryListFragment extends Fragment {
 
     private void initialize(View rootview){
         history_recyclerview = (RecyclerView)rootview.findViewById(R.id.historyList);
-        history_recyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        history_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         history_recyclerview.setHasFixedSize(true);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             checkUser = user.getUid();
         }
-        setHistoryFood();
-
+        setHistoryFood(checkUser);
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                //Do something after 100ms
+//                setHistoryAdapter();
+//            }
+//        }, 5000);
+        setHistoryAdapter();
     }
 
-    private void setHistoryFood(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private void setHistoryFood(String checkUser){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference().child("food");
-        Query queryHistory = myRef.orderByChild("author").equalTo(checkUser);
+        final Query queryHistory = myRef.orderByChild("author").equalTo(checkUser);
 //        Log.d("testhistory", "" + checkUser);
         queryHistory.addValueEventListener(new ValueEventListener() {
             @Override
@@ -96,10 +105,9 @@ public class HistoryListFragment extends Fragment {
                     food.setIngredient(ingredient);
                     food.setStar_count(star_count);
                     history_foodlist.add(food);
-//                    Log.d("testfoodhistory", "" + food_name + food_type);
+                    Log.d("testfoodhistory", "" + food_name + food_type);
                 }
-
-
+//                setHistoryAdapter();
             }
 
             @Override
@@ -107,21 +115,25 @@ public class HistoryListFragment extends Fragment {
 
             }
         });
+
+    }
+
+    private void setHistoryAdapter(){
         historyAdapter = new HistoryAdapter(history_foodlist);
 //        historyAdapter.notifyDataSetChanged();
         history_recyclerview.setAdapter(historyAdapter);
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-        ((HistoryAdapter) historyAdapter).setOnItemClickListener(new HistoryAdapter.MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-
-            }
-        });
-    }
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        ((HistoryAdapter) historyAdapter).setOnItemClickListener(new HistoryAdapter.MyClickListener() {
+//            @Override
+//            public void onItemClick(int position, View v) {
+//
+//            }
+//        });
+//    }
 
     public interface OnFragmentInteractionListener {
 

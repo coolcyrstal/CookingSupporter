@@ -2,7 +2,6 @@ package com.example.chayen.cookingsupporter.MainPage;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,20 +23,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.MainPage.History.HistoryListFragment;
+import com.example.chayen.cookingsupporter.MainPage.MainFoodPage.MainHomePageFragment;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Category.Category;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
 import com.example.chayen.cookingsupporter.R;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
 import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
-import static com.example.chayen.cookingsupporter.LoginRegister.mGoogleApiClient;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

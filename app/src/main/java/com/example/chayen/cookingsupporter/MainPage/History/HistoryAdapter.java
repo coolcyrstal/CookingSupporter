@@ -26,7 +26,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     private ArrayList<FoodDatabaseClass> history_foodlist;
 
     @Override
-    public HistoryAdapter.HistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_food, parent, false);
         HistoryViewHolder dataObjHolder = new HistoryViewHolder(view);
         context = parent.getContext();
@@ -34,9 +34,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     }
 
     @Override
-    public void onBindViewHolder(HistoryAdapter.HistoryViewHolder holder, int position) {
+    public void onBindViewHolder(HistoryViewHolder holder, int position) {
         holder.history_foodname.setText(history_foodlist.get(position).getFood_name());
-        Log.d("testhistory", history_foodlist.get(position).getFood_name() + history_foodlist.size());
+        Log.d("testhistorybind", history_foodlist.get(position).getFood_name() + history_foodlist.size());
         holder.history_foodtype.setText(history_foodlist.get(position).getFood_type());
         Picasso.with(context).load(history_foodlist.get(position).getFood_image()).into(holder.history_foodimage);
     }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.chayen.cookingsupporter.R;
 import com.squareup.picasso.Picasso;
 
-import static com.example.chayen.cookingsupporter.MainPage.MainHomePageFragment.foodlist;
+import static com.example.chayen.cookingsupporter.MainPage.MainFoodPage.MainHomePageFragment.foodlist;
 
 public class CookingRecipe extends AppCompatActivity {
 

@@ -1,13 +1,10 @@
-package com.example.chayen.cookingsupporter.MainPage;
+package com.example.chayen.cookingsupporter.MainPage.MainFoodPage;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,25 +14,14 @@ import android.widget.ListView;
 import com.example.chayen.cookingsupporter.FoodListAdapter.CookingRecipe;
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodListAdapter;
-import com.example.chayen.cookingsupporter.FoodListAdapter.FoodListView;
-import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
 import com.example.chayen.cookingsupporter.R;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
 
 
 public class MainHomePageFragment extends Fragment {
@@ -43,7 +29,9 @@ public class MainHomePageFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     ListView listView;
+    RecyclerView mainhomepageRecyclerview;
     FoodListAdapter foodlist_adapter;
+    MainHomePageAdapter mainHomePageAdapter;
     String[] food_name, food_type, food_image;
     public static ArrayList<FoodDatabaseClass> foodlist;
     FoodDatabaseClass food;
@@ -76,12 +64,11 @@ public class MainHomePageFragment extends Fragment {
     }
 
     private void initInstance(View rootview){
-        String[] testfoodlist = new String[]{"1","2","3"};
+//        String[] testfoodlist = new String[]{"1","2","3"};
         listView = (ListView)rootview.findViewById(R.id.foodList);
         foodlist_adapter = new FoodListAdapter();
+//        mainhomepageRecyclerview = (RecyclerView)rootview.findViewById(R.id.foodList);
         setFireBaseDatabase();
-
-
     }
 
     private void setFireBaseDatabase(){
@@ -90,21 +77,6 @@ public class MainHomePageFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                Map<String, FoodDatabaseClass> td = (HashMap<String,FoodDatabaseClass>) dataSnapshot.getValue();
-//                foodlist = new ArrayList<>(td.values());
-
-//                Map<String, FoodDatabaseClass> td = (HashMap<String,FoodDatabaseClass>) dataSnapshot.getValue();
-//                for (DataSnapshot jobSnapshot: dataSnapshot.getChildren()) {
-//                    FoodDatabaseClass job = jobSnapshot.getValue(FoodDatabaseClass.class);
-//                    td.put(jobSnapshot.getKey(), job);
-//                }
-//                foodlist = new ArrayList<>(td.values());
-//                List<String> keys = new ArrayList<String>(td.keySet());
-//
-//                for (FoodDatabaseClass job: foodlist) {
-//                    Log.d("firebase", job.getFood_name());
-//                }
-
                 foodlist = new ArrayList<>();
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     String food_image = (String) messageSnapshot.child("food_image").getValue();
@@ -139,20 +111,6 @@ public class MainHomePageFragment extends Fragment {
                 }
 
                 setFoodlist_adapterer();
-
-
-//                for (Object obj : td.values()) {
-//                    if (obj instanceof Map) {
-//                        Map<String, Object> mapObj = (Map<String, Object>) obj;
-//                        FoodDatabaseClass match = new FoodDatabaseClass();
-//                        match.setCooking_method(mapObj.get());
-//                        match.getFood_type();
-//                        match.getCooking_method();
-//                        match.getFood_image();
-//                        match.getIngredient();
-//                        foodlist.add(match);
-//                    }
-//                }
             }
 
             @Override
@@ -160,33 +118,6 @@ public class MainHomePageFragment extends Fragment {
 
             }
         });
-//        myRef.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                FoodDatabaseClass food = new FoodDatabaseClass();
-//                food = dataSnapshot.getValue(FoodDatabaseClass.class);
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 
     private void setFoodlist_adapterer(){
@@ -202,6 +133,9 @@ public class MainHomePageFragment extends Fragment {
                 startActivity(intent);
             }
         });
+//        mainHomePageAdapter = new MainHomePageAdapter(foodlist);
+//        mainhomepageRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mainhomepageRecyclerview.setAdapter(mainHomePageAdapter);
     }
 
     public interface OnFragmentInteractionListener {
