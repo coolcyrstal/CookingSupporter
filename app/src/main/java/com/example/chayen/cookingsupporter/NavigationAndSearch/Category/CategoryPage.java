@@ -3,6 +3,7 @@ package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -38,7 +39,8 @@ public class CategoryPage extends AppCompatActivity {
 
     private void initialize(){
         recyclerView = (RecyclerView)findViewById(R.id.category_recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setHasFixedSize(true);
 
 

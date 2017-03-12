@@ -144,6 +144,7 @@ public class HistoryListFragment extends Fragment {
         queryHistory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                history_foodlist = new ArrayList<FoodDatabaseClass>();
                 for(DataSnapshot messageSnapshot: dataSnapshot.getChildren()){
                     String food_image = (String) messageSnapshot.child("food_image").getValue();
                     String food_name = (String) messageSnapshot.child("food_name").getValue();
@@ -163,9 +164,9 @@ public class HistoryListFragment extends Fragment {
                     history_foodlist.add(food);
 //                    Log.d("testfoodhistory", "" + food_name + food_type);
                 }
-                history_foodlistname = new ArrayList<String>();
-                history_foodlisttype = new ArrayList<String>();
-                history_foodlistimage = new ArrayList<String>();
+                history_foodlistname = new ArrayList<String>(history_foodlist.size());
+                history_foodlisttype = new ArrayList<String>(history_foodlist.size());
+                history_foodlistimage = new ArrayList<String>(history_foodlist.size());
                 for(int i = 0; i < history_foodlist.size(); i++){
                     history_foodlistname.add(history_foodlist.get(i).getFood_name());
                     history_foodlisttype.add(history_foodlist.get(i).getFood_type());
