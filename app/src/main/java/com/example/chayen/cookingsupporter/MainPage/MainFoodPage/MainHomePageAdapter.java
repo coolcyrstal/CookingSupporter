@@ -52,8 +52,8 @@ public class MainHomePageAdapter extends RecyclerView.Adapter<MainHomePageAdapte
     }
 
     public class MainHomePageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView mainfood_foodname, mainfood_foodtype;
-        ImageView mainfood_foodimage;
+        private TextView mainfood_foodname, mainfood_foodtype;
+        private ImageView mainfood_foodimage;
 
         public MainHomePageViewHolder(View itemView) {
             super(itemView);

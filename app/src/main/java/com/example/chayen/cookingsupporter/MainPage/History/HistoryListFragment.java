@@ -2,13 +2,18 @@ package com.example.chayen.cookingsupporter.MainPage.History;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
@@ -27,16 +32,34 @@ import java.util.ArrayList;
 public class HistoryListFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    private RecyclerView history_recyclerview;
+
     private ArrayList<FoodDatabaseClass> history_foodlist = new ArrayList<>();
     private String checkUser;
+
+    private RecyclerView history_recyclerview;
     private HistoryAdapter historyAdapter;
+
+    private ListView history_listview;
+    ArrayList<String> history_foodlistname,history_foodlisttype, history_foodlistimage;
+    private HistoryListAdapter historyListAdapter;
+
+
+//    private FragmentActivity fragmentActivity;
     FoodDatabaseClass food;
 
-    public HistoryListFragment() {
-        // Required empty public constructor
+    private enum LayoutManagerType {
+        GRID_LAYOUT_MANAGER,
+        LINEAR_LAYOUT_MANAGER
     }
+    protected LayoutManagerType mCurrentLayoutManagerType;
+    protected RecyclerView.LayoutManager mLayoutManager;
+    private static final String KEY_LAYOUT_MANAGER = "layoutManager";
+    private static final int SPAN_COUNT = 2;
 
+
+//    public HistoryListFragment() {
+//        // Required empty public constructor
+//    }
 
     public static HistoryListFragment newInstance() {
         HistoryListFragment fragment = new HistoryListFragment();
@@ -56,28 +79,61 @@ public class HistoryListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_history_list, container, false);
+//        fragmentActivity = getActivity();
+//        initlayoutManager(savedInstanceState);
         initialize(rootview);
         return rootview;
     }
 
+    private void initlayoutManager(Bundle savedInstanceState){
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        if (savedInstanceState != null) {
+            // Restore saved layout manager type.
+            mCurrentLayoutManagerType = (LayoutManagerType) savedInstanceState
+                    .getSerializable(KEY_LAYOUT_MANAGER);
+        }
+    }
+
     private void initialize(View rootview){
-        history_recyclerview = (RecyclerView)rootview.findViewById(R.id.historyList);
-        history_recyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        history_recyclerview.setHasFixedSize(true);
+//        history_recyclerview = (RecyclerView)rootview.findViewById(R.id.historyList);
+        history_listview = (ListView)rootview.findViewById(R.id.historyList);
+        historyListAdapter = new HistoryListAdapter();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             checkUser = user.getUid();
         }
         setHistoryFood(checkUser);
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                //Do something after 100ms
-//                setHistoryAdapter();
-//            }
-//        }, 5000);
-        setHistoryAdapter();
+
+//        setHistoryAdapter();
+//        setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
+    }
+
+    public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
+        int scrollPosition = 0;
+
+        // If a layout manager has already been set, get current scroll position.
+        if (history_recyclerview.getLayoutManager() != null) {
+            scrollPosition = ((LinearLayoutManager) history_recyclerview.getLayoutManager())
+                    .findFirstCompletelyVisibleItemPosition();
+        }
+
+        switch (layoutManagerType) {
+            case GRID_LAYOUT_MANAGER:
+                mLayoutManager = new GridLayoutManager(getActivity(), SPAN_COUNT);
+                mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
+                break;
+            case LINEAR_LAYOUT_MANAGER:
+                mLayoutManager = new LinearLayoutManager(getActivity());
+                mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+                break;
+            default:
+                mLayoutManager = new LinearLayoutManager(getActivity());
+                mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        }
+
+        history_recyclerview.setLayoutManager(mLayoutManager);
+        history_recyclerview.scrollToPosition(scrollPosition);
     }
 
     private void setHistoryFood(String checkUser){
@@ -105,9 +161,17 @@ public class HistoryListFragment extends Fragment {
                     food.setIngredient(ingredient);
                     food.setStar_count(star_count);
                     history_foodlist.add(food);
-                    Log.d("testfoodhistory", "" + food_name + food_type);
+//                    Log.d("testfoodhistory", "" + food_name + food_type);
                 }
-//                setHistoryAdapter();
+                history_foodlistname = new ArrayList<String>();
+                history_foodlisttype = new ArrayList<String>();
+                history_foodlistimage = new ArrayList<String>();
+                for(int i = 0; i < history_foodlist.size(); i++){
+                    history_foodlistname.add(history_foodlist.get(i).getFood_name());
+                    history_foodlisttype.add(history_foodlist.get(i).getFood_type());
+                    history_foodlistimage.add(history_foodlist.get(i).getFood_image());
+                }
+                setHistoryAdapter();
             }
 
             @Override
@@ -119,9 +183,36 @@ public class HistoryListFragment extends Fragment {
     }
 
     private void setHistoryAdapter(){
-        historyAdapter = new HistoryAdapter(history_foodlist);
+//        historyAdapter = new HistoryAdapter(history_foodlistname, history_foodlisttype, history_foodlistimage);
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                historyAdapter = new HistoryAdapter(history_foodlist);
+//                fragmentActivity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        history_recyclerview.setAdapter(historyAdapter);
+//                    }
+//                });
+//            }
+//        }).start();
+
 //        historyAdapter.notifyDataSetChanged();
-        history_recyclerview.setAdapter(historyAdapter);
+//        history_recyclerview.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));
+//        history_recyclerview.setHasFixedSize(true);
+//        historyAdapter = new HistoryAdapter(this.getActivity(), history_foodlist);
+//        history_recyclerview.setAdapter(historyAdapter);
+
+        historyListAdapter.setHistoryfood_name(history_foodlistname);
+        historyListAdapter.setHistoryfood_type(history_foodlisttype);
+        historyListAdapter.setHistoryfood_image(history_foodlistimage);
+        history_listview.setAdapter(historyListAdapter);
+        history_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+        });
     }
 
 //    @Override
@@ -134,6 +225,13 @@ public class HistoryListFragment extends Fragment {
 //            }
 //        });
 //    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save currently selected layout manager.
+        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
+        super.onSaveInstanceState(savedInstanceState);
+    }
 
     public interface OnFragmentInteractionListener {
 

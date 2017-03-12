@@ -121,6 +121,7 @@ public class MainHomePageFragment extends Fragment {
     }
 
     private void setFoodlist_adapterer(){
+//        food_name = new String[]{"", ""};
         foodlist_adapter.setFood_name(food_name);
         foodlist_adapter.setFood_type(food_type);
         foodlist_adapter.setFood_image(food_image);

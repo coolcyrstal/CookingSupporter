@@ -56,8 +56,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView category_foodname;
-        ImageView category_foodimage;
+        private TextView category_foodname;
+        private ImageView category_foodimage;
 
         public ViewHolder(View itemView){
             super(itemView);

@@ -52,7 +52,7 @@ public class CategoryFoodPageAdapter extends RecyclerView.Adapter<CategoryFoodPa
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView category_foodpage_recycler;
+        private TextView category_foodpage_recycler;
 
         public CategoryViewHolder(View itemView) {
             super(itemView);
