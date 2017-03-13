@@ -1,5 +1,6 @@
 package com.example.chayen.cookingsupporter.MainPage.History;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
+import com.example.chayen.cookingsupporter.MainPage.History.HistoryListFoodPage.HistoryFoodPage;
 import com.example.chayen.cookingsupporter.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +44,7 @@ public class HistoryListFragment extends Fragment {
     private ListView history_listview;
     ArrayList<String> history_foodlistname,history_foodlisttype, history_foodlistimage;
     private HistoryListAdapter historyListAdapter;
+    public static FoodDatabaseClass history_foodpage_food;
 
 
 //    private FragmentActivity fragmentActivity;
@@ -210,8 +213,10 @@ public class HistoryListFragment extends Fragment {
         history_listview.setAdapter(historyListAdapter);
         history_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(getActivity(), HistoryFoodPage.class);
+                startActivity(intent);
+                history_foodpage_food = history_foodlist.get(position);
             }
         });
     }

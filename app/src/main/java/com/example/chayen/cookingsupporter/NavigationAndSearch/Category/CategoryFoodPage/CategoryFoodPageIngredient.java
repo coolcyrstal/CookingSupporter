@@ -1,4 +1,4 @@
-package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
+package com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.chayen.cookingsupporter.R;
-
-import static com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.category_food;
 
 public class CategoryFoodPageIngredient extends Fragment {
 
@@ -48,7 +46,7 @@ public class CategoryFoodPageIngredient extends Fragment {
     private void initialize(View rootview){
         category_foodpage_ingredient = (RecyclerView)rootview.findViewById(R.id.category_cooking_recipe_ingredient_list);
 
-        categoryFoodPageAdapter_ingredient = new CategoryFoodPageAdapter(category_food.getIngredient());
+        categoryFoodPageAdapter_ingredient = new CategoryFoodPageAdapter(CategoryFoodPage.category_food.getIngredient());
         category_foodpage_ingredient.setLayoutManager(new LinearLayoutManager(getContext()));
         category_foodpage_ingredient.setAdapter(categoryFoodPageAdapter_ingredient);
     }

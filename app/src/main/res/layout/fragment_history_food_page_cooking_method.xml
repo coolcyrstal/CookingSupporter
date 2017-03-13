@@ -2,17 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.CategoryFoodPageIngredient">
+    tools:context="com.example.chayen.cookingsupporter.MainPage.History.HistoryListFoodPage.HistoryFoodPageCookingMethod">
 
     <LinearLayout
-        android:id="@+id/layoutcategorycookingFoodIngredient"
+        android:id="@+id/layouthistorycookingFoodMethod"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/category_cooking_recipe_ingredient_list"
+            android:id="@+id/history_cooking_recipe_method_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
+
 </FrameLayout>

@@ -1,4 +1,4 @@
-package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
+package com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

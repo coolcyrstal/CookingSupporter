@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_category_food_page"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/themecolorhunt_2"
-    tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.CategoryFoodPage">
+    tools:context="com.example.chayen.cookingsupporter.MainPage.History.HistoryListFoodPage.HistoryFoodPage">
 
     <LinearLayout
-        android:id="@+id/layoutcategoryCookingRecipe"
+        android:id="@+id/layouthistoryCookingRecipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <ImageView
-            android:id="@+id/category_cooking_recipe_foodimage"
+            android:id="@+id/history_cooking_recipe_foodimage"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginLeft="20dp"
@@ -24,7 +23,7 @@
             android:src="@drawable/test_list_food" />
 
         <TextView
-            android:id="@+id/category_cooking_recipe_foodname"
+            android:id="@+id/history_cooking_recipe_foodname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -34,7 +33,7 @@
             android:textSize="25dp" />
 
         <LinearLayout
-            android:id="@+id/layoutcategorycookingFoodType"
+            android:id="@+id/layouthistorycookingFoodType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -49,7 +48,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/category_cooking_recipe_foodtype"
+                android:id="@+id/history_cooking_recipe_foodtype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -59,7 +58,7 @@
         </LinearLayout>
 
         <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout_category_foodpage"
+            android:id="@+id/tabLayout_history_foodpage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:tabIndicatorColor="@color/colorAccent"
@@ -67,17 +66,17 @@
         </android.support.design.widget.TabLayout>
 
         <RelativeLayout
-            android:id="@+id/categoryfood"
+            android:id="@+id/historyfood"
             android:background="@color/themecolorhunt_2"
-            android:layout_below="@+id/layoutcategorycookingFoodType"
+            android:layout_below="@+id/layouthistorycookingFoodType"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v4.view.ViewPager
-                android:id="@+id/viewPager_category_foodpage"
+                android:id="@+id/viewPager_history_foodpage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </android.support.v4.view.ViewPager>
         </RelativeLayout>
     </LinearLayout>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

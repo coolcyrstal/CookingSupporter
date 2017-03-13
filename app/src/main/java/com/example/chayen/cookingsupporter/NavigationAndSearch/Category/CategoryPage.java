@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.CategoryFoodPage;
 import com.example.chayen.cookingsupporter.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import static com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.category_food;
+import static com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.CategoryFoodPage.category_food;
 
 public class CategoryPage extends AppCompatActivity {
 

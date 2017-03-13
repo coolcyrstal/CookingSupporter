@@ -1,4 +1,4 @@
-package com.example.chayen.cookingsupporter.NavigationAndSearch.Category;
+package com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
