@@ -15,8 +15,8 @@ import com.squareup.picasso.Picasso;
 
 public class CategoryFoodPage extends AppCompatActivity {
 
-    ImageView category_foodpage_image;
-    TextView category_foodpage_name, category_foodpage_type;
+    private ImageView category_foodpage_image;
+    private TextView category_foodpage_name, category_foodpage_type;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;

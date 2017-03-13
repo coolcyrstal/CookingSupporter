@@ -17,8 +17,8 @@ import static com.example.chayen.cookingsupporter.MainPage.History.HistoryListFr
 
 public class HistoryFoodPage extends AppCompatActivity {
 
-    ImageView history_foodpage_image;
-    TextView history_foodpage_name, history_foodpage_type;
+    private ImageView history_foodpage_image;
+    private TextView history_foodpage_name, history_foodpage_type;
 
 
 

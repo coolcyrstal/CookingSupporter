@@ -18,8 +18,8 @@ public class CookingRecipe extends AppCompatActivity {
 
     static int cooking_position;
     public static FoodDatabaseClass main_foodrecipe;
-    TextView cooking_recipe_name, cooking_recipe_type;
-    ImageView cooking_recipe_image;
+    private TextView cooking_recipe_name, cooking_recipe_type;
+    private ImageView cooking_recipe_image;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;

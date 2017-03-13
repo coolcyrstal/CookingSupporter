@@ -25,8 +25,8 @@ import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText textRegisDisplayName, textEmailAddress, textPassword, textRePassword;
-    Button nextbutton;
+    private EditText textRegisDisplayName, textEmailAddress, textPassword, textRePassword;
+    private Button nextbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

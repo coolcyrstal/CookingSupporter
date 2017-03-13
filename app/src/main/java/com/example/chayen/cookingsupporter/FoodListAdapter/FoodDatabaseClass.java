@@ -12,28 +12,28 @@ import java.util.Map;
  */
 
 public class FoodDatabaseClass implements Serializable{
-    public String author;
-    public ArrayList<String> cooking_method;
-    public String food_image;
-    public String food_name;
-    public String food_type;
-    public ArrayList<String> ingredient;
-    public Long star_count;
+    private String author;
+    private ArrayList<String> cooking_method;
+    private String food_image;
+    private String food_name;
+    private String food_type;
+    private ArrayList<String> ingredient;
+    private Long star_count;
 
     public FoodDatabaseClass(){
 
     }
 
-    public FoodDatabaseClass(String author, ArrayList<String> cooking_method, String food_image,
-                             String food_name, String food_type, ArrayList<String> ingredient, Long star_count){
-        this.author = author;
-        this.cooking_method = cooking_method;
-        this.food_image = food_image;
-        this.food_name = food_name;
-        this.food_type = food_type;
-        this.ingredient = ingredient;
-        this.star_count = star_count;
-    }
+//    public FoodDatabaseClass(String author, ArrayList<String> cooking_method, String food_image,
+//                             String food_name, String food_type, ArrayList<String> ingredient, Long star_count){
+//        this.author = author;
+//        this.cooking_method = cooking_method;
+//        this.food_image = food_image;
+//        this.food_name = food_name;
+//        this.food_type = food_type;
+//        this.ingredient = ingredient;
+//        this.star_count = star_count;
+//    }
 
     public String getAuthor(){
         return author;

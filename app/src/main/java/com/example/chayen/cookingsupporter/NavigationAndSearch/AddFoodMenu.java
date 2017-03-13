@@ -46,12 +46,12 @@ import java.util.ArrayList;
 
 public class AddFoodMenu extends AppCompatActivity {
 
-    LinearLayout ingredient_layout, cookingmethod_layout;
-    EditText ingredient_edittext, cookingmethod_edittext, foodname_edittext;
-    FloatingActionButton addingredient, addcookingmethod;
-    Button upload_foodrecipe_image_button, add_foodrecipe_button;
-    ImageView foodrecipe_image;
-    Spinner text_addfood_type;
+    private LinearLayout ingredient_layout, cookingmethod_layout;
+    private EditText ingredient_edittext, cookingmethod_edittext, foodname_edittext;
+    private FloatingActionButton addingredient, addcookingmethod;
+    private Button upload_foodrecipe_image_button, add_foodrecipe_button;
+    private ImageView foodrecipe_image;
+    private Spinner text_addfood_type;
 
     ArrayList<String> ingredient_newrecipe = new ArrayList<>(),
             cookingmethod_newrecipe = new ArrayList<>();

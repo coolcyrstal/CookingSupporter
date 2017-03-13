@@ -37,21 +37,21 @@ import static com.example.chayen.cookingsupporter.LoginRegister.mAuth;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    ViewPager viewPager;
-    Toolbar mToolbar;
-    NavigationView navigationView;
-    DrawerLayout mDrawerLayout;
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    View view;
-    RelativeLayout mViewInformation;
-    AppCompatTextView mTextViewName, mTextViewMoney, mTitle;
+    private ViewPager viewPager;
+    private Toolbar mToolbar;
+    private NavigationView navigationView;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private View view;
+    private RelativeLayout mViewInformation;
+    private AppCompatTextView mTextViewName, mTextViewMoney, mTitle;
 
-    TabLayout tabLayout;
+    private TabLayout tabLayout;
 
-    MenuItem search_icon, add_food_icon;
+    private MenuItem search_icon, add_food_icon;
 
-    TextView user_profile_name, user_profile_email;
-    ImageView user_profile_image;
+    private TextView user_profile_name, user_profile_email;
+    private ImageView user_profile_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,9 +29,9 @@ public class MainHomePageFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     ListView listView;
-    RecyclerView mainhomepageRecyclerview;
+    private RecyclerView mainhomepageRecyclerview;
     FoodListAdapter foodlist_adapter;
-    MainHomePageAdapter mainHomePageAdapter;
+    private MainHomePageAdapter mainHomePageAdapter;
     String[] food_name, food_type, food_image;
     public static ArrayList<FoodDatabaseClass> foodlist;
     FoodDatabaseClass food;

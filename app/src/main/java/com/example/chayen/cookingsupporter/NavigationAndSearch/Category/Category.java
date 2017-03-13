@@ -12,9 +12,9 @@ import com.squareup.picasso.Picasso;
 
 public class Category extends AppCompatActivity {
 
-    ImageView Steaming, Grilling, Roasting, Boiling,
+    private ImageView Steaming, Grilling, Roasting, Boiling,
             Stewing, Frying_food, Deep_Frying_food, Other;
-    CardView steaming_card, grilling_card, roasting_card, boiling_card,
+    private CardView steaming_card, grilling_card, roasting_card, boiling_card,
             stewing_card, frying_card, deep_frying_card, other_card;
 
     int[] category_image_array = {

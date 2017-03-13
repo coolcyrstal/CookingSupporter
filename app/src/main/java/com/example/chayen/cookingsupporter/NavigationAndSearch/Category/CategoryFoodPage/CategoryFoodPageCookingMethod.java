@@ -14,8 +14,8 @@ import com.example.chayen.cookingsupporter.R;
 public class CategoryFoodPageCookingMethod extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    RecyclerView category_foodpage_cookingmethod;
-    CategoryFoodPageAdapter categoryFoodPageAdapter_cookingmethod;
+    private RecyclerView category_foodpage_cookingmethod;
+    private CategoryFoodPageAdapter categoryFoodPageAdapter_cookingmethod;
 
     public CategoryFoodPageCookingMethod() {
         // Required empty public constructor

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 
 public class FoodListAdapter extends BaseAdapter{
 
-    String[] food_name, food_type, food_image;
+    private String[] food_name, food_type, food_image;
 
     public int getCount() {
         if (food_name == null)

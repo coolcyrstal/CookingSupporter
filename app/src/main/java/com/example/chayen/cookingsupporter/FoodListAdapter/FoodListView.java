@@ -28,8 +28,8 @@ import java.net.URL;
 
 public class FoodListView extends BaseCustomViewGroup {
 
-    TextView food_name, food_type;
-    ImageView food_image;
+    private TextView food_name, food_type;
+    private ImageView food_image;
 
     public FoodListView(Context context) {
         super(context);
@@ -37,24 +37,24 @@ public class FoodListView extends BaseCustomViewGroup {
         initInstances();
     }
 
-    public FoodListView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initInflate();
-        initInstances();
-    }
+//    public FoodListView(Context context, AttributeSet attrs) {
+//        super(context, attrs);
+//        initInflate();
+//        initInstances();
+//    }
 
-    public FoodListView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initInflate();
-        initInstances();
-    }
+//    public FoodListView(Context context, AttributeSet attrs, int defStyleAttr) {
+//        super(context, attrs, defStyleAttr);
+//        initInflate();
+//        initInstances();
+//    }
 
-    @TargetApi(21)
-    public FoodListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        initInflate();
-        initInstances();
-    }
+//    @TargetApi(21)
+//    public FoodListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//        initInflate();
+//        initInstances();
+//    }
 
     private void initInflate() {
         inflate(getContext(), R.layout.list_food, this);
