@@ -57,7 +57,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Steaming"
+                            android:text="นึ่ง"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -90,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Grilling"
+                            android:text="ปิ้ง"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -130,7 +130,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Roasting"
+                            android:text="ย่าง"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -163,7 +163,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Boiling"
+                            android:text="ต้ม"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -203,7 +203,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Stewing"
+                            android:text="ตุ๋น"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -236,7 +236,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Frying"
+                            android:text="ผัด"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -276,7 +276,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Deep Frying"
+                            android:text="ทอด"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
@@ -309,7 +309,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Other"
+                            android:text="อื่นๆ"
                             android:textColor="@color/themecolorhunt_1"
                             android:textSize="20dp" />
                     </RelativeLayout>
