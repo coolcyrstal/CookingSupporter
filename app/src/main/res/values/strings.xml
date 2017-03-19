@@ -37,6 +37,20 @@
     <string name="change_your_profile">Change Your Profile</string>
     <string name="update">Update</string>
     <string name="upload_image">Upload Image</string>
+    <string name="food_name_text">ชื่ออาหาร</string>
+    <string name="cooking_method_text">ขั้นตอนการทำ...</string>
+    <string name="ingredient_text">หมู 300 กรัม</string>
+    <string name="type">type</string>
+    <string name="category_food_image_description">category food image description</string>
+    <string name="add_food_recipe">Add Food Recipe</string>
+    <string name="cooking_method">Cooking Method</string>
+    <string name="your_food_name">Your Food Name</string>
+    <string name="your_food_type">Your Food Type</string>
+    <string name="cooking_supporter_text">CookingSupporter</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="login">LOGIN</string>
+    <string name="cooking_supporter_logo">cooking supporter logo</string>
 
     <string-array name="foodType">
         <item>นึ่ง / Steaming</item>

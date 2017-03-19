@@ -31,7 +31,8 @@
                     android:id="@+id/title"
                     android:textColor="@android:color/black"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize" />
+                    android:layout_height="?attr/actionBarSize"
+                    tools:ignore="RtlHardcoded" />
 
             </android.support.v7.widget.Toolbar>
 
@@ -45,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_vertical"
-                    android:text="Chayen"
+                    android:text="@string/cooking_supporter_text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>

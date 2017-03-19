@@ -9,9 +9,12 @@
 
     <LinearLayout
         android:id="@+id/layouthistoryCookingRecipe"
-        android:layout_width="match_parent"
+        android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/history_cooking_recipe_foodimage"
@@ -20,7 +23,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="top|center"
-            android:src="@drawable/test_list_food" />
+            android:src="@drawable/test_list_food"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/history_cooking_recipe_foodname"
@@ -28,9 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="Sample Food"
+            android:text="@string/sample_food"
             android:textColor="#000000"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <LinearLayout
             android:id="@+id/layouthistorycookingFoodType"
@@ -43,18 +47,19 @@
                 android:id="@+id/textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Food Type : "
+                android:text="@string/food_type"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/history_cooking_recipe_foodtype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="type"
+                android:text="@string/type"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="20sp"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
 
         <android.support.design.widget.TabLayout
@@ -68,7 +73,6 @@
         <RelativeLayout
             android:id="@+id/historyfood"
             android:background="@color/themecolorhunt_2"
-            android:layout_below="@+id/layouthistorycookingFoodType"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
