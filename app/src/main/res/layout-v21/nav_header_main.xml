@@ -25,8 +25,7 @@
         android:layout_gravity="center_vertical"
         android:innerRadius="0dp"
         android:shape="ring"
-        android:thicknessRatio="1.9"
-        tools:targetApi="lollipop">
+        android:thicknessRatio="1.9">
         <ImageView
             android:layout_height="40dp"
             android:layout_width="wrap_content"

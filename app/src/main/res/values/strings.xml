@@ -14,6 +14,29 @@
 
     <string name="mainFragment">Food List</string>
     <string name="loading">Loading</string>
+    <string name="congratulations_n_your_account_was_created">Congratulations !   Your account was created.</string>
+    <string name="let_s_start">LET\'S START</string>
+    <string name="register_success_image">register success image</string>
+    <string name="food_type">Food type:</string>
+    <string name="sample_food">Sample Food</string>
+    <string name="list_food_image_description">list_food image description</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="name">name</string>
+    <string name="sss_gmail_com">sss@gmail.com</string>
+    <string name="user_profile_image">user profile image</string>
+    <string name="register">Register</string>
+    <string name="textview">TextView</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_your_display_name">Create Your Display name</string>
+    <string name="create_your_password_6_12">Create Your Password(6-12)</string>
+    <string name="display_name">Display Name</string>
+    <string name="email">Email</string>
+    <string name="next">Next</string>
+    <string name="password">Password</string>
+    <string name="your_email_for_login">Your Email for Login</string>
+    <string name="change_your_profile">Change Your Profile</string>
+    <string name="update">Update</string>
+    <string name="upload_image">Upload Image</string>
 
     <string-array name="foodType">
         <item>นึ่ง / Steaming</item>

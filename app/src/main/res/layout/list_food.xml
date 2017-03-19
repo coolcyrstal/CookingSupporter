@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,7 +10,9 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginLeft="20dp"
-        android:src="@drawable/test_list_food" />
+        android:src="@drawable/test_list_food"
+        tools:ignore="RtlHardcoded"
+        android:contentDescription="@string/list_food_image_description" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -22,9 +25,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:text="Sample Food"
+            android:text="@string/sample_food"
             android:textColor="#000000"
-            android:textSize="20dp" />
+            android:textSize="20sp"
+            tools:ignore="RtlHardcoded" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -36,9 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="0dp"
-                android:text="Food type: "
+                android:text="@string/food_type"
                 android:layout_marginBottom="5dp"
-                android:textColor="#888"/>
+                android:textColor="#888"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/food_list_type"
@@ -48,7 +53,8 @@
                 android:layout_marginTop="0dp"
                 android:text=""
                 android:layout_marginBottom="5dp"
-                android:textColor="#888"/>
+                android:textColor="#888"
+                tools:ignore="RtlHardcoded" />
 
         </LinearLayout>
     </LinearLayout>

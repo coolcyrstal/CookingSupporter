@@ -26,8 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Create Your Display name"
-                android:textSize="20dp"
+                android:text="@string/create_your_display_name"
+                android:textSize="20sp"
                 android:id="@+id/text_registerpage_1"
                 android:textStyle="bold"
                 android:textColor="@color/themecolorhunt_1"
@@ -46,13 +46,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/text_register_displayname"
-                android:singleLine="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"
-                android:hint="Display Name" />
+                android:hint="@string/display_name"
+                android:maxLines="1" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -67,8 +67,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Your Email for Login"
-                android:textSize="20dp"
+                android:text="@string/your_email_for_login"
+                android:textSize="20sp"
                 android:id="@+id/text_registerpage_2"
                 android:textStyle="bold"
                 android:textColor="@color/themecolorhunt_1"
@@ -88,14 +88,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/textEmailAddress"
-                android:singleLine="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"
-                android:hint="Email"
-                android:layout_marginBottom="10dp"/>
+                android:hint="@string/email"
+                android:layout_marginBottom="10dp"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -110,8 +111,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Create Your Password(6-12)"
-                android:textSize="20dp"
+                android:text="@string/create_your_password_6_12"
+                android:textSize="20sp"
                 android:id="@+id/text_registerpage_3"
                 android:textStyle="bold"
                 android:textColor="@color/themecolorhunt_1"
@@ -131,7 +132,6 @@
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:singleLine="true"
                 android:id="@+id/text_createPassword"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
@@ -139,13 +139,13 @@
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"
-                android:hint="Password" />
+                android:hint="@string/password"
+                android:maxLines="1" />
 
             <EditText
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:singleLine="true"
                 android:id="@+id/text_createPassword_confirm"
                 android:layout_below="@+id/text_createPassword"
                 android:layout_gravity="center_horizontal"
@@ -154,7 +154,8 @@
                 android:textColorHighlight="#777"
                 android:textColorHint="#777"
                 android:textColor="#777"
-                android:hint="Confirm Password" />
+                android:hint="@string/confirm_password"
+                android:maxLines="1" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -166,7 +167,7 @@
             android:id="@+id/nextbutton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Next"
+            android:text="@string/next"
             android:background="@color/themecolorhunt_4"
             android:textColor="@color/themecolorhunt_2"
             android:layout_gravity="bottom"/>
