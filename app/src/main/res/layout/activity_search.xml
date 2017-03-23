@@ -11,4 +11,74 @@
     tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Search"
     android:background="@color/themecolorhunt_2">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ค้นหาเมนูอาหาร"
+        android:textSize="20sp"
+        android:id="@+id/searchpage_textview"
+        android:textStyle="bold"
+        android:textColor="#777"
+        android:layout_centerHorizontal="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/searchpage_layout1"
+        android:layout_below="@+id/searchpage_textview"
+        android:background="@drawable/button_money_border">
+
+        <EditText
+            android:id="@+id/searchpage_foodname"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="@string/food_name_text"
+            android:textColor="#777"
+            android:textColorHighlight="#777"
+            android:textColorHint="#777"
+            tools:ignore="RtlHardcoded"
+            android:maxLines="1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/searchpage_layout2"
+        android:layout_below="@+id/searchpage_layout1"
+        android:background="@drawable/button_money_border">
+
+        <EditText
+            android:id="@+id/searchpage_foodingredient"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:focusable="true"
+            android:hint="@string/ingredient_text"
+            android:textColor="#777"
+            android:textColorHighlight="#777"
+            android:textColorHint="#777"
+            tools:ignore="RtlHardcoded"
+            android:maxLines="1" />
+    </RelativeLayout>
 </RelativeLayout>
