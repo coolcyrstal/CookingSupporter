@@ -73,7 +73,7 @@ public class RegisterPage extends AppCompatActivity {
                             Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.create_new_account_register_info);
                             if (fragment instanceof RegisterSuccess == false) {
                                 getSupportFragmentManager().beginTransaction()
-                                        .replace(R.id.register_info, RegisterSuccess.newInstance(), "Register Success")
+                                        .replace(R.id.create_new_account_register_info, RegisterSuccess.newInstance(), "Register Success")
                                         .addToBackStack(null)
                                         .commit();
                             }else Toast.makeText(RegisterPage.this, "Error", Toast.LENGTH_SHORT).show();

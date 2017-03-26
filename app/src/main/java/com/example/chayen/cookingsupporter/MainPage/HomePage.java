@@ -27,7 +27,7 @@ import com.example.chayen.cookingsupporter.MainPage.MainFoodPage.MainHomePageFra
 import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Category.Category;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
-import com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Search.Search;
 import com.example.chayen.cookingsupporter.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
