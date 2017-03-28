@@ -6,12 +6,19 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -22,17 +29,22 @@ public class SearchPage extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView searchpage_recyclerview;
-    private ArrayList<FoodDatabaseClass> searchpage_foodlist;
+    private ArrayList<FoodDatabaseClass> searchpage_foodlist = new ArrayList<FoodDatabaseClass>();
+    private FoodDatabaseClass food;
     private SearchPageAdapter searchPageAdapter;
+    private static String searchtext_foodname;
+    private static String searchtext_foodingredient;
 
     public SearchPage() {
         // Required empty public constructor
     }
 
 
-    public static SearchPage newInstance() {
+    public static SearchPage newInstance(String text1, String text2) {
         SearchPage fragment = new SearchPage();
         Bundle args = new Bundle();
+        searchtext_foodname = text1;
+        searchtext_foodingredient = text2;
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,7 +72,35 @@ public class SearchPage extends Fragment {
     }
 
     private void getSearchData(){
-        searchpage_foodlist = foodlist;
+//        searchpage_foodlist = foodlist;
+
+        ArrayList<FoodDatabaseClass> searchpage_foodlist_clone = new ArrayList<>();
+        if(!searchtext_foodname.equals("")){
+            for(FoodDatabaseClass food : foodlist){
+                if(food.getFood_name().contains(searchtext_foodname)){
+                    searchpage_foodlist.add(food);
+                }
+            }
+            if(!searchtext_foodingredient.equals("")){
+                for(FoodDatabaseClass food : searchpage_foodlist){
+                    if(food.getFood_name().contains(searchtext_foodingredient)){
+                        searchpage_foodlist_clone.add(food);
+                    }
+                }
+                searchpage_foodlist = searchpage_foodlist_clone;
+            }
+        } else if(!searchtext_foodingredient.equals("")){
+            for(FoodDatabaseClass food : foodlist){
+                if(food.getFood_name().contains(searchtext_foodingredient)){
+                    searchpage_foodlist.add(food);
+                }
+            }
+        }
+        else{
+            searchpage_foodlist = foodlist;
+        }
+
+//        Log.d("searchcontain", "" + food.getFood_name());
     }
 
 

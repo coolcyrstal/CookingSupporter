@@ -42,7 +42,10 @@ public class Search extends AppCompatActivity {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.searchactivity_id);
         if (fragment instanceof SearchPage == false) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.searchactivity_id, SearchPage.newInstance(), "Search Success")
+                    .replace(R.id.searchactivity_id,
+                            SearchPage.newInstance(searchpage_foodname_edittext.getText().toString(),
+                                    searchpage_ingredient_edittext.getText().toString()),
+                            "Search Success")
                     .addToBackStack(null)
                     .commit();
         }else Toast.makeText(Search.this, "Error", Toast.LENGTH_SHORT).show();
