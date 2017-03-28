@@ -1,0 +1,83 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/themecolorhunt_2"
+    tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Search.SearchPageFood.SearchPageFood">
+
+    <LinearLayout
+        android:id="@+id/layoutsearchpageCookingRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/searchpage_cooking_recipe_foodimage"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="top|center"
+            android:src="@drawable/test_list_food"
+            android:contentDescription="@string/category_food_image_description" />
+
+        <TextView
+            android:id="@+id/searchpage_cooking_recipe_foodname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="@string/sample_food"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:id="@+id/layoutsearchpagecookingFoodType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/food_type"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/searchpage_cooking_recipe_foodtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/type"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout_searchpage_foodpage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabIndicatorHeight="5dp">
+        </android.support.design.widget.TabLayout>
+
+        <RelativeLayout
+            android:id="@+id/searchpagefood"
+            android:background="@color/themecolorhunt_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewPager_searchpage_foodpage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v4.view.ViewPager>
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>
