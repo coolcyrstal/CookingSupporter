@@ -83,8 +83,11 @@ public class SearchPage extends Fragment {
             }
             if(!searchtext_foodingredient.equals("")){
                 for(FoodDatabaseClass food : searchpage_foodlist){
-                    if(food.getFood_name().contains(searchtext_foodingredient)){
-                        searchpage_foodlist_clone.add(food);
+                    for(String ingredient : food.getIngredient()){
+                        if(ingredient.contains(searchtext_foodingredient)){
+                            searchpage_foodlist_clone.add(food);
+                            break;
+                        }
                     }
                 }
                 searchpage_foodlist = searchpage_foodlist_clone;
