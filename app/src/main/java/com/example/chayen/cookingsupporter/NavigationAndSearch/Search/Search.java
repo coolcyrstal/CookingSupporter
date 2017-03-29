@@ -12,8 +12,8 @@ import com.example.chayen.cookingsupporter.R;
 
 public class Search extends AppCompatActivity {
 
-    EditText searchpage_foodname_edittext, searchpage_ingredient_edittext;
-    Button searchpage_button;
+    private EditText searchpage_foodname_edittext, searchpage_ingredient_edittext;
+    private Button searchpage_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,6 @@ public class Search extends AppCompatActivity {
                 intentToSearchPage();
             }
         });
-
-
     }
 
     private void intentToSearchPage(){

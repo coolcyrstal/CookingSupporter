@@ -96,7 +96,6 @@
             android:text="@string/search"
             android:textSize="20sp"
             android:nestedScrollingEnabled="false"
-            android:onClick="buttonOnClick"
             android:background="@color/themecolorhunt_1"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff"
