@@ -3,6 +3,7 @@ package com.example.chayen.cookingsupporter.NavigationAndSearch.Search;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import com.example.chayen.cookingsupporter.R;
 public class Search extends AppCompatActivity {
 
     private EditText searchpage_foodname_edittext, searchpage_ingredient_edittext;
-    private Button searchpage_button;
+    public static Button searchpage_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intentToSearchPage();
+                searchpage_button.setVisibility(View.INVISIBLE);
             }
         });
     }

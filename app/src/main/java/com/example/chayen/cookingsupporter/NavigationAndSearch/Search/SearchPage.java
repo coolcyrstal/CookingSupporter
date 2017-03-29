@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import static com.example.chayen.cookingsupporter.MainPage.MainFoodPage.MainHomePageFragment.foodlist;
+import static com.example.chayen.cookingsupporter.NavigationAndSearch.Search.Search.searchpage_button;
 
 
 public class SearchPage extends Fragment {
@@ -60,6 +62,19 @@ public class SearchPage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_search_page, container, false);
+        rootview.setFocusableInTouchMode(true);
+        rootview.requestFocus();
+        rootview.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().popBackStack();
+                    searchpage_button.setVisibility(View.VISIBLE);
+                    return true;
+                }
+                return false;
+            }
+        });
         initialize(rootview);
         return rootview;
     }
