@@ -90,4 +90,19 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/main_drawer" />
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<com.rey.material.widget.ProgressView-->
+            <!--android:layout_width="45dp"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:id="@+id/circularprogress1"-->
+            <!--app:pv_autostart="true"-->
+            <!--app:pv_circular="true"-->
+            <!--app:pv_progressStyle="@style/Material.Drawable.CircularProgress"-->
+            <!--app:pv_progressMode="indeterminate" />-->
+    <!--</RelativeLayout>-->
 </android.support.v4.widget.DrawerLayout>

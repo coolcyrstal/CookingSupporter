@@ -161,6 +161,7 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
     private void handleSignInResult(GoogleSignInResult result) {
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
+            showProgressDialog();
             GoogleSignInAccount acct = result.getSignInAccount();
             firebaseAuthWithGoogle(acct);
         } else {
@@ -189,7 +190,6 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void intentToHomePage(){
-        showProgressDialog();
         Intent intent = new Intent(LoginRegister.this, HomePage.class);
         startActivity(intent);
         hideProgressDialog();
@@ -232,11 +232,10 @@ public class LoginRegister extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage(getString(R.string.loading));
-            mProgressDialog.setIndeterminate(true);
-        }
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage(getString(R.string.loading));
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        mProgressDialog.setIndeterminate(true);
         mProgressDialog.show();
     }
 

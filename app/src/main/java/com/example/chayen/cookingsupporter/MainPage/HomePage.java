@@ -2,6 +2,7 @@ package com.example.chayen.cookingsupporter.MainPage;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -113,6 +113,12 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         user_profile_name = (TextView)view.findViewById(R.id.user_profile_displayname);
         user_profile_email = (TextView)view.findViewById(R.id.user_profile_email);
         user_profile_image = (ImageView)view.findViewById(R.id.user_profile_image);
+//        ProgressDialog progress = new ProgressDialog(this);
+//        progress.setMessage("Please wait...");
+//        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//        progress.setIndeterminate(true);
+//        progress.setProgress(0);
+//        progress.show();
     }
 
     private void setFirebaseUserProfile(){

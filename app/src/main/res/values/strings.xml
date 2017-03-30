@@ -13,7 +13,7 @@
     <string name="addFood">Add Food</string>
 
     <string name="mainFragment">Food List</string>
-    <string name="loading">Loading</string>
+    <string name="loading">Loading...</string>
     <string name="congratulations_n_your_account_was_created">Congratulations !   Your account was created.</string>
     <string name="let_s_start">LET\'S START</string>
     <string name="register_success_image">register success image</string>
