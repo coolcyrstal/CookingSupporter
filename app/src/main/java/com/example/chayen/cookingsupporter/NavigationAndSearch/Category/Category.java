@@ -12,19 +12,21 @@ import com.squareup.picasso.Picasso;
 
 public class Category extends AppCompatActivity {
 
-    private ImageView Steaming, Grilling, Roasting, Boiling,
+    private ImageView Main_dish, Seafood, Steaming, Grilling, Roasting, Boiling,
             Stewing, Frying_food, Deep_Frying_food, Other;
-    private CardView steaming_card, grilling_card, roasting_card, boiling_card,
-            stewing_card, frying_card, deep_frying_card, other_card;
+    private CardView main_dish_card, seafood_card, steaming_card, grilling_card, roasting_card,
+            boiling_card, stewing_card, frying_card, deep_frying_card, other_card;
 
     int[] category_image_array = {
+            R.drawable.rsz_main_dish,
+            R.drawable.rsz_seafood,
             R.drawable.rsz_steaming_category,
-            R.drawable.grilling_category,
-            R.drawable.rsz_roasting_category,
+            R.drawable.rsz_grilling_category,
+            R.drawable.rsz_rsz_roasting_category,
             R.drawable.boiling_category,
-            R.drawable.stewing_category,
+            R.drawable.rsz_stewing_category,
             R.drawable.frying_category,
-            R.drawable.deep_frying_category,
+            R.drawable.rsz_deep_frying_category,
             R.drawable.rsz_other_category
     };
 
@@ -39,6 +41,8 @@ public class Category extends AppCompatActivity {
     }
 
     private void initialize(){
+        Main_dish = (ImageView)findViewById(R.id.main_dish_image);
+        Seafood = (ImageView)findViewById(R.id.seafood_image);
         Steaming = (ImageView)findViewById(R.id.steaming_image);
         Grilling = (ImageView)findViewById(R.id.grilling_image);
         Roasting = (ImageView)findViewById(R.id.roasting_image);
@@ -48,9 +52,11 @@ public class Category extends AppCompatActivity {
         Deep_Frying_food = (ImageView)findViewById(R.id.deep_frying_image);
         Other = (ImageView)findViewById(R.id.other_image);
 
-        category_imageview = new ImageView[8];
+        category_imageview = new ImageView[10];
         setCategory_imageview();
 
+        main_dish_card = (CardView)findViewById(R.id.main_dish_card);
+        seafood_card = (CardView)findViewById(R.id.seafood_card);
         steaming_card = (CardView)findViewById(R.id.steaming_card);
         grilling_card = (CardView)findViewById(R.id.grilling_card);
         roasting_card = (CardView)findViewById(R.id.roasting_card);
@@ -65,14 +71,16 @@ public class Category extends AppCompatActivity {
     }
 
     private void setCategory_imageview(){
-        category_imageview[0] = Steaming;
-        category_imageview[1] = Grilling;
-        category_imageview[2] = Roasting;
-        category_imageview[3] = Boiling;
-        category_imageview[4] = Stewing;
-        category_imageview[5] = Frying_food;
-        category_imageview[6] = Deep_Frying_food;
-        category_imageview[7] = Other;
+        category_imageview[0] = Main_dish;
+        category_imageview[1] = Seafood;
+        category_imageview[2] = Steaming;
+        category_imageview[3] = Grilling;
+        category_imageview[4] = Roasting;
+        category_imageview[5] = Boiling;
+        category_imageview[6] = Stewing;
+        category_imageview[7] = Frying_food;
+        category_imageview[8] = Deep_Frying_food;
+        category_imageview[9] = Other;
     }
 
     private void loadResourceImage(){
@@ -82,6 +90,20 @@ public class Category extends AppCompatActivity {
     }
 
     private void categoryCardOnClick(){
+        main_dish_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentToEachCategoryPage("Main Dish");
+            }
+        });
+
+        seafood_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentToEachCategoryPage("Seafood");
+            }
+        });
+
         steaming_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

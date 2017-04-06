@@ -64,6 +64,7 @@ public class CategoryPage extends AppCompatActivity {
                     ArrayList<String> cooking_method = (ArrayList<String>) messageSnapshot.child("cooking_method").getValue();
                     ArrayList<String> ingredient = (ArrayList<String>) messageSnapshot.child("ingredient").getValue();
                     Long star_count = (Long) messageSnapshot.child("star_count").getValue();
+                    Long user_count = (Long) messageSnapshot.child("user_count").getValue();
                     food = new FoodDatabaseClass();
                     food.setAuthor(author);
                     food.setCooking_method(cooking_method);
@@ -72,6 +73,7 @@ public class CategoryPage extends AppCompatActivity {
                     food.setFood_type(food_type);
                     food.setIngredient(ingredient);
                     food.setStar_count(star_count);
+                    food.setUser_count(user_count);
                     category_foodlist.add(food);
 //                    Log.d("testcategoryfoodlist", "" + food.getFood_name());
                 }

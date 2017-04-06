@@ -19,6 +19,7 @@ public class FoodDatabaseClass implements Serializable{
     private String food_type;
     private ArrayList<String> ingredient;
     private Long star_count;
+    private Long user_count;
 
     public FoodDatabaseClass(){
 
@@ -89,6 +90,14 @@ public class FoodDatabaseClass implements Serializable{
 
     public void setStar_count(Long star_count){
         this.star_count = star_count;
+    }
+
+    public Long getUser_count() {
+        return user_count;
+    }
+
+    public void setUser_count(Long user_count) {
+        this.user_count = user_count;
     }
 
 //    @Exclude
