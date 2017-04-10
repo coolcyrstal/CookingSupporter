@@ -53,17 +53,21 @@
     <string name="cooking_supporter_logo">cooking supporter logo</string>
 
     <string-array name="foodType">
-        <item>นึ่ง / Steaming</item>
-        <item>ปิ้ง / Grilling</item>
-        <item>ย่าง / Roasting</item>
-        <item>ต้ม / Boiling</item>
-        <item>ตุ๋น / Stewing</item>
-        <item>ผัด / Frying</item>
-        <item>ทอด / Deep-Frying</item>
-        <item>อื่นๆ / Other</item>
+        <item>อาหารจานเดียว</item>
+        <item>ซีฟู๊ด</item>
+        <item>นึ่ง</item>
+        <item>ปิ้ง</item>
+        <item>ย่าง</item>
+        <item>ต้ม</item>
+        <item>ตุ๋น</item>
+        <item>ผัด</item>
+        <item>ทอด</item>
+        <item>อื่นๆ</item>
     </string-array>
 
     <string-array name="foodType_Firebase">
+        <item>Main Dish</item>
+        <item>Seafood</item>
         <item>Steaming</item>
         <item>Grilling</item>
         <item>Roasting</item>
