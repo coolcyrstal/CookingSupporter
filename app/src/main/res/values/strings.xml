@@ -56,10 +56,8 @@
         <item>อาหารจานเดียว</item>
         <item>ซีฟู๊ด</item>
         <item>นึ่ง</item>
-        <item>ปิ้ง</item>
-        <item>ย่าง</item>
+        <item>ปิ้ง ย่าง</item>
         <item>ต้ม</item>
-        <item>ตุ๋น</item>
         <item>ผัด</item>
         <item>ทอด</item>
         <item>อื่นๆ</item>
@@ -70,9 +68,7 @@
         <item>Seafood</item>
         <item>Steaming</item>
         <item>Grilling</item>
-        <item>Roasting</item>
         <item>Boiling</item>
-        <item>Stewing</item>
         <item>Frying_food</item>
         <item>Deep_Frying_food</item>
         <item>Other</item>
