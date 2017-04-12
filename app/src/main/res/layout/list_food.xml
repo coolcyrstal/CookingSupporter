@@ -33,7 +33,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
             <TextView
                 android:id="@+id/food_list_text_type"
                 android:layout_width="wrap_content"
@@ -56,6 +57,16 @@
                 android:textColor="#888"
                 tools:ignore="RtlHardcoded" />
 
+            <ImageView
+                android:id="@+id/food_list_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/list_food_image_description"
+                android:src="@drawable/rsz_star_2_5"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
