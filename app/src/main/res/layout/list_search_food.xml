@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -34,15 +35,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <me.grantland.widget.AutofitTextView
                     android:id="@+id/searchfood_list_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="1"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/sample_food"
                     android:textColor="#000000"
                     android:textSize="20sp"
+                    autofit:minTextSize="10sp"
                     tools:ignore="RtlHardcoded" />
 
                 <LinearLayout
@@ -71,6 +74,16 @@
                         android:textColor="#888"
                         tools:ignore="RtlHardcoded" />
 
+                    <ImageView
+                        android:id="@+id/searchfood_list_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/list_food_image_description"
+                        android:src="@drawable/rsz_star_2_5"
+                        tools:ignore="RtlHardcoded" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
