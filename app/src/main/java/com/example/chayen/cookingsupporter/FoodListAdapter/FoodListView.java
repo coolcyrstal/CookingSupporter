@@ -29,7 +29,7 @@ import java.net.URL;
 public class FoodListView extends BaseCustomViewGroup {
 
     private TextView food_name, food_type;
-    private ImageView food_image;
+    private ImageView food_image, food_rank;
 
     public FoodListView(Context context) {
         super(context);
@@ -65,6 +65,7 @@ public class FoodListView extends BaseCustomViewGroup {
         food_name = (TextView) findViewById(R.id.food_list_name);
         food_type = (TextView) findViewById(R.id.food_list_type);
         food_image = (ImageView) findViewById(R.id.food_list_image);
+        food_rank = (ImageView) findViewById(R.id.food_list_rank);
     }
 
     @Override
@@ -109,5 +110,9 @@ public class FoodListView extends BaseCustomViewGroup {
 //            e.printStackTrace();
 //        }
 //        food_image.setImageURI(Uri.parse(text));
+    }
+
+    public void setFood_rank(int imageid) {
+        Picasso.with(getContext()).load(imageid).into(food_rank);
     }
 }

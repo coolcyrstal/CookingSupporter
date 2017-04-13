@@ -34,6 +34,7 @@ public class MainHomePageFragment extends Fragment {
     private MainHomePageAdapter mainHomePageAdapter;
     String[] food_name, food_type, food_image;
     public static ArrayList<FoodDatabaseClass> foodlist;
+    private ArrayList<Long> food_usercount, food_star_count;
     FoodDatabaseClass food;
 
     public MainHomePageFragment() {
@@ -105,10 +106,14 @@ public class MainHomePageFragment extends Fragment {
                 food_name = new String[foodlist.size()];
                 food_type = new String[foodlist.size()];
                 food_image = new String[foodlist.size()];
+                food_usercount = new ArrayList<Long>(foodlist.size());
+                food_star_count = new ArrayList<Long>(foodlist.size());
                 for(int i = 0; i < foodlist.size(); i++){
                     food_name[i] = foodlist.get(i).getFood_name();
                     food_type[i] = foodlist.get(i).getFood_type();
                     food_image[i] = foodlist.get(i).getFood_image();
+                    food_usercount.add(foodlist.get(i).getUser_count());
+                    food_star_count.add(foodlist.get(i).getStar_count());
 //                    Log.d("foodlist", "" + food_name[i]);
                 }
 
@@ -127,6 +132,8 @@ public class MainHomePageFragment extends Fragment {
         foodlist_adapter.setFood_name(food_name);
         foodlist_adapter.setFood_type(food_type);
         foodlist_adapter.setFood_image(food_image);
+        foodlist_adapter.setFood_usercount(food_usercount);
+        foodlist_adapter.setFood_star_count(food_star_count);
         listView.setAdapter(foodlist_adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

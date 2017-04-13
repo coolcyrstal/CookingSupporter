@@ -43,8 +43,10 @@ public class HistoryListFragment extends Fragment {
 
     private ListView history_listview;
     ArrayList<String> history_foodlistname,history_foodlisttype, history_foodlistimage;
+    private ArrayList<Long> history_foodlist_usercount, history_foodlist_star_count;
     private HistoryListAdapter historyListAdapter;
     public static FoodDatabaseClass history_foodpage_food;
+
 
 
 //    private FragmentActivity fragmentActivity;
@@ -172,10 +174,14 @@ public class HistoryListFragment extends Fragment {
                 history_foodlistname = new ArrayList<String>(history_foodlist.size());
                 history_foodlisttype = new ArrayList<String>(history_foodlist.size());
                 history_foodlistimage = new ArrayList<String>(history_foodlist.size());
+                history_foodlist_usercount = new ArrayList<Long>(history_foodlist.size());
+                history_foodlist_star_count = new ArrayList<Long>(history_foodlist.size());
                 for(int i = 0; i < history_foodlist.size(); i++){
                     history_foodlistname.add(history_foodlist.get(i).getFood_name());
                     history_foodlisttype.add(history_foodlist.get(i).getFood_type());
                     history_foodlistimage.add(history_foodlist.get(i).getFood_image());
+                    history_foodlist_usercount.add(history_foodlist.get(i).getUser_count());
+                    history_foodlist_star_count.add(history_foodlist.get(i).getStar_count());
                 }
                 setHistoryAdapter();
             }
@@ -212,6 +218,8 @@ public class HistoryListFragment extends Fragment {
         historyListAdapter.setHistoryfood_name(history_foodlistname);
         historyListAdapter.setHistoryfood_type(history_foodlisttype);
         historyListAdapter.setHistoryfood_image(history_foodlistimage);
+        historyListAdapter.setHistoryfood_usercount(history_foodlist_usercount);
+        historyListAdapter.setHistoryfood_star_count(history_foodlist_star_count);
         history_listview.setAdapter(historyListAdapter);
         history_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

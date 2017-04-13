@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 public class HistoryListView extends BaseCustomViewGroup{
 
     TextView historyfood_name, historyfood_type;
-    ImageView historyfood_image;
+    ImageView historyfood_image, historyfood_rank;
 
 
     public HistoryListView(Context context) {
@@ -36,6 +36,7 @@ public class HistoryListView extends BaseCustomViewGroup{
         historyfood_name = (TextView) findViewById(R.id.food_list_name);
         historyfood_type = (TextView) findViewById(R.id.food_list_type);
         historyfood_image = (ImageView) findViewById(R.id.food_list_image);
+        historyfood_rank = (ImageView) findViewById(R.id.food_list_rank);
     }
 
     @Override
@@ -69,5 +70,9 @@ public class HistoryListView extends BaseCustomViewGroup{
 
     public void setHistoryfood_image(String text){
         Picasso.with(getContext()).load(text).into(historyfood_image);
+    }
+
+    public void setHistoryfood_rank(int imageid){
+        Picasso.with(getContext()).load(imageid).into(historyfood_rank);
     }
 }

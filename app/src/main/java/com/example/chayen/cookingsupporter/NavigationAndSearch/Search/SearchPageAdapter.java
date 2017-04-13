@@ -28,6 +28,19 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Se
     private Context context;
     private ArrayList<FoodDatabaseClass> searchfood_list;
     private FoodDatabaseClass food;
+    private int[] image_star_rank = {
+            R.drawable.rsz_star_0,
+            R.drawable.rsz_star_0_5,
+            R.drawable.rsz_star_1,
+            R.drawable.rsz_star_1_5,
+            R.drawable.rsz_star_2,
+            R.drawable.rsz_star_2_5,
+            R.drawable.rsz_star_3,
+            R.drawable.rsz_star_3_5,
+            R.drawable.rsz_star_4,
+            R.drawable.rsz_star_4_5,
+            R.drawable.rsz_star_5
+    };
 
     @Override
     public SearchPageAdapter.SearchPageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -42,6 +55,7 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Se
         Picasso.with(context).load(searchfood_list.get(position).getFood_image()).into(holder.searchpage_foodimage);
         holder.searchpage_foodname.setText(searchfood_list.get(position).getFood_name());
         holder.searchpage_foodtype.setText(searchfood_list.get(position).getFood_type());
+        Picasso.with(context).load(foodrank(position)).into(holder.searchpage_foodrank);
         holder.searchpage_foodcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +72,39 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Se
         });
     }
 
+    private int foodrank(int position){
+        Double user_count, star_count, star_value;
+        user_count = searchfood_list.get(position).getUser_count().doubleValue() + position;
+        star_count = searchfood_list.get(position).getStar_count().doubleValue() + 2;
+        if(user_count == 0 || star_count == 0){
+            return image_star_rank[0];
+        }
+        else{
+            star_value = user_count/star_count;
+            if(star_value <= 0.5){
+                return image_star_rank[1];
+            } else if(star_value > 0.5 && star_value <= 1){
+                return image_star_rank[2];
+            } else if(star_value > 1 && star_value <= 1.5){
+                return image_star_rank[3];
+            } else if(star_value > 1.5 && star_value <= 2){
+                return image_star_rank[4];
+            } else if(star_value > 2 && star_value <= 2.5){
+                return image_star_rank[5];
+            } else if(star_value > 2.5 && star_value <= 3){
+                return image_star_rank[6];
+            } else if(star_value > 3 && star_value <= 3.5){
+                return image_star_rank[7];
+            } else if(star_value > 3.5 && star_value <= 4){
+                return image_star_rank[8];
+            } else if(star_value > 4 && star_value <= 4.5){
+                return image_star_rank[9];
+            } else {
+                return image_star_rank[10];
+            }
+        }
+    }
+
     @Override
     public int getItemCount() {
         return searchfood_list.size();
@@ -72,6 +119,7 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Se
         private CardView searchpage_foodcard;
         private TextView searchpage_foodname, searchpage_foodtype;
         private ImageView searchpage_foodimage;
+        private ImageView searchpage_foodrank;
 
         public SearchPageViewHolder(View itemView) {
             super(itemView);
@@ -79,6 +127,7 @@ public class SearchPageAdapter extends RecyclerView.Adapter<SearchPageAdapter.Se
             searchpage_foodimage = (ImageView)itemView.findViewById(R.id.searchfood_list_image);
             searchpage_foodname = (TextView)itemView.findViewById(R.id.searchfood_list_name);
             searchpage_foodtype = (TextView)itemView.findViewById(R.id.searchfood_list_type);
+            searchpage_foodrank = (ImageView)itemView.findViewById(R.id.searchfood_list_rank);
         }
     }
 }
