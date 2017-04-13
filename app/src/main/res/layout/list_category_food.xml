@@ -35,7 +35,7 @@
                 android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/list_food_image_description"
-                android:src="@drawable/rsz_star_2_5"
+                android:src="@drawable/rsz_star_2"
                 tools:ignore="RtlHardcoded" />
 
             <me.grantland.widget.AutofitTextView
