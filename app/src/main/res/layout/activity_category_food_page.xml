@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/themecolorhunt_2"
+    xmlns:autofit="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.chayen.cookingsupporter.NavigationAndSearch.Category.CategoryFoodPage.CategoryFoodPage">
 
     <LinearLayout
@@ -18,14 +19,14 @@
         <ImageView
             android:id="@+id/category_cooking_recipe_foodimage"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="top|center"
             android:src="@drawable/test_list_food"
             android:contentDescription="@string/category_food_image_description" />
 
-        <TextView
+        <me.grantland.widget.AutofitTextView
             android:id="@+id/category_cooking_recipe_foodname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,32 +34,71 @@
             android:layout_marginTop="10dp"
             android:text="@string/sample_food"
             android:textColor="#000000"
-            android:textSize="25sp" />
+            android:maxLines="1"
+            android:textSize="25sp"
+            autofit:minTextSize="10sp"/>
 
         <LinearLayout
             android:id="@+id/layoutcategorycookingFoodType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
             <TextView
                 android:id="@+id/textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/food_type"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/category_cooking_recipe_foodtype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
                 android:text="@string/type"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 tools:ignore="RtlHardcoded" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="40sp"
+                android:layout_marginLeft="10sp">
+
+                <Button
+                    android:id="@+id/category_star_button_1"
+                    android:layout_width="40sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_button"/>
+
+                <Button
+                    android:id="@+id/category_star_button_2"
+                    android:layout_width="40sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_button"/>
+
+                <Button
+                    android:id="@+id/category_star_button_3"
+                    android:layout_width="40sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_button"/>
+
+                <Button
+                    android:id="@+id/category_star_button_4"
+                    android:layout_width="40sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_button"/>
+
+                <Button
+                    android:id="@+id/category_star_button_5"
+                    android:layout_width="40sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/star_button"/>
+            </LinearLayout>
         </LinearLayout>
 
         <android.support.design.widget.TabLayout
