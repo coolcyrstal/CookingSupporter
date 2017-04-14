@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,8 @@ public class CookingRecipe extends AppCompatActivity {
     public static FoodDatabaseClass main_foodrecipe;
     private TextView cooking_recipe_name, cooking_recipe_type;
     private ImageView cooking_recipe_image;
+    private Button mainpage_foodpage_starbutton_1, mainpage_foodpage_starbutton_2,
+            mainpage_foodpage_starbutton_3, mainpage_foodpage_starbutton_4, mainpage_foodpage_starbutton_5;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -43,14 +47,78 @@ public class CookingRecipe extends AppCompatActivity {
         cooking_recipe_image = (ImageView) findViewById(R.id.cooking_recipe_foodimage);
         cooking_recipe_name = (TextView)findViewById(R.id.cooking_recipe_foodname);
         cooking_recipe_type = (TextView)findViewById(R.id.cooking_recipe_foodtype);
+        mainpage_foodpage_starbutton_1 = (Button)findViewById(R.id.mainpage_star_button_1);
+        mainpage_foodpage_starbutton_2 = (Button)findViewById(R.id.mainpage_star_button_2);
+        mainpage_foodpage_starbutton_3 = (Button)findViewById(R.id.mainpage_star_button_3);
+        mainpage_foodpage_starbutton_4 = (Button)findViewById(R.id.mainpage_star_button_4);
+        mainpage_foodpage_starbutton_5 = (Button)findViewById(R.id.mainpage_star_button_5);
         viewPager = (ViewPager)findViewById(R.id.viewPager_foodpage);
         tabLayout = (TabLayout)findViewById(R.id.tabLayout_foodpage);
+
+        mainpage_starbuttonOnclick();
     }
 
     private void renderRecipe(){
         Picasso.with(getApplicationContext()).load(foodlist.get(cooking_position).getFood_image()).into(cooking_recipe_image);
         cooking_recipe_name.setText(foodlist.get(cooking_position).getFood_name());
         cooking_recipe_type.setText(foodlist.get(cooking_position).getFood_type());
+    }
+
+    private void mainpage_starbuttonOnclick(){
+        mainpage_foodpage_starbutton_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainpage_foodpage_starbutton_1.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_2.setBackgroundResource(R.drawable.star_button);
+                mainpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
+                mainpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
+                mainpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+            }
+        });
+
+        mainpage_foodpage_starbutton_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainpage_foodpage_starbutton_1.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_2.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
+                mainpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
+                mainpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+            }
+        });
+
+        mainpage_foodpage_starbutton_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainpage_foodpage_starbutton_1.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_2.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
+                mainpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+            }
+        });
+
+        mainpage_foodpage_starbutton_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainpage_foodpage_starbutton_1.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_2.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+            }
+        });
+
+        mainpage_foodpage_starbutton_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainpage_foodpage_starbutton_1.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_2.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
+                mainpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button_fill);
+            }
+        });
     }
 
     private void setViewPager() {
