@@ -51,6 +51,7 @@
     <string name="forgot_password">Forgot password</string>
     <string name="login">LOGIN</string>
     <string name="cooking_supporter_logo">cooking supporter logo</string>
+    <string name="rate_this_menu">Rate this menu</string>
 
     <string-array name="foodType">
         <item>อาหารจานเดียว</item>

@@ -31,7 +31,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/sample_food"
             android:textColor="#000000"
-            android:textSize="25sp" />
+            android:textSize="22sp" />
 
         <LinearLayout
             android:id="@+id/layoutsearchpagecookingFoodType"
@@ -58,42 +58,52 @@
                 android:textColor="#000000"
                 android:textSize="17sp"
                 tools:ignore="RtlHardcoded" />
+        </LinearLayout>
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40sp">
+
+            <TextView
+                android:id="@+id/textview2"
                 android:layout_width="wrap_content"
-                android:layout_height="40sp"
-                android:layout_marginLeft="10sp">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/rate_this_menu"
+                android:layout_marginRight="10sp"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                tools:ignore="RtlHardcoded" />
 
-                <Button
-                    android:id="@+id/search_star_button_1"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star_button"/>
+            <Button
+                android:id="@+id/search_star_button_1"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/star_button"/>
 
-                <Button
-                    android:id="@+id/search_star_button_2"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star_button"/>
+            <Button
+                android:id="@+id/search_star_button_2"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/star_button"/>
 
-                <Button
-                    android:id="@+id/search_star_button_3"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star_button"/>
+            <Button
+                android:id="@+id/search_star_button_3"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/star_button"/>
 
-                <Button
-                    android:id="@+id/search_star_button_4"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star_button"/>
+            <Button
+                android:id="@+id/search_star_button_4"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/star_button"/>
 
-                <Button
-                    android:id="@+id/search_star_button_5"
-                    android:layout_width="40sp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/star_button"/>
-            </LinearLayout>
+            <Button
+                android:id="@+id/search_star_button_5"
+                android:layout_width="40sp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/star_button"/>
         </LinearLayout>
 
         <android.support.design.widget.TabLayout

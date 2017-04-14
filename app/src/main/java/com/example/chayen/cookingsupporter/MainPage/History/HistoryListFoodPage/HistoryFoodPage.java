@@ -51,9 +51,11 @@ public class HistoryFoodPage extends AppCompatActivity {
         Picasso.with(getApplicationContext()).load(history_foodpage_food.getFood_image()).into(history_foodpage_image);
         history_foodpage_name.setText(history_foodpage_food.getFood_name());
         history_foodpage_type.setText(history_foodpage_food.getFood_type());
+
+        history_starbuttonOnclick();
     }
 
-    private void category_starbuttonOnclick(){
+    private void history_starbuttonOnclick(){
         history_foodpage_starbutton_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
