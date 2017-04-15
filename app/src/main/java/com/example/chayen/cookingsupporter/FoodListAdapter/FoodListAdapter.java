@@ -76,13 +76,13 @@ public class FoodListAdapter extends BaseAdapter{
 
     private int foodrank(int position){
         Double user_count, star_count, star_value;
-        user_count = food_usercount.get(position).doubleValue() + position;
-        star_count = food_star_count.get(position).doubleValue() + 2;
+        user_count = food_usercount.get(position).doubleValue();
+        star_count = food_star_count.get(position).doubleValue();
         if(user_count == 0 || star_count == 0){
             return image_star_rank[0];
         }
         else{
-            star_value = user_count/star_count;
+            star_value = star_count/user_count;
             if(star_value <= 0.5){
                 return image_star_rank[1];
             } else if(star_value > 0.5 && star_value <= 1){

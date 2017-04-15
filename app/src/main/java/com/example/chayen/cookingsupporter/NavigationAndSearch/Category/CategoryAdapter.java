@@ -62,7 +62,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             return image_star_rank[0];
         }
         else{
-            star_value = user_count/star_count;
+            star_value = star_count/user_count;
             if(star_value <= 0.5){
                 return image_star_rank[1];
             } else if(star_value > 0.5 && star_value <= 1){
