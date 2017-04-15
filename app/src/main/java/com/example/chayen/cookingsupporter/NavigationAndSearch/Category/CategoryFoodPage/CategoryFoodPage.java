@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,12 @@ import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class CategoryFoodPage extends AppCompatActivity {
@@ -24,6 +31,8 @@ public class CategoryFoodPage extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
+
+    private int user_count, star_count = 0;
 
     public static FoodDatabaseClass category_food;
 
@@ -52,6 +61,7 @@ public class CategoryFoodPage extends AppCompatActivity {
         category_foodpage_name.setText(category_food.getFood_name());
         category_foodpage_type.setText(category_food.getFood_type());
 
+        user_count = category_food.getUser_count().intValue();
         category_starbuttonOnclick();
     }
 
@@ -64,6 +74,7 @@ public class CategoryFoodPage extends AppCompatActivity {
                 category_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
                 category_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 category_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 1;
             }
         });
 
@@ -75,6 +86,7 @@ public class CategoryFoodPage extends AppCompatActivity {
                 category_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
                 category_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 category_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 2;
             }
         });
 
@@ -86,6 +98,7 @@ public class CategoryFoodPage extends AppCompatActivity {
                 category_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 category_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 category_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 3;
             }
         });
 
@@ -97,6 +110,7 @@ public class CategoryFoodPage extends AppCompatActivity {
                 category_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 category_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
                 category_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 4;
             }
         });
 
@@ -108,6 +122,7 @@ public class CategoryFoodPage extends AppCompatActivity {
                 category_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 category_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
                 category_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button_fill);
+                star_count = 5;
             }
         });
     }
@@ -145,5 +160,35 @@ public class CategoryFoodPage extends AppCompatActivity {
             }
         });
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(star_count != 0){
+            user_count++;
+            star_count += category_food.getStar_count();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference().child("food");
+            Query query1 = myRef.orderByChild("food_name").equalTo(category_food.getFood_name());
+            query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        if(snapshot.child("food_image").getValue().toString().equals(category_food.getFood_image())){
+                            snapshot.getRef().child("star_count").setValue(star_count);
+                            snapshot.getRef().child("user_count").setValue(user_count);
+//                        Log.d("test send starvalue", "" + star_count + ":" + user_count);
+                        }
+//                    Log.d("test send starvalue", "" + snapshot.child("food_image").getValue().equals(foodlist.get(cooking_position).getFood_image()) + ":" + snapshot.child("food_name").getValue());
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("test send starvalue", "" + databaseError.getMessage());
+                }
+            });
+        }
+        CategoryFoodPage.super.onBackPressed();
     }
 }

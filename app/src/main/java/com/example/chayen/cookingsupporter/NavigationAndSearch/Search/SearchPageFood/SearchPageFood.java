@@ -6,6 +6,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,12 @@ import android.widget.TextView;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
@@ -28,6 +36,8 @@ public class SearchPageFood extends Fragment {
     private TextView searchpagefood_name, searchpagefood_type;
     private Button searchpage_foodpage_starbutton_1, searchpage_foodpage_starbutton_2,
             searchpage_foodpage_starbutton_3, searchpage_foodpage_starbutton_4, searchpage_foodpage_starbutton_5;
+
+    private int user_count, star_count = 0;
 
     public SearchPageFood() {
         // Required empty public constructor
@@ -56,6 +66,19 @@ public class SearchPageFood extends Fragment {
 
         initialize(rootview);
         setViewPager();
+        rootview.setFocusableInTouchMode(true);
+        rootview.requestFocus();
+        rootview.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_BACK){
+                    getActivity().getSupportFragmentManager().popBackStack();
+                    onSearchPageFoodBackPressed();
+                    return true;
+                }
+                return false;
+            }
+        });
         return rootview;
     }
 
@@ -75,6 +98,7 @@ public class SearchPageFood extends Fragment {
         searchpagefood_name.setText(searchpagefood.getFood_name());
         searchpagefood_type.setText(searchpagefood.getFood_type());
 
+        user_count = searchpagefood.getUser_count().intValue();
         search_starbuttonOnclick();
     }
 
@@ -87,6 +111,7 @@ public class SearchPageFood extends Fragment {
                 searchpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
                 searchpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 searchpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 1;
             }
         });
 
@@ -98,6 +123,7 @@ public class SearchPageFood extends Fragment {
                 searchpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
                 searchpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 searchpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 2;
             }
         });
 
@@ -109,6 +135,7 @@ public class SearchPageFood extends Fragment {
                 searchpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 searchpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 searchpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 3;
             }
         });
 
@@ -120,6 +147,7 @@ public class SearchPageFood extends Fragment {
                 searchpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 searchpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
                 searchpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 4;
             }
         });
 
@@ -131,6 +159,7 @@ public class SearchPageFood extends Fragment {
                 searchpage_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 searchpage_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
                 searchpage_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button_fill);
+                star_count = 5;
             }
         });
     }
@@ -173,5 +202,33 @@ public class SearchPageFood extends Fragment {
     public interface OnFragmentInteractionListener {
 
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void onSearchPageFoodBackPressed(){
+        if(star_count != 0){
+            user_count++;
+            star_count += searchpagefood.getStar_count();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference().child("food");
+            Query query1 = myRef.orderByChild("food_name").equalTo(searchpagefood.getFood_name());
+            query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        if(snapshot.child("food_image").getValue().toString().equals(searchpagefood.getFood_image())){
+                            snapshot.getRef().child("star_count").setValue(star_count);
+                            snapshot.getRef().child("user_count").setValue(user_count);
+//                        Log.d("test send starvalue", "" + star_count + ":" + user_count);
+                        }
+//                    Log.d("test send starvalue", "" + snapshot.child("food_image").getValue().equals(foodlist.get(cooking_position).getFood_image()) + ":" + snapshot.child("food_name").getValue());
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("test send starvalue", "" + databaseError.getMessage());
+                }
+            });
+        }
     }
 }

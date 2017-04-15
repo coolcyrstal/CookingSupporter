@@ -34,7 +34,7 @@ public class CookingRecipe extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private int user_count, star_count;
+    private int user_count, star_count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,30 +172,31 @@ public class CookingRecipe extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        user_count++;
-        star_count += foodlist.get(cooking_position).getStar_count();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference().child("food");
-        Query query1 = myRef.orderByChild("food_name").equalTo(foodlist.get(cooking_position).getFood_name());
-//        Query query2 = query1.orderByChild("food_image").equalTo(foodlist.get(cooking_position).getFood_image());
-        query1.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    if(snapshot.child("food_image").getValue().toString().equals(foodlist.get(cooking_position).getFood_image())){
-                        snapshot.getRef().child("star_count").setValue(star_count);
-                        snapshot.getRef().child("user_count").setValue(user_count);
+        if(star_count != 0){
+            user_count++;
+            star_count += foodlist.get(cooking_position).getStar_count();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference().child("food");
+            Query query1 = myRef.orderByChild("food_name").equalTo(foodlist.get(cooking_position).getFood_name());
+            query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        if(snapshot.child("food_image").getValue().toString().equals(foodlist.get(cooking_position).getFood_image())){
+                            snapshot.getRef().child("star_count").setValue(star_count);
+                            snapshot.getRef().child("user_count").setValue(user_count);
 //                        Log.d("test send starvalue", "" + star_count + ":" + user_count);
-                    }
+                        }
 //                    Log.d("test send starvalue", "" + snapshot.child("food_image").getValue().equals(foodlist.get(cooking_position).getFood_image()) + ":" + snapshot.child("food_name").getValue());
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.d("test send starvalue", "" + databaseError.getMessage());
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("test send starvalue", "" + databaseError.getMessage());
+                }
+            });
+        }
         CookingRecipe.super.onBackPressed();
     }
 }

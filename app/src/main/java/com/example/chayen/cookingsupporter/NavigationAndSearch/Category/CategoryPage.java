@@ -49,7 +49,7 @@ public class CategoryPage extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
     }
 
-    private void getData(String category){
+    private void getData(final String category){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference().child("food");
         Query queryCategory = myRef.orderByChild("food_type").equalTo(category);

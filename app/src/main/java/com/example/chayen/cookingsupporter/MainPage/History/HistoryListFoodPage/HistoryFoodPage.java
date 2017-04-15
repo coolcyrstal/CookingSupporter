@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,12 @@ import android.widget.TextView;
 
 
 import com.example.chayen.cookingsupporter.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import static com.example.chayen.cookingsupporter.MainPage.History.HistoryListFragment.history_foodpage_food;
@@ -27,6 +34,8 @@ public class HistoryFoodPage extends AppCompatActivity {
 
     private ViewPager historyfoodpage_viewPager;
     private TabLayout historyfoodpage_tabLayout;
+
+    private int user_count, star_count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +61,7 @@ public class HistoryFoodPage extends AppCompatActivity {
         history_foodpage_name.setText(history_foodpage_food.getFood_name());
         history_foodpage_type.setText(history_foodpage_food.getFood_type());
 
+        user_count = history_foodpage_food.getUser_count().intValue();
         history_starbuttonOnclick();
     }
 
@@ -64,6 +74,7 @@ public class HistoryFoodPage extends AppCompatActivity {
                 history_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
                 history_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 history_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 1;
             }
         });
 
@@ -75,6 +86,7 @@ public class HistoryFoodPage extends AppCompatActivity {
                 history_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button);
                 history_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 history_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 2;
             }
         });
 
@@ -86,6 +98,7 @@ public class HistoryFoodPage extends AppCompatActivity {
                 history_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 history_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button);
                 history_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 3;
             }
         });
 
@@ -97,6 +110,7 @@ public class HistoryFoodPage extends AppCompatActivity {
                 history_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 history_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
                 history_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button);
+                star_count = 4;
             }
         });
 
@@ -108,6 +122,7 @@ public class HistoryFoodPage extends AppCompatActivity {
                 history_foodpage_starbutton_3.setBackgroundResource(R.drawable.star_button_fill);
                 history_foodpage_starbutton_4.setBackgroundResource(R.drawable.star_button_fill);
                 history_foodpage_starbutton_5.setBackgroundResource(R.drawable.star_button_fill);
+                star_count = 5;
             }
         });
     }
@@ -145,5 +160,35 @@ public class HistoryFoodPage extends AppCompatActivity {
             }
         });
         historyfoodpage_tabLayout.setupWithViewPager(historyfoodpage_viewPager);
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(star_count != 0){
+            user_count++;
+            star_count += history_foodpage_food.getStar_count();
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            final DatabaseReference myRef = database.getReference().child("food");
+            Query query1 = myRef.orderByChild("food_name").equalTo(history_foodpage_food.getFood_name());
+            query1.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        if(snapshot.child("food_image").getValue().toString().equals(history_foodpage_food.getFood_image())){
+                            snapshot.getRef().child("star_count").setValue(star_count);
+                            snapshot.getRef().child("user_count").setValue(user_count);
+//                        Log.d("test send starvalue", "" + star_count + ":" + user_count);
+                        }
+//                    Log.d("test send starvalue", "" + snapshot.child("food_image").getValue().equals(foodlist.get(cooking_position).getFood_image()) + ":" + snapshot.child("food_name").getValue());
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.d("test send starvalue", "" + databaseError.getMessage());
+                }
+            });
+        }
+        HistoryFoodPage.super.onBackPressed();
     }
 }
