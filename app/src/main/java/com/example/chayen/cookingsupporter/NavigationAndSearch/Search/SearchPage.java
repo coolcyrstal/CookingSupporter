@@ -67,7 +67,7 @@ public class SearchPage extends Fragment {
         rootview.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_BACK){
+                if(event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
                     getActivity().getSupportFragmentManager().popBackStack();
                     searchpage_button.setVisibility(View.VISIBLE);
                     return true;

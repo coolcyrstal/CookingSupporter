@@ -43,10 +43,10 @@ public class CategoryPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setHasFixedSize(true);
 
-
-        getData(category);
         myAdapter = new CategoryAdapter(category_foodlist);
-        recyclerView.setAdapter(myAdapter);
+        getData(category);
+
+
     }
 
     private void getData(final String category){
@@ -77,6 +77,7 @@ public class CategoryPage extends AppCompatActivity {
                     category_foodlist.add(food);
 //                    Log.d("testcategoryfoodlist", "" + food.getFood_name());
                 }
+                recyclerView.setAdapter(myAdapter);
             }
 
             @Override
