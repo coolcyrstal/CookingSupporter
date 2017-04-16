@@ -43,6 +43,7 @@ public class CategoryPage extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setHasFixedSize(true);
 
+//        myAdapter = new CategoryAdapter(category_foodlist);
         myAdapter = new CategoryAdapter(category_foodlist);
         getData(category);
 
@@ -56,6 +57,7 @@ public class CategoryPage extends AppCompatActivity {
         queryCategory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                category_foodlist.clear();
                 for(DataSnapshot messageSnapshot: dataSnapshot.getChildren()){
                     String food_image = (String) messageSnapshot.child("food_image").getValue();
                     String food_name = (String) messageSnapshot.child("food_name").getValue();
@@ -77,6 +79,9 @@ public class CategoryPage extends AppCompatActivity {
                     category_foodlist.add(food);
 //                    Log.d("testcategoryfoodlist", "" + food.getFood_name());
                 }
+//                myAdapter = new CategoryAdapter(category_foodlist);
+
+                myAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(myAdapter);
             }
 
