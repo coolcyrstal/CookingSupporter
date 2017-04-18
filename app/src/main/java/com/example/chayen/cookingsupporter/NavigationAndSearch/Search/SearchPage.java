@@ -146,6 +146,17 @@ public class SearchPage extends Fragment {
                 }
                 searchpage_foodlist = searchpage_foodlist_clone_nothave;
             }
+        } else if(!searchtext_foodingredient_nothave.equals("")){
+            for(FoodDatabaseClass food : foodlist){
+                for(String ingredient : food.getIngredient()){
+                    if(ingredient.contains(searchtext_foodingredient_nothave)){
+                        break;
+                    } else{
+                        searchpage_foodlist.add(food);
+                        break;
+                    }
+                }
+            }
         }
         else{
             searchpage_foodlist = foodlist;
