@@ -26,6 +26,7 @@ import com.example.chayen.cookingsupporter.MainPage.History.HistoryListFragment;
 import com.example.chayen.cookingsupporter.MainPage.MainFoodPage.MainHomePageFragment;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.AddFoodMenu;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Category.Category;
+import com.example.chayen.cookingsupporter.NavigationAndSearch.Credit;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Profile;
 import com.example.chayen.cookingsupporter.NavigationAndSearch.Search.Search;
 import com.example.chayen.cookingsupporter.R;
@@ -210,10 +211,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         if (id == R.id.profile) {
             Intent intent = new Intent(HomePage.this, Profile.class);
             startActivity(intent);
-        }else if (id == R.id.category) {
+        } else if (id == R.id.category) {
             Intent intent = new Intent(HomePage.this, Category.class);
             startActivity(intent);
-        }else if (id == R.id.logout) {
+        } else if(id == R.id.credit){
+            Intent intent = new Intent(HomePage.this, Credit.class);
+            startActivity(intent);
+        } else if (id == R.id.logout) {
             logout();
         }
 

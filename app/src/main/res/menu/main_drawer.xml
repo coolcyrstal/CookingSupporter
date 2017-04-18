@@ -18,8 +18,12 @@
 
     <group
         android:id="@+id/menu_center"
-        android:checkableBehavior="none">
+        android:checkableBehavior="single">
 
+        <item
+            android:id="@+id/credit"
+            android:icon="@drawable/ic_book"
+            android:title="@string/credit" />
     </group>
 
     <group

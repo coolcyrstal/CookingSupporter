@@ -35,7 +35,8 @@
         <activity android:name=".FoodListAdapter.CookingRecipe" />
         <activity android:name=".NavigationAndSearch.Category.CategoryPage" />
         <activity android:name=".NavigationAndSearch.Category.CategoryFoodPage.CategoryFoodPage" />
-        <activity android:name=".MainPage.History.HistoryListFoodPage.HistoryFoodPage"></activity>
+        <activity android:name=".MainPage.History.HistoryListFoodPage.HistoryFoodPage" />
+        <activity android:name=".NavigationAndSearch.Credit"></activity>
     </application>
 
 </manifest>
