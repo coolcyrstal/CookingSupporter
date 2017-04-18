@@ -13,7 +13,7 @@ import com.example.chayen.cookingsupporter.R;
 
 public class Search extends AppCompatActivity {
 
-    private EditText searchpage_foodname_edittext, searchpage_ingredient_edittext;
+    private EditText searchpage_foodname_edittext, searchpage_ingredient_edittext, searchpage_ingredient_nothave_edittext;
     public static Button searchpage_button;
 
     @Override
@@ -27,6 +27,7 @@ public class Search extends AppCompatActivity {
     private void initialize(){
         searchpage_foodname_edittext = (EditText)findViewById(R.id.searchpage_foodname);
         searchpage_ingredient_edittext = (EditText)findViewById(R.id.searchpage_foodingredient);
+        searchpage_ingredient_nothave_edittext = (EditText)findViewById(R.id.searchpage_foodingredient_nothave);
         searchpage_button = (Button)findViewById(R.id.searchpage_button);
 
         searchpage_button.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +45,8 @@ public class Search extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.searchactivity_id,
                             SearchPage.newInstance(searchpage_foodname_edittext.getText().toString(),
-                                    searchpage_ingredient_edittext.getText().toString()),
+                                    searchpage_ingredient_edittext.getText().toString(),
+                                    searchpage_ingredient_nothave_edittext.getText().toString()),
                             "Search Success")
                     .addToBackStack(null)
                     .commit();

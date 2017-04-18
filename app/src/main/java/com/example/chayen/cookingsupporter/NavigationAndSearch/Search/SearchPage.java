@@ -36,17 +36,19 @@ public class SearchPage extends Fragment {
     private SearchPageAdapter searchPageAdapter;
     private static String searchtext_foodname;
     private static String searchtext_foodingredient;
+    private static String searchtext_foodingredient_nothave;
 
     public SearchPage() {
         // Required empty public constructor
     }
 
 
-    public static SearchPage newInstance(String text1, String text2) {
+    public static SearchPage newInstance(String text1, String text2, String text3) {
         SearchPage fragment = new SearchPage();
         Bundle args = new Bundle();
         searchtext_foodname = text1;
         searchtext_foodingredient = text2;
+        searchtext_foodingredient_nothave = text3;
         fragment.setArguments(args);
         return fragment;
     }
@@ -107,6 +109,20 @@ public class SearchPage extends Fragment {
                 }
                 searchpage_foodlist = searchpage_foodlist_clone;
             }
+            if(!searchtext_foodingredient_nothave.equals("")){
+                ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
+                for(FoodDatabaseClass food : searchpage_foodlist){
+                    for(String ingredient : food.getIngredient()){
+                        if(ingredient.contains(searchtext_foodingredient_nothave)){
+                            break;
+                        } else{
+                            searchpage_foodlist_clone_nothave.add(food);
+                            break;
+                        }
+                    }
+                }
+                searchpage_foodlist = searchpage_foodlist_clone_nothave;
+            }
         } else if(!searchtext_foodingredient.equals("")){
             for(FoodDatabaseClass food : foodlist){
                 for(String ingredient : food.getIngredient()){
@@ -115,6 +131,20 @@ public class SearchPage extends Fragment {
                         break;
                     }
                 }
+            }
+            if(!searchtext_foodingredient_nothave.equals("")){
+                ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
+                for(FoodDatabaseClass food : searchpage_foodlist){
+                    for(String ingredient : food.getIngredient()){
+                        if(ingredient.contains(searchtext_foodingredient_nothave)){
+                            break;
+                        } else{
+                            searchpage_foodlist_clone_nothave.add(food);
+                            break;
+                        }
+                    }
+                }
+                searchpage_foodlist = searchpage_foodlist_clone_nothave;
             }
         }
         else{

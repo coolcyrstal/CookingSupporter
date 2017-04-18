@@ -37,9 +37,9 @@
     <string name="change_your_profile">Change Your Profile</string>
     <string name="update">Update</string>
     <string name="upload_image">Upload Image</string>
-    <string name="food_name_text">ชื่ออาหาร</string>
+    <string name="food_name_text">ชื่อสูตรอาหาร (ผัดกระเพรา, ข้าว, แกง)</string>
     <string name="cooking_method_text">ขั้นตอนการทำ...</string>
-    <string name="ingredient_text">หมู 300 กรัม</string>
+    <string name="ingredient_text">วัตถุดิบ (หมู, ไก่, คะน้า, ...)</string>
     <string name="type">type</string>
     <string name="category_food_image_description">category food image description</string>
     <string name="add_food_recipe">Add Food Recipe</string>
