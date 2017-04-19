@@ -93,15 +93,27 @@ public class SearchPage extends Fragment {
 
         ArrayList<FoodDatabaseClass> searchpage_foodlist_clone = new ArrayList<>();
         if(!searchtext_foodname.equals("")){
+            String[] CurrentString = searchtext_foodname.split(" ");
+            Boolean check = false;
             for(FoodDatabaseClass food : foodlist){
-                if(food.getFood_name().contains(searchtext_foodname)){
+                for(String currentstring : CurrentString){
+                    if(food.getFood_name().contains(currentstring)){check = true;}
+                    else{check = false;break;}
+                }
+                if(check == true){
                     searchpage_foodlist.add(food);
                 }
             }
             if(!searchtext_foodingredient.equals("")){
+                check = false;
+                CurrentString = searchtext_foodingredient.split(" ");
                 for(FoodDatabaseClass food : searchpage_foodlist){
                     for(String ingredient : food.getIngredient()){
-                        if(ingredient.contains(searchtext_foodingredient)){
+                        for(String currentstring : CurrentString){
+                            if(ingredient.contains(currentstring)){check = true;}
+                            else{check = false;break;}
+                        }
+                        if(check == true){
                             searchpage_foodlist_clone.add(food);
                             break;
                         }
@@ -124,9 +136,15 @@ public class SearchPage extends Fragment {
                 searchpage_foodlist = searchpage_foodlist_clone_nothave;
             }
         } else if(!searchtext_foodingredient.equals("")){
+            String[] CurrentString = searchtext_foodingredient.split(" ");
+            Boolean check = false;
             for(FoodDatabaseClass food : foodlist){
                 for(String ingredient : food.getIngredient()){
-                    if(ingredient.contains(searchtext_foodingredient)){
+                    for(String currentstring : CurrentString){
+                        if(ingredient.contains(currentstring)){check = true;}
+                        else{check = false;break;}
+                    }
+                    if(check == true){
                         searchpage_foodlist.add(food);
                         break;
                     }
