@@ -119,29 +119,19 @@ public class SearchPage extends Fragment {
                     if(check == true){
                         searchpage_foodlist_clone.add(food);
                     }
-//                    for(String ingredient : food.getIngredient()){
-//                        for(String currentstring : CurrentString){
-//                            if(ingredient.contains(currentstring)){check = true;}
-//                            else{check = false;break;}
-//                        }
-//                        if(check == true){
-//                            searchpage_foodlist_clone.add(food);
-//                            break;
-//                        }
-//                    }
                 }
                 searchpage_foodlist = searchpage_foodlist_clone;
             }
             if(!searchtext_foodingredient_nothave.equals("")){
                 ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
                 for(FoodDatabaseClass food : searchpage_foodlist){
+                    check = false;
                     for(String ingredient : food.getIngredient()){
-                        if(ingredient.contains(searchtext_foodingredient_nothave)){
-                            break;
-                        } else{
-                            searchpage_foodlist_clone_nothave.add(food);
-                            break;
-                        }
+                        if(ingredient.contains(searchtext_foodingredient_nothave)){check = false;break;}
+                        else{check = true;}
+                    }
+                    if(check == true){
+                        searchpage_foodlist_clone_nothave.add(food);
                     }
                 }
                 searchpage_foodlist = searchpage_foodlist_clone_nothave;
@@ -162,41 +152,31 @@ public class SearchPage extends Fragment {
                 if(check == true){
                     searchpage_foodlist.add(food);
                 }
-
-//                for(String ingredient : food.getIngredient()){
-//                    for(String currentstring : CurrentString){
-//                        if(ingredient.contains(currentstring)){check = true;}
-//                        else{check = false;break;}
-//                    }
-//                    if(check == true){
-//                        searchpage_foodlist.add(food);
-//                        break;
-//                    }
-//                }
             }
             if(!searchtext_foodingredient_nothave.equals("")){
                 ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
                 for(FoodDatabaseClass food : searchpage_foodlist){
+                    check = false;
                     for(String ingredient : food.getIngredient()){
-                        if(ingredient.contains(searchtext_foodingredient_nothave)){
-                            break;
-                        } else{
-                            searchpage_foodlist_clone_nothave.add(food);
-                            break;
-                        }
+                        if(ingredient.contains(searchtext_foodingredient_nothave)){check = false;break;}
+                        else{check = true;}
+                    }
+                    if(check == true){
+                        searchpage_foodlist_clone_nothave.add(food);
                     }
                 }
                 searchpage_foodlist = searchpage_foodlist_clone_nothave;
             }
         } else if(!searchtext_foodingredient_nothave.equals("")){
+            Boolean check;
             for(FoodDatabaseClass food : foodlist){
+                check = false;
                 for(String ingredient : food.getIngredient()){
-                    if(ingredient.contains(searchtext_foodingredient_nothave)){
-                        break;
-                    } else{
-                        searchpage_foodlist.add(food);
-                        break;
-                    }
+                    if(ingredient.contains(searchtext_foodingredient_nothave)){check = false;break;}
+                    else{check = true;}
+                }
+                if(check == true){
+                    searchpage_foodlist.add(food);
                 }
             }
         }
