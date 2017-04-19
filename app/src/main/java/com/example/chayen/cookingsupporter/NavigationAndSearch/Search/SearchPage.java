@@ -105,19 +105,30 @@ public class SearchPage extends Fragment {
                 }
             }
             if(!searchtext_foodingredient.equals("")){
-                check = false;
                 CurrentString = searchtext_foodingredient.split(" ");
                 for(FoodDatabaseClass food : searchpage_foodlist){
-                    for(String ingredient : food.getIngredient()){
-                        for(String currentstring : CurrentString){
-                            if(ingredient.contains(currentstring)){check = true;}
-                            else{check = false;break;}
+                    check = false;
+                    for(String currentstring : CurrentString){
+                        for(String ingredient : food.getIngredient()){
+                            if(ingredient.contains(currentstring)){check = true;break;}
                         }
-                        if(check == true){
-                            searchpage_foodlist_clone.add(food);
-                            break;
-                        }
+                        if(check == false){break;}
+                        else if(currentstring.equals(CurrentString[CurrentString.length-1])){}
+                        else{check = false;}
                     }
+                    if(check == true){
+                        searchpage_foodlist_clone.add(food);
+                    }
+//                    for(String ingredient : food.getIngredient()){
+//                        for(String currentstring : CurrentString){
+//                            if(ingredient.contains(currentstring)){check = true;}
+//                            else{check = false;break;}
+//                        }
+//                        if(check == true){
+//                            searchpage_foodlist_clone.add(food);
+//                            break;
+//                        }
+//                    }
                 }
                 searchpage_foodlist = searchpage_foodlist_clone;
             }
@@ -137,18 +148,31 @@ public class SearchPage extends Fragment {
             }
         } else if(!searchtext_foodingredient.equals("")){
             String[] CurrentString = searchtext_foodingredient.split(" ");
-            Boolean check = false;
+            Boolean check;
             for(FoodDatabaseClass food : foodlist){
-                for(String ingredient : food.getIngredient()){
-                    for(String currentstring : CurrentString){
-                        if(ingredient.contains(currentstring)){check = true;}
-                        else{check = false;break;}
+                check = false;
+                for(String currentstring : CurrentString){
+                    for(String ingredient : food.getIngredient()){
+                        if(ingredient.contains(currentstring)){check = true;break;}
                     }
-                    if(check == true){
-                        searchpage_foodlist.add(food);
-                        break;
-                    }
+                    if(check == false){break;}
+                    else if(currentstring.equals(CurrentString[CurrentString.length-1])){}
+                    else{check = false;}
                 }
+                if(check == true){
+                    searchpage_foodlist.add(food);
+                }
+
+//                for(String ingredient : food.getIngredient()){
+//                    for(String currentstring : CurrentString){
+//                        if(ingredient.contains(currentstring)){check = true;}
+//                        else{check = false;break;}
+//                    }
+//                    if(check == true){
+//                        searchpage_foodlist.add(food);
+//                        break;
+//                    }
+//                }
             }
             if(!searchtext_foodingredient_nothave.equals("")){
                 ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
