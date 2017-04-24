@@ -4,13 +4,13 @@
     xmlns:autofit="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:id="@+id/category_adapter_card"
-        android:padding="15dp"
         app:cardElevation="2dp"
         app:contentPadding="3dp"
         app:cardCornerRadius="8dp">

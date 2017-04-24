@@ -123,12 +123,18 @@ public class SearchPage extends Fragment {
                 searchpage_foodlist = searchpage_foodlist_clone;
             }
             if(!searchtext_foodingredient_nothave.equals("")){
+                CurrentString = searchtext_foodingredient_nothave.split(" ");
                 ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
                 for(FoodDatabaseClass food : searchpage_foodlist){
                     check = false;
-                    for(String ingredient : food.getIngredient()){
-                        if(ingredient.contains(searchtext_foodingredient_nothave)){check = false;break;}
-                        else{check = true;}
+                    for(String currentstring : CurrentString){
+                        for(String ingredient : food.getIngredient()){
+                            if(ingredient.contains(currentstring)){check = false;break;}
+                            else{check = true;}
+                        }
+                        if(check == false){break;}
+                        else if(currentstring.equals(CurrentString[CurrentString.length-1])){}
+                        else{check = false;}
                     }
                     if(check == true){
                         searchpage_foodlist_clone_nothave.add(food);
@@ -154,12 +160,18 @@ public class SearchPage extends Fragment {
                 }
             }
             if(!searchtext_foodingredient_nothave.equals("")){
+                CurrentString = searchtext_foodingredient_nothave.split(" ");
                 ArrayList<FoodDatabaseClass> searchpage_foodlist_clone_nothave = new ArrayList<>();
                 for(FoodDatabaseClass food : searchpage_foodlist){
                     check = false;
-                    for(String ingredient : food.getIngredient()){
-                        if(ingredient.contains(searchtext_foodingredient_nothave)){check = false;break;}
-                        else{check = true;}
+                    for(String currentstring : CurrentString){
+                        for(String ingredient : food.getIngredient()){
+                            if(ingredient.contains(currentstring)){check = false;break;}
+                            else{check = true;}
+                        }
+                        if(check == false){break;}
+                        else if(currentstring.equals(CurrentString[CurrentString.length-1])){}
+                        else{check = false;}
                     }
                     if(check == true){
                         searchpage_foodlist_clone_nothave.add(food);
@@ -168,12 +180,18 @@ public class SearchPage extends Fragment {
                 searchpage_foodlist = searchpage_foodlist_clone_nothave;
             }
         } else if(!searchtext_foodingredient_nothave.equals("")){
+            String[] CurrentString = searchtext_foodingredient_nothave.split(" ");
             Boolean check;
             for(FoodDatabaseClass food : foodlist){
                 check = false;
-                for(String ingredient : food.getIngredient()){
-                    if(ingredient.contains(searchtext_foodingredient_nothave)){check = false;break;}
-                    else{check = true;}
+                for(String currentstring : CurrentString){
+                    for(String ingredient : food.getIngredient()){
+                        if(ingredient.contains(currentstring)){check = false;break;}
+                        else{check = true;}
+                    }
+                    if(check == false){break;}
+                    else if(currentstring.equals(CurrentString[CurrentString.length-1])){}
+                    else{check = false;}
                 }
                 if(check == true){
                     searchpage_foodlist.add(food);
