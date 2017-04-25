@@ -2,12 +2,15 @@ package com.example.chayen.cookingsupporter.NavigationAndSearch;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -16,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -27,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.chayen.cookingsupporter.FoodListAdapter.FoodDatabaseClass;
 import com.example.chayen.cookingsupporter.R;
@@ -41,8 +46,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddFoodMenu extends AppCompatActivity {
 
@@ -52,6 +63,7 @@ public class AddFoodMenu extends AppCompatActivity {
     private Button upload_foodrecipe_image_button, add_foodrecipe_button;
     private ImageView foodrecipe_image;
     private Spinner text_addfood_type;
+    private ProgressDialog mProgressDialog;
 
     ArrayList<String> ingredient_newrecipe = new ArrayList<>(),
             cookingmethod_newrecipe = new ArrayList<>();
@@ -200,9 +212,19 @@ public class AddFoodMenu extends AppCompatActivity {
 
     private void uploadImageToFirebaseStorage(){
         Uri file = Uri.fromFile(new File(getRealPathFromURI(getApplicationContext(), selectedImage)));
+        Bitmap resized = null;
+        try {
+            resized = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), file),
+                    400, 300, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        showProgressDialog();
+
+        Uri fileresized = getImageUri(resized);
 
         StorageReference storageRef = mStorageRef.child(food_newrecipe.getFood_type() + "/" + file.getLastPathSegment());
-        UploadTask mUploadTask = storageRef.putFile(file);
+        UploadTask mUploadTask = storageRef.putFile(fileresized);
 
         mUploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -222,6 +244,36 @@ public class AddFoodMenu extends AppCompatActivity {
                 uploadDataToFirebase();
             }
         });
+    }
+
+    private Uri getImageUri(Bitmap inImage) {
+        File ftemp = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/cookingsupporter/");
+        if(!ftemp.exists())
+            ftemp.mkdirs();
+        FileOutputStream outStream = null;
+        Date d = new Date();
+        String filename  = (String) DateFormat.format("kkmmss-MMddyyyy", d.getTime());
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/cookingsupporter/" + filename + ".jpg");
+        try {
+            outStream = new FileOutputStream(file);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            inImage.compress(Bitmap.CompressFormat.JPEG, 80, outStream);
+            outStream.write(bos.toByteArray());
+            updateImage(file);
+            Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return Uri.fromFile(file);
+    }
+
+    public void updateImage(File f) {
+        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        intent.setData(Uri.fromFile(f));
+        getApplicationContext().sendBroadcast(intent);
     }
 
     @SuppressLint("NewApi")
@@ -263,8 +315,10 @@ public class AddFoodMenu extends AppCompatActivity {
         food_newrecipe.setCooking_method(cookingmethod_newrecipe);
         food_newrecipe.setFood_image(food_photoURL_firebase.toString());
         food_newrecipe.setStar_count(Long.valueOf(0));
+        food_newrecipe.setUser_count(Long.valueOf(0));
         myRef.push().setValue(food_newrecipe);
 
+        hideProgressDialog();
         finish();
     }
 
@@ -291,5 +345,19 @@ public class AddFoodMenu extends AppCompatActivity {
             }
         });
         return downloadDialog.show();
+    }
+
+    private void showProgressDialog() {
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setMessage(getString(R.string.loading));
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.hide();
+        }
     }
 }
