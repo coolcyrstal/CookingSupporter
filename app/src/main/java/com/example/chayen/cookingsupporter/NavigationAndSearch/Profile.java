@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.SyncStateContract;
@@ -16,11 +17,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ThemedSpinnerAdapter;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.chayen.cookingsupporter.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,9 +38,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 public class Profile extends AppCompatActivity {
 
@@ -115,9 +121,16 @@ public class Profile extends AppCompatActivity {
 //        cursor.close();
 
         Uri file = Uri.fromFile(new File(getRealPathFromURI(getApplicationContext(), selectedImage)));
+        Bitmap resized = null;
+        try {
+            resized = Bitmap.createScaledBitmap(MediaStore.Images.Media.getBitmap(this.getContentResolver(), file),
+                    40, 40, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         StorageReference storageRef = mStorageRef.child("user_profile/" + file.getLastPathSegment());
-        UploadTask mUploadTask = storageRef.putFile(file);
+        UploadTask mUploadTask = storageRef.putFile(getImageUri(resized));
 
         mUploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -132,6 +145,36 @@ public class Profile extends AppCompatActivity {
                 updateUserDetail();
             }
         });
+    }
+
+    private Uri getImageUri(Bitmap inImage) {
+        File ftemp = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/cookingsupporter/");
+        if(!ftemp.exists())
+            ftemp.mkdirs();
+        FileOutputStream outStream = null;
+        Date d = new Date();
+        String filename  = (String) DateFormat.format("kkmmss-MMddyyyy", d.getTime());
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/cookingsupporter/" + filename + ".jpg");
+        try {
+            outStream = new FileOutputStream(file);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            inImage.compress(Bitmap.CompressFormat.JPEG, 80, outStream);
+            outStream.write(bos.toByteArray());
+            updateImage(file);
+            Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return Uri.fromFile(file);
+    }
+
+    public void updateImage(File f) {
+        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        intent.setData(Uri.fromFile(f));
+        getApplicationContext().sendBroadcast(intent);
     }
 
     @SuppressLint("NewApi")

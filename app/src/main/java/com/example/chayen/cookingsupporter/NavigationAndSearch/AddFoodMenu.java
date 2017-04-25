@@ -260,7 +260,6 @@ public class AddFoodMenu extends AppCompatActivity {
             inImage.compress(Bitmap.CompressFormat.JPEG, 80, outStream);
             outStream.write(bos.toByteArray());
             updateImage(file);
-            Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -318,6 +317,7 @@ public class AddFoodMenu extends AppCompatActivity {
         food_newrecipe.setUser_count(Long.valueOf(0));
         myRef.push().setValue(food_newrecipe);
 
+        Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show();
         hideProgressDialog();
         finish();
     }
